@@ -3,70 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Primary Meta Tags -->
-    <title>Tajwar Sultan - Web Developer</title>
-    <meta name="title" content="Tajwar Sultan - Web Developer" />
-    <meta
-      name="description"
-      content="A passionate web developer specializing in modern frontend technologies like React, Next.js, and UI/UX design. Explore my projects and get in touch!"
-    />
-    <meta
-      name="keywords"
-      content="Web Developer, Frontend Developer, JavaScript Engineer, React, Next.js, UI/UX Design, Portfolio"
-    />
-    <meta name="author" content="Tajwar Sultan" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#2DAA9E" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourwebsite.com/" />
-    <meta property="og:title" content="Tajwar Sultan - Web Developer" />
-    <meta
-      property="og:description"
-      content="A passionate web developer specializing in modern frontend technologies like React, Next.js, and UI/UX design. Explore my projects and get in touch!"
-    />
-    <meta
-      property="og:image"
-      content="https://yourwebsite.com/images/tajwar-sultan.png"
-    />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://yourwebsite.com/" />
-    <meta property="twitter:title" content="Tajwar Sultan - Web Developer" />
-    <meta
-      property="twitter:description"
-      content="A passionate web developer specializing in modern frontend technologies like React, Next.js, and UI/UX design. Explore my projects and get in touch!"
-    />
-    <meta
-      property="twitter:image"
-      content="https://yourwebsite.com/images/tajwar-sultan.png"
-    />
-
-    <!-- Favicon -->
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-
-    <!-- Stylesheets -->
+    <title>Personal Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
   <body>
     <!-- Custom Cursor -->
     <div class="cursor"></div>
 
-    <!-- Page Loader -->
+    <!-- Loader -->
     <div class="loader">
       <div class="loader-content">
         <h2>Loading Portfolio</h2>
@@ -77,20 +25,34 @@
     </div>
 
     <!-- Navigation -->
-    <nav>
-      <a href="#" class="logo">Tajwar<span> Sultan</span></a>
+    <nav id="navbar">
+      <a href="#" class="logo">Portfolio<span>.</span></a>
       <div class="menu">
-        <a href="#home" class="menu-item">Home</a>
+        <a href="#hero" class="menu-item">Home</a>
         <a href="#about" class="menu-item">About</a>
         <a href="#projects" class="menu-item">Projects</a>
         <a href="#resume" class="menu-item">Resume</a>
-        <a href="#testimonials" class="menu-item">Testimonials</a>
         <a href="#contact" class="menu-item">Contact</a>
+      </div>
+      <!-- Mobile Menu Button -->
+      <div class="mobile-menu-btn" id="mobile-menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#hero" class="mobile-menu-item">Home</a>
+      <a href="#about" class="mobile-menu-item">About</a>
+      <a href="#projects" class="mobile-menu-item">Projects</a>
+      <a href="#resume" class="mobile-menu-item">Resume</a>
+      <a href="#contact" class="mobile-menu-item">Contact</a>
+    </div>
+
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" id="hero">
       <div class="hero-background">
         <div class="hero-circles">
           <div class="circle"></div>
@@ -100,12 +62,12 @@
       </div>
       <div class="hero-content">
         <div class="hero-text">
-          <p class="hero-greeting">Hello there, I'm</p>
-          <h1 class="hero-title">Tajwar <span>Sultan</span></h1>
+          <p class="hero-greeting">Hello, I'm</p>
+          <h1 class="hero-title">John <span>Doe</span></h1>
           <p class="hero-description">
-            A passionate web developer with a focus on creating beautiful and
-            functional websites. I specialize in front-end development with
-            modern technologies.
+            A passionate Full-Stack Developer with a creative approach to
+            problem-solving and a dedication to building innovative web
+            applications.
           </p>
           <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -116,33 +78,17 @@
           <div class="profile-container">
             <div class="profile-bg"></div>
             <img
-              src="./images/tajwar-sultan.png"
-              alt="Tajwar Sultan"
+              src="/api/placeholder/400/400"
+              alt="Profile Image"
               class="profile-img"
             />
           </div>
           <div class="social-icons">
-            <a
-              target="_blank"
-              href="https://github.com/tajwarsultan"
-              class="social-icon"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/tajwar-sultan/"
-              class="social-icon"
-            >
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a
-              target="_blank"
-              href="https://x.com/TajwarSultan"
-              class="social-icon"
-            >
-              <i class="fab fa-twitter"></i>
-            </a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
       </div>
@@ -155,35 +101,36 @@
         <div class="about-image">
           <div class="about-img-container">
             <img
-              src="./images/tajwar.jpg"
-              alt="About Tajwar Sultan"
+              src="/api/placeholder/500/500"
+              alt="About Me"
               class="about-img"
             />
           </div>
           <div class="about-shape"></div>
         </div>
         <div class="about-text">
-          <p class="about-greeting">Who am I?</p>
+          <p class="about-greeting">My Introduction</p>
           <h3 class="about-heading">
-            A passionate Web Developer based in New York
+            Crafting digital experiences with passion and precision
           </h3>
           <p class="about-description">
-            I'm a web developer with a passion for creating beautiful,
-            functional, and user-centered digital experiences. With 5 years of
-            experience in the field, I am always looking for new and innovative
-            ways to bring my clients' visions to life.
+            I'm a full-stack developer with over 5 years of experience creating
+            innovative web applications. My journey in the tech world started at
+            a young age when I built my first website, and I've been coding ever
+            since. I'm passionate about writing clean, efficient code and
+            creating intuitive user experiences.
           </p>
           <p class="about-description">
-            I believe that design is about more than just making things look
-            pretty – it's about solving problems and creating intuitive,
-            enjoyable experiences for users.
+            When I'm not coding, you'll find me exploring new technologies,
+            contributing to open-source projects, or sharing my knowledge
+            through blog posts and community forums.
           </p>
           <div class="about-skills">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">HTML/CSS</span>
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">React</span>
             <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
             <span class="skill-tag">UI/UX Design</span>
             <span class="skill-tag">Responsive Design</span>
           </div>
@@ -193,11 +140,11 @@
               <span class="stat-text">Years Experience</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">50+</span>
+              <span class="stat-number">30+</span>
               <span class="stat-text">Projects Completed</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">30+</span>
+              <span class="stat-number">20+</span>
               <span class="stat-text">Happy Clients</span>
             </div>
           </div>
@@ -207,76 +154,116 @@
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
-      <h2 class="section-title">My Recent Projects</h2>
+      <h2 class="section-title">My Projects</h2>
       <div class="projects-grid">
         <!-- Project 1 -->
         <div class="project-card">
-          <img src="./images/box.jpg" alt="Project 1" class="project-img" />
+          <img
+            src="/api/placeholder/400/200"
+            alt="Project 1"
+            class="project-img"
+          />
           <div class="project-content">
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">Node.js</span>
             </div>
-            <h3 class="project-title">E-Commerce Website</h3>
+            <h3 class="project-title">E-Commerce Platform</h3>
             <p class="project-description">
-              A fully responsive e-commerce platform with shopping cart
-              functionality, user authentication, and payment integration.
+              A full-featured e-commerce platform with user authentication,
+              product management, shopping cart, and payment integration.
             </p>
             <div class="project-links">
-              <a href="#" class="project-link">
-                <i class="fas fa-link"></i> Live Demo
-              </a>
-              <a href="#" class="project-link">
-                <i class="fab fa-github"></i> Source Code
-              </a>
+              <a href="#" class="project-link"
+                ><i class="fas fa-link"></i> Live Demo</a
+              >
+              <a href="#" class="project-link"
+                ><i class="fab fa-github"></i> Source Code</a
+              >
             </div>
           </div>
         </div>
 
         <!-- Project 2 -->
         <div class="project-card">
-          <img src="./images/kite.jpg" alt="Project 2" class="project-img" />
+          <img
+            src="/api/placeholder/400/200"
+            alt="Project 2"
+            class="project-img"
+          />
           <div class="project-content">
             <div class="project-tags">
               <span class="project-tag">JavaScript</span>
-              <span class="project-tag">CSS</span>
+              <span class="project-tag">API</span>
             </div>
-            <h3 class="project-title">Portfolio Website</h3>
+            <h3 class="project-title">Weather Dashboard</h3>
             <p class="project-description">
-              A clean and modern portfolio website with smooth animations and
-              responsive design.
+              An interactive weather dashboard that displays current and
+              forecasted weather data for any location using a third-party API.
             </p>
             <div class="project-links">
-              <a href="#" class="project-link">
-                <i class="fas fa-link"></i> Live Demo
-              </a>
-              <a href="#" class="project-link">
-                <i class="fab fa-github"></i> Source Code
-              </a>
+              <a href="#" class="project-link"
+                ><i class="fas fa-link"></i> Live Demo</a
+              >
+              <a href="#" class="project-link"
+                ><i class="fab fa-github"></i> Source Code</a
+              >
             </div>
           </div>
         </div>
 
         <!-- Project 3 -->
         <div class="project-card">
-          <img src="./images/trop.png" alt="Project 3" class="project-img" />
+          <img
+            src="/api/placeholder/400/200"
+            alt="Project 3"
+            class="project-img"
+          />
           <div class="project-content">
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">Firebase</span>
             </div>
-            <h3 class="project-title">Task Manager App</h3>
+            <h3 class="project-title">Task Management App</h3>
             <p class="project-description">
-              A task management application with user authentication, real-time
-              updates, and collaborative features.
+              A collaborative task management application with real-time
+              updates, task assignments, and progress tracking features.
             </p>
             <div class="project-links">
-              <a href="#" class="project-link">
-                <i class="fas fa-link"></i> Live Demo
-              </a>
-              <a href="#" class="project-link">
-                <i class="fab fa-github"></i> Source Code
-              </a>
+              <a href="#" class="project-link"
+                ><i class="fas fa-link"></i> Live Demo</a
+              >
+              <a href="#" class="project-link"
+                ><i class="fab fa-github"></i> Source Code</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <img
+            src="/api/placeholder/400/200"
+            alt="Project 4"
+            class="project-img"
+          />
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">HTML/CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <h3 class="project-title">Portfolio Website</h3>
+            <p class="project-description">
+              A responsive personal portfolio website showcasing projects,
+              skills, and professional experience with a modern design.
+            </p>
+            <div class="project-links">
+              <a href="#" class="project-link"
+                ><i class="fas fa-link"></i> Live Demo</a
+              >
+              <a href="#" class="project-link"
+                ><i class="fab fa-github"></i> Source Code</a
+              >
             </div>
           </div>
         </div>
@@ -288,39 +275,205 @@
       <h2 class="section-title">My Resume</h2>
       <div class="resume-content">
         <div class="resume-tabs">
-          <div class="resume-tab active">Experience</div>
-          <div class="resume-tab">Education</div>
-          <div class="resume-tab">Skills</div>
+          <div class="resume-tab active" data-tab="education">Education</div>
+          <div class="resume-tab" data-tab="experience">Experience</div>
+          <div class="resume-tab" data-tab="skills">Skills</div>
         </div>
         <div class="resume-content-area">
-          <!-- Experience Items -->
-          <div class="resume-item">
-            <span class="resume-date">2021 - Present</span>
-            <h3 class="resume-title">Senior Web Developer</h3>
-            <p class="resume-subtitle">TechCorp Inc, New York</p>
-            <p class="resume-description">
-              Lead developer for client projects, managing a team of 5
-              developers. Implemented modern frontend frameworks and improved
-              site performance by 40%.
+          <!-- Education Tab Content -->
+          <div class="resume-tab-content active" id="education">
+            <div class="resume-item">
+              <span class="resume-date">2015 - 2019</span>
+              <h3 class="resume-title">BSc in Computer Science</h3>
+              <h4 class="resume-subtitle">University of Technology</h4>
+              <p class="resume-description">
+                Graduated with honors in Computer Science with a focus on web
+                development and software engineering. Participated in various
+                coding competitions and hackathons.
+              </p>
+            </div>
+            <div class="resume-item">
+              <span class="resume-date">2013 - 2015</span>
+              <h3 class="resume-title">Associate Degree in Web Development</h3>
+              <h4 class="resume-subtitle">Community College</h4>
+              <p class="resume-description">
+                Completed a specialized program in web development, learning
+                front-end and back-end technologies, database management, and
+                responsive design principles.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Tab Content -->
+          <div class="resume-tab-content" id="experience">
+            <div class="resume-item">
+              <span class="resume-date">2021 - Present</span>
+              <h3 class="resume-title">Senior Full-Stack Developer</h3>
+              <h4 class="resume-subtitle">Tech Innovations Inc.</h4>
+              <p class="resume-description">
+                Lead development of enterprise-level web applications,
+                overseeing a team of 5 developers. Implemented CI/CD pipelines
+                and improved application performance by 40%.
+              </p>
+            </div>
+            <div class="resume-item">
+              <span class="resume-date">2019 - 2021</span>
+              <h3 class="resume-title">Front-End Developer</h3>
+              <h4 class="resume-subtitle">Digital Solutions Ltd.</h4>
+              <p class="resume-description">
+                Developed responsive user interfaces using React, collaborated
+                with UX designers to implement sleek and intuitive user
+                experiences for various client projects.
+              </p>
+            </div>
+            <div class="resume-item">
+              <span class="resume-date">2017 - 2019</span>
+              <h3 class="resume-title">Web Development Intern</h3>
+              <h4 class="resume-subtitle">StartUp Hub</h4>
+              <p class="resume-description">
+                Assisted in developing websites for startups, learned practical
+                implementation of modern web technologies, and participated in
+                client meetings and project planning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Skills Tab Content -->
+          <div class="resume-tab-content" id="skills">
+            <div class="resume-item">
+              <h3 class="resume-title">Front-End Technologies</h3>
+              <p class="resume-description">
+                HTML5, CSS3, JavaScript (ES6+), TypeScript, React, Vue.js,
+                Angular, SASS/SCSS, Bootstrap, Tailwind CSS
+              </p>
+            </div>
+            <div class="resume-item">
+              <h3 class="resume-title">Back-End Technologies</h3>
+              <p class="resume-description">
+                Node.js, Express, Python, Django, PHP, Laravel, RESTful APIs,
+                GraphQL
+              </p>
+            </div>
+            <div class="resume-item">
+              <h3 class="resume-title">Database & Others</h3>
+              <p class="resume-description">
+                MongoDB, MySQL, PostgreSQL, Firebase, AWS, Docker, Git, Agile
+                Methodologies, CI/CD
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Progress Section -->
+    <section class="skills-progress" id="skills-progress">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-content">
+        <div class="skills-text">
+          <h3 class="skills-heading">Technical Skills & Expertise</h3>
+          <p class="skills-description">
+            With over 5 years of experience, I've developed expertise in various
+            technologies. Here's a quantitative look at my technical
+            proficiency.
+          </p>
+        </div>
+        <div class="skills-bars">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">HTML & CSS</span>
+              <span class="skill-percentage">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="95"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-percentage">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">React</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Node.js</span>
+              <span class="skill-percentage">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="80"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">UI/UX Design</span>
+              <span class="skill-percentage">75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="75"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Career Timeline Section -->
+    <section class="timeline" id="timeline">
+      <h2 class="section-title">My Career Path</h2>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2021</div>
+          <div class="timeline-content">
+            <h3>Senior Full-Stack Developer</h3>
+            <p>
+              Promoted to lead the development team at Tech Innovations Inc.
+              Responsible for architectural decisions and mentoring junior
+              developers.
             </p>
           </div>
-          <div class="resume-item">
-            <span class="resume-date">2018 - 2021</span>
-            <h3 class="resume-title">Frontend Developer</h3>
-            <p class="resume-subtitle">WebSolutions LLC, Boston</p>
-            <p class="resume-description">
-              Developed responsive websites for various clients, collaborated
-              with designers and backend developers to create seamless user
-              experiences.
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2019</div>
+          <div class="timeline-content">
+            <h3>Front-End Developer</h3>
+            <p>
+              Joined Digital Solutions Ltd. where I specialized in creating
+              complex user interfaces and optimizing web performance.
             </p>
           </div>
-          <div class="resume-item">
-            <span class="resume-date">2016 - 2018</span>
-            <h3 class="resume-title">Junior Web Developer</h3>
-            <p class="resume-subtitle">CreativeAgency, San Francisco</p>
-            <p class="resume-description">
-              Assisted in creating and maintaining websites for small
-              businesses, focusing on HTML, CSS, and JavaScript implementations.
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2017</div>
+          <div class="timeline-content">
+            <h3>Web Development Intern</h3>
+            <p>
+              Started my professional journey at StartUp Hub, working on diverse
+              projects and gaining hands-on experience.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2015</div>
+          <div class="timeline-content">
+            <h3>University Enrollment</h3>
+            <p>
+              Began studying Computer Science at the University of Technology,
+              focusing on software engineering.
             </p>
           </div>
         </div>
@@ -329,28 +482,118 @@
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
-      <h2 class="section-title">Client Testimonials</h2>
+      <h2 class="section-title">What Clients Say</h2>
       <div class="testimonials-content">
         <div class="testimonial-slider">
-          <div class="testimonial-slide">
+          <div class="testimonial-slide active">
             <p class="testimonial-quote">
-              Sultan is an exceptional developer who delivered our project on
-              time and exceeded our expectations. His attention to detail and
-              problem-solving skills are outstanding.
+              John's work on our e-commerce platform exceeded our expectations.
+              His attention to detail and problem-solving skills made our
+              project a huge success. We've seen a 30% increase in conversion
+              rates since the launch.
             </p>
             <div class="testimonial-author">
               <img
-                src="./images/tajwar-sultan.png"
+                src="/api/placeholder/60/60"
                 alt="Testimonial Author"
                 class="testimonial-avatar"
               />
               <div class="testimonial-info">
                 <h4 class="testimonial-name">Sarah Johnson</h4>
-                <p class="testimonial-role">CEO, TechStart</p>
+                <p class="testimonial-role">CEO, Fashion Retail Co.</p>
               </div>
             </div>
           </div>
+          <!-- More testimonial slides can be added here -->
         </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="blog-container">
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img
+              src="/api/placeholder/400/250"
+              alt="Blog Post 1"
+              class="blog-img"
+            />
+            <div class="blog-date">Mar 2, 2025</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-tags">
+              <span class="blog-tag">React</span>
+              <span class="blog-tag">Performance</span>
+            </div>
+            <h3 class="blog-title">
+              Optimizing React Performance: Tips and Tricks
+            </h3>
+            <p class="blog-excerpt">
+              Learn how to improve your React application's performance with
+              these advanced techniques and best practices.
+            </p>
+            <a href="#" class="blog-link"
+              >Read More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img
+              src="/api/placeholder/400/250"
+              alt="Blog Post 2"
+              class="blog-img"
+            />
+            <div class="blog-date">Feb 18, 2025</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-tags">
+              <span class="blog-tag">CSS</span>
+              <span class="blog-tag">Animation</span>
+            </div>
+            <h3 class="blog-title">
+              Creating Smooth CSS Animations: The Complete Guide
+            </h3>
+            <p class="blog-excerpt">
+              Dive into CSS animations and learn how to create smooth,
+              performant animations for your web projects.
+            </p>
+            <a href="#" class="blog-link"
+              >Read More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img-container">
+            <img
+              src="/api/placeholder/400/250"
+              alt="Blog Post 3"
+              class="blog-img"
+            />
+            <div class="blog-date">Jan 30, 2025</div>
+          </div>
+          <div class="blog-content">
+            <div class="blog-tags">
+              <span class="blog-tag">JavaScript</span>
+              <span class="blog-tag">ES2025</span>
+            </div>
+            <h3 class="blog-title">
+              What's New in JavaScript: ES2025 Features Explained
+            </h3>
+            <p class="blog-excerpt">
+              Explore the latest features in ECMAScript 2025 and how they can
+              improve your JavaScript code.
+            </p>
+            <a href="#" class="blog-link"
+              >Read More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-cta">
+        <a href="#" class="btn btn-secondary">View All Articles</a>
       </div>
     </section>
 
@@ -360,55 +603,47 @@
       <h2 class="section-title">Get In Touch</h2>
       <div class="contact-content">
         <div class="contact-info">
-          <h3 class="contact-heading">Let's Talk About Your Project</h3>
+          <h3 class="contact-heading">Let's talk about your project</h3>
           <p class="contact-description">
-            Feel free to reach out if you're looking for a developer, have a
-            question, or just want to connect.
+            Feel free to reach out if you want to collaborate with me, or simply
+            have a chat.
           </p>
-
           <div class="contact-item">
             <div class="contact-icon">
               <i class="fas fa-envelope"></i>
             </div>
-            <span class="contact-text">sultan.baig305@gmail.com</span>
+            <p class="contact-text">hello@johndoe.com</p>
           </div>
           <div class="contact-item">
             <div class="contact-icon">
               <i class="fas fa-phone"></i>
             </div>
-            <span class="contact-text">+92 3109450550</span>
+            <p class="contact-text">+1 (123) 456-7890</p>
           </div>
           <div class="contact-item">
             <div class="contact-icon">
               <i class="fas fa-map-marker-alt"></i>
             </div>
-            <span class="contact-text">Islamabad, PK</span>
+            <p class="contact-text">San Francisco, CA, USA</p>
           </div>
         </div>
         <div class="contact-form">
-          <form>
+          <form id="contactForm">
             <div class="form-group">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-control" placeholder="Your Name" />
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" class="form-control" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Your Email"
-              />
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" id="email" class="form-control" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Subject</label>
-              <input type="text" class="form-control" placeholder="Subject" />
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-control" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea
-                class="form-control"
-                placeholder="Your Message"
-              ></textarea>
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-control" required></textarea>
             </div>
             <button type="submit" class="btn-submit">Send Message</button>
           </form>
@@ -419,65 +654,50 @@
     <!-- Footer -->
     <footer>
       <div class="footer-content">
-        <div class="footer-logo">Tajwar <span>Sultan</span></div>
+        <div class="footer-logo">Portfolio<span>.</span></div>
         <div class="footer-links">
-          <a href="#home" class="footer-link">Home</a>
+          <a href="#hero" class="footer-link">Home</a>
           <a href="#about" class="footer-link">About</a>
           <a href="#projects" class="footer-link">Projects</a>
+          <a href="#resume" class="footer-link">Resume</a>
           <a href="#contact" class="footer-link">Contact</a>
         </div>
         <div class="footer-social">
-          <a
-            href="https://github.com/tajwarsultan"
-            target="_blank"
-            class="footer-social-icon"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/tajwar-sultan/"
-            target="_blank"
-            class="footer-social-icon"
-          >
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a
-            href="https://x.com/TajwarSultan"
-            target="_blank"
-            class="footer-social-icon"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
+          <a href="#" class="footer-social-icon"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="#" class="footer-social-icon"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="#" class="footer-social-icon"
+            ><i class="fab fa-twitter"></i
+          ></a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Tajwar Sultan. All Rights Reserved.</p>
+        <p>© 2025 John Doe. All rights reserved.</p>
       </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-      // Page Loader
+      // Loader Animation
       window.addEventListener("load", function () {
         const loader = document.querySelector(".loader");
-        const loaderProgress = document.querySelector(".loader-progress");
+        const progress = document.querySelector(".loader-progress");
 
-        // Simulate loading progress
-        let progress = 0;
-        const interval = setInterval(() => {
-          progress += 5;
-          loaderProgress.style.width = `${progress}%`;
+        // Animate progress bar
+        setTimeout(() => {
+          progress.style.width = "100%";
+        }, 500);
 
-          if (progress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-              loader.style.opacity = "0";
-              setTimeout(() => {
-                loader.style.display = "none";
-              }, 500);
-            }, 500);
-          }
-        }, 100);
+        // Hide loader after animation
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 500);
+        }, 2000);
       });
 
       // Custom Cursor
@@ -489,21 +709,41 @@
 
       // Navbar Scroll Effect
       window.addEventListener("scroll", function () {
-        const nav = document.querySelector("nav");
+        const navbar = document.getElementById("navbar");
         if (window.scrollY > 50) {
-          nav.classList.add("scrolled");
+          navbar.classList.add("scrolled");
         } else {
-          nav.classList.remove("scrolled");
+          navbar.classList.remove("scrolled");
         }
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", function () {
+        mobileMenuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
       });
 
       // Resume Tabs
       const resumeTabs = document.querySelectorAll(".resume-tab");
+      const resumeContents = document.querySelectorAll(".resume-tab-content");
+
       resumeTabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
+        tab.addEventListener("click", () => {
+          // Remove active class from all tabs
           resumeTabs.forEach((t) => t.classList.remove("active"));
-          this.classList.add("active");
-          // Add logic to show corresponding content
+          // Add active class to clicked tab
+          tab.classList.add("active");
+
+          // Hide all content
+          resumeContents.forEach((content) =>
+            content.classList.remove("active")
+          );
+          // Show corresponding content
+          const tabId = tab.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
         });
       });
 
@@ -511,10 +751,109 @@
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
+
+          // Close mobile menu if open
+          if (mobileMenu.classList.contains("active")) {
+            mobileMenuBtn.classList.remove("active");
+            mobileMenu.classList.remove("active");
+          }
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 70, // Offset for navbar
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission handling
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          // You would add your form submission logic here
+          alert("Thank you for your message! I will get back to you soon.");
+          contactForm.reset();
+        });
+      }
+
+      // Animate Skill Bars on Scroll
+      function animateSkillBars() {
+        const skillsSection = document.querySelector(".skills-progress");
+        const skillBars = document.querySelectorAll(".skill-progress");
+
+        if (!skillsSection) return;
+
+        const sectionPos = skillsSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+
+        if (sectionPos < screenPosition) {
+          skillBars.forEach((bar) => {
+            const progress = bar.getAttribute("data-progress");
+            bar.style.width = progress + "%";
+          });
+        }
+      }
+
+      // Animated Counter Function
+      function animateCounters() {
+        const counters = document.querySelectorAll(".stat-counter");
+        const counterSection = document.querySelector(".stats-counter");
+
+        if (!counterSection) return;
+
+        const sectionPos = counterSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+
+        if (sectionPos < screenPosition) {
+          counters.forEach((counter) => {
+            const target = +counter.dataset.target;
+            const count = +counter.innerText;
+            const increment = target / 100;
+
+            if (count < target) {
+              counter.innerText = Math.ceil(count + increment);
+              setTimeout(animateCounters, 10);
+            } else {
+              counter.innerText = target;
+            }
+          });
+        }
+      }
+
+      // Back to Top Button
+      const backToTop = document.getElementById("backToTop");
+      if (backToTop) {
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.add("show");
+          } else {
+            backToTop.classList.remove("show");
+          }
+        });
+
+        backToTop.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
             behavior: "smooth",
           });
         });
+      }
+
+      // Add scroll event listener for animation triggers
+      window.addEventListener("scroll", function () {
+        animateSkillBars();
+        animateCounters();
+      });
+
+      // Trigger animations once on page load
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          animateSkillBars();
+          animateCounters();
+        }, 2500); // After loader animation
       });
     </script>
   </body>
