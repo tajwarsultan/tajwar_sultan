@@ -1,521 +1,582 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tajwar Sultan — Full Stack Developer &amp; AI Engineer</title>
+  <meta name="description" content="Full Stack Developer &amp; AI Engineer with 4+ years experience building scalable web applications, AI integrations, and high-performance digital products." />
+  <meta name="keywords" content="Full Stack Developer, AI Engineer, OpenAI, React, Next.js, Node.js, Python, JavaScript, Portfolio, Tajwar Sultan" />
+  <meta name="author" content="Tajwar Sultan" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2DAA9E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tajwarsultan.dev/" />
+  <meta property="og:title" content="Tajwar Sultan — Full Stack Developer &amp; AI Engineer" />
+  <meta property="og:description" content="Full Stack Developer &amp; AI Engineer with 4+ years experience." />
+  <meta property="og:image" content="./images/tajwar-sultan.png" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Tajwar Sultan — Full Stack Developer &amp; AI Engineer" />
+  <meta property="twitter:image" content="./images/tajwar-sultan.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
 
-    <!-- Primary Meta Tags -->
-    <title>Tajwar Sultan - Web Developer</title>
-    <meta name="title" content="Tajwar Sultan - Web Developer" />
-    <meta
-      name="description"
-      content="A passionate web developer specializing in modern frontend technologies like React, Next.js, and UI/UX design. Explore my projects and get in touch!"
-    />
-    <meta
-      name="keywords"
-      content="Web Developer, Frontend Developer, JavaScript Engineer, React, Next.js, UI/UX Design, Portfolio"
-    />
-    <meta name="author" content="Tajwar Sultan" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#2DAA9E" />
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">TS</div>
+      <div class="preloader-text">Initializing<span class="dots">...</span></div>
+      <div class="preloader-bar"><div class="preloader-fill" id="preloader-fill"></div></div>
+    </div>
+  </div>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourwebsite.com/" />
-    <meta property="og:title" content="Tajwar Sultan - Web Developer" />
-    <meta
-      property="og:description"
-      content="A passionate web developer specializing in modern frontend technologies like React, Next.js, and UI/UX design. Explore my projects and get in touch!"
-    />
-    <meta
-      property="og:image"
-      content="https://yourwebsite.com/images/tajwar-sultan.png"
-    />
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">Tajwar<span>Sultan</span></a>
+    <div class="nav-links" id="nav-links">
+      <a href="#home"       class="nav-link">Home</a>
+      <a href="#summary"    class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#skills"     class="nav-link">Skills</a>
+      <a href="#projects"   class="nav-link">Projects</a>
+      <a href="#contact"    class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <a href="assets/resume/Tajwar_Sultan_Full_Stack_Developer_Resume.pdf" download class="nav-resume-btn">
+        <i class="fas fa-download"></i> Resume
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://yourwebsite.com/" />
-    <meta property="twitter:title" content="Tajwar Sultan - Web Developer" />
-    <meta
-      property="twitter:description"
-      content="A passionate web developer specializing in modern frontend technologies like React, Next.js, and UI/UX design. Explore my projects and get in touch!"
-    />
-    <meta
-      property="twitter:image"
-      content="https://yourwebsite.com/images/tajwar-sultan.png"
-    />
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-title hero-anim">
+        <span id="typing-text"></span><span class="cursor-blink">|</span>
+      </h1>
+      <p class="hero-desc hero-anim">Building scalable web applications &amp; intelligent AI-powered products that drive real impact.</p>
+      <div class="hero-cta hero-anim">
+        <a href="#projects" class="btn btn-primary"><span>View Projects</span><i class="fas fa-arrow-right"></i></a>
+        <a href="#contact"  class="btn btn-outline"><span>Contact Me</span></a>
+        <a href="assets/resume/Tajwar_Sultan_Full_Stack_Developer_Resume.pdf" download class="btn btn-ghost">
+          <i class="fas fa-download"></i><span>Download Resume</span>
+        </a>
+      </div>
+      <div class="hero-socials hero-anim" style="margin-top: 30px;">
+        <a href="https://github.com/tajwarsultan"            target="_blank" rel="noopener" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/tajwar-sultan/" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/TajwarSultan"                target="_blank" rel="noopener" class="social-link"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-    <!-- Favicon -->
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-
-    <!-- Page Loader -->
-    <div class="loader">
-      <div class="loader-content">
-        <h2>Loading Portfolio</h2>
-        <div class="loader-bar">
-          <div class="loader-progress"></div>
+  <!-- SUMMARY -->
+  <section id="summary" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">About</span>
+        <h2 class="section-title">Who I Am</h2>
+        <p class="section-desc">Full Stack Developer &amp; AI Engineer based in Islamabad, Pakistan. I specialize in building scalable web applications and integrating cutting-edge AI capabilities that solve real business problems.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card glass-card reveal-up">
+          <div class="stat-icon"><i class="fas fa-code"></i></div>
+          <div class="stat-number" data-target="4">0</div>
+          <div class="stat-suffix">+ Years</div>
+          <div class="stat-label">Experience</div>
+        </div>
+        <div class="stat-card glass-card reveal-up">
+          <div class="stat-icon"><i class="fas fa-robot"></i></div>
+          <div class="stat-number" data-target="20">0</div>
+          <div class="stat-suffix">+ Projects</div>
+          <div class="stat-label">AI &amp; OpenAI Integrations</div>
+        </div>
+        <div class="stat-card glass-card reveal-up">
+          <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-suffix">+ Apps</div>
+          <div class="stat-label">Full Stack Expertise</div>
+        </div>
+        <div class="stat-card glass-card reveal-up">
+          <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+          <div class="stat-number" data-target="40">0</div>
+          <div class="stat-suffix">%+</div>
+          <div class="stat-label">Performance Optimization</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Navigation -->
-    <nav>
-      <a href="#" class="logo">Tajwar<span> Sultan</span></a>
-      <div class="menu">
-        <a href="#home" class="menu-item">Home</a>
-        <a href="#about" class="menu-item">About</a>
-        <a href="#projects" class="menu-item">Projects</a>
-        <a href="#resume" class="menu-item">Resume</a>
-        <a href="#testimonials" class="menu-item">Testimonials</a>
-        <a href="#contact" class="menu-item">Contact</a>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Career</span>
+        <h2 class="section-title">Work Experience</h2>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-background">
-        <div class="hero-circles">
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-        </div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <p class="hero-greeting">Hello there, I'm</p>
-          <h1 class="hero-title">Tajwar <span>Sultan</span></h1>
-          <p class="hero-description">
-            A passionate web developer with a focus on creating beautiful and
-            functional websites. I specialize in front-end development with
-            modern technologies.
-          </p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-            <a href="#contact" class="btn btn-secondary">Contact Me</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="profile-container">
-            <div class="profile-bg"></div>
-            <img
-              src="./images/tajwar-sultan.png"
-              alt="Tajwar Sultan"
-              class="profile-img"
-            />
-          </div>
-          <div class="social-icons">
-            <a
-              target="_blank"
-              href="https://github.com/tajwarsultan"
-              class="social-icon"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/tajwar-sultan/"
-              class="social-icon"
-            >
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a
-              target="_blank"
-              href="https://x.com/TajwarSultan"
-              class="social-icon"
-            >
-              <i class="fab fa-twitter"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-image">
-          <div class="about-img-container">
-            <img
-              src="./images/tajwar.jpg"
-              alt="About Tajwar Sultan"
-              class="about-img"
-            />
-          </div>
-          <div class="about-shape"></div>
-        </div>
-        <div class="about-text">
-          <p class="about-greeting">Who am I?</p>
-          <h3 class="about-heading">
-            A passionate Web Developer based in New York
-          </h3>
-          <p class="about-description">
-            I'm a web developer with a passion for creating beautiful,
-            functional, and user-centered digital experiences. With 5 years of
-            experience in the field, I am always looking for new and innovative
-            ways to bring my clients' visions to life.
-          </p>
-          <p class="about-description">
-            I believe that design is about more than just making things look
-            pretty – it's about solving problems and creating intuitive,
-            enjoyable experiences for users.
-          </p>
-          <div class="about-skills">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">UI/UX Design</span>
-            <span class="skill-tag">Responsive Design</span>
-          </div>
-          <div class="about-stats">
-            <div class="stat-item">
-              <span class="stat-number">5+</span>
-              <span class="stat-text">Years Experience</span>
+      <div class="timeline">
+        <div class="timeline-item tl-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">2023 — Present</span>
+            <h3>Full Stack Developer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> IMS RhombusConnexion</p>
+            <p class="timeline-desc">Led development of enterprise-grade web applications. Built RESTful APIs, optimized database queries by 60%, and integrated third-party services at scale.</p>
+            <div class="tech-badges">
+              <span class="badge">React</span><span class="badge">Node.js</span><span class="badge">PostgreSQL</span><span class="badge">AWS</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">50+</span>
-              <span class="stat-text">Projects Completed</span>
+          </div>
+        </div>
+        <div class="timeline-item tl-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">2022 — 2023</span>
+            <h3>Front-End &amp; OpenAI Developer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> ArcadianAI</p>
+            <p class="timeline-desc">Built AI-powered products using OpenAI APIs. Developed interactive UIs with real-time streaming, LLM integrations, and custom AI workflow pipelines.</p>
+            <div class="tech-badges">
+              <span class="badge">Next.js</span><span class="badge">OpenAI</span><span class="badge">LangChain</span><span class="badge">TypeScript</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">30+</span>
-              <span class="stat-text">Happy Clients</span>
+          </div>
+        </div>
+        <div class="timeline-item tl-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">2021 — 2022</span>
+            <h3>Full Stack Developer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> uConnect Technologies</p>
+            <p class="timeline-desc">Developed customer-facing portals and admin dashboards. Implemented real-time WebSocket features and optimized front-end bundle sizes significantly.</p>
+            <div class="tech-badges">
+              <span class="badge">Vue.js</span><span class="badge">Express</span><span class="badge">MongoDB</span><span class="badge">Socket.io</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item tl-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">2020 — 2021</span>
+            <h3>Frontend Developer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> Artilect Technologies</p>
+            <p class="timeline-desc">Built responsive web interfaces collaborating with UX designers, delivering pixel-perfect implementations across multiple enterprise client projects.</p>
+            <div class="tech-badges">
+              <span class="badge">React</span><span class="badge">SCSS</span><span class="badge">GraphQL</span><span class="badge">Figma</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item tl-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">2019 — 2020</span>
+            <h3>Founder &amp; Lead Developer</h3>
+            <p class="timeline-company"><i class="fas fa-building"></i> Khueon Studios</p>
+            <p class="timeline-desc">Founded a creative tech studio. Led end-to-end development of mobile and web applications for startups and SMEs across multiple industries.</p>
+            <div class="tech-badges">
+              <span class="badge">React Native</span><span class="badge">Firebase</span><span class="badge">Stripe</span><span class="badge">Design</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-      <h2 class="section-title">My Recent Projects</h2>
+  <!-- SKILLS -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+      <div class="skills-filter reveal-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+        <button class="filter-btn" data-filter="devops">DevOps</button>
+        <button class="filter-btn" data-filter="ai">AI &amp; APIs</button>
+      </div>
+      <div id="skills-3d-container" class="skills-3d-wrap reveal-up">
+        <canvas id="skills-canvas"></canvas>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item glass-card reveal-up" data-category="frontend">
+          <div class="skill-header"><i class="fab fa-react skill-icon"></i><span class="skill-name">React / Next.js</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="frontend">
+          <div class="skill-header"><i class="fab fa-js skill-icon"></i><span class="skill-name">JavaScript / TypeScript</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="frontend">
+          <div class="skill-header"><i class="fab fa-vuejs skill-icon"></i><span class="skill-name">Vue.js</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="frontend">
+          <div class="skill-header"><i class="fab fa-css3-alt skill-icon"></i><span class="skill-name">CSS3 / Tailwind / SCSS</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="backend">
+          <div class="skill-header"><i class="fab fa-node-js skill-icon"></i><span class="skill-name">Node.js / Express</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="backend">
+          <div class="skill-header"><i class="fab fa-python skill-icon"></i><span class="skill-name">Python / FastAPI</span><span class="skill-pct">78%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="backend">
+          <div class="skill-header"><i class="fas fa-database skill-icon"></i><span class="skill-name">PostgreSQL / MongoDB</span><span class="skill-pct">82%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="backend">
+          <div class="skill-header"><i class="fas fa-project-diagram skill-icon"></i><span class="skill-name">GraphQL / REST APIs</span><span class="skill-pct">86%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="86"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="devops">
+          <div class="skill-header"><i class="fab fa-docker skill-icon"></i><span class="skill-name">Docker / Kubernetes</span><span class="skill-pct">72%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="devops">
+          <div class="skill-header"><i class="fab fa-aws skill-icon"></i><span class="skill-name">AWS / Vercel / GCP</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="devops">
+          <div class="skill-header"><i class="fab fa-git-alt skill-icon"></i><span class="skill-name">Git / CI/CD</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="ai">
+          <div class="skill-header"><i class="fas fa-brain skill-icon"></i><span class="skill-name">OpenAI / GPT APIs</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="ai">
+          <div class="skill-header"><i class="fas fa-link skill-icon"></i><span class="skill-name">LangChain / LlamaIndex</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item glass-card reveal-up" data-category="ai">
+          <div class="skill-header"><i class="fas fa-vector-square skill-icon"></i><span class="skill-name">Vector DBs / RAG</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+      <div class="project-filter reveal-up">
+        <button class="filter-btn active" data-pfilter="all">All</button>
+        <button class="filter-btn" data-pfilter="ai">AI</button>
+        <button class="filter-btn" data-pfilter="fullstack">Full Stack</button>
+        <button class="filter-btn" data-pfilter="frontend">Frontend</button>
+      </div>
       <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <img src="./images/box.jpg" alt="Project 1" class="project-img" />
-          <div class="project-content">
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-            </div>
-            <h3 class="project-title">E-Commerce Website</h3>
-            <p class="project-description">
-              A fully responsive e-commerce platform with shopping cart
-              functionality, user authentication, and payment integration.
-            </p>
+        <div class="project-card glass-card reveal-up" data-pcategory="ai fullstack">
+          <div class="project-img-wrap">
+            <img src="./images/tajwar-sultan.png" alt="CARLA Project" class="project-img" loading="lazy" />
+            <div class="project-overlay"><button class="overlay-btn" data-modal="carla">View Case Study</button></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span class="ptag">AI</span><span class="ptag">Full Stack</span></div>
+            <h3>CARLA</h3>
+            <p>AI-powered conversational research assistant with real-time LLM streaming, RAG pipeline, and semantic document search.</p>
             <div class="project-links">
-              <a href="#" class="project-link">
-                <i class="fas fa-link"></i> Live Demo
-              </a>
-              <a href="#" class="project-link">
-                <i class="fab fa-github"></i> Source Code
-              </a>
+              <a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/tajwarsultan" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
             </div>
           </div>
         </div>
-
-        <!-- Project 2 -->
-        <div class="project-card">
-          <img src="./images/kite.jpg" alt="Project 2" class="project-img" />
-          <div class="project-content">
-            <div class="project-tags">
-              <span class="project-tag">JavaScript</span>
-              <span class="project-tag">CSS</span>
-            </div>
-            <h3 class="project-title">Portfolio Website</h3>
-            <p class="project-description">
-              A clean and modern portfolio website with smooth animations and
-              responsive design.
-            </p>
+        <div class="project-card glass-card reveal-up" data-pcategory="ai fullstack">
+          <div class="project-img-wrap">
+            <img src="./images/box.jpg" alt="GreatCoops AI" class="project-img" loading="lazy" />
+            <div class="project-overlay"><button class="overlay-btn" data-modal="greatcoops">View Case Study</button></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span class="ptag">AI</span><span class="ptag">SaaS</span></div>
+            <h3>GreatCoops AI</h3>
+            <p>Co-op business intelligence platform powered by GPT-4 with automated report generation and member analytics.</p>
             <div class="project-links">
-              <a href="#" class="project-link">
-                <i class="fas fa-link"></i> Live Demo
-              </a>
-              <a href="#" class="project-link">
-                <i class="fab fa-github"></i> Source Code
-              </a>
+              <a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/tajwarsultan" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
             </div>
           </div>
         </div>
-
-        <!-- Project 3 -->
-        <div class="project-card">
-          <img src="./images/trop.png" alt="Project 3" class="project-img" />
-          <div class="project-content">
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Firebase</span>
-            </div>
-            <h3 class="project-title">Task Manager App</h3>
-            <p class="project-description">
-              A task management application with user authentication, real-time
-              updates, and collaborative features.
-            </p>
+        <div class="project-card glass-card reveal-up" data-pcategory="ai">
+          <div class="project-img-wrap">
+            <img src="./images/trop.png" alt="Eldrin AI" class="project-img" loading="lazy" />
+            <div class="project-overlay"><button class="overlay-btn" data-modal="eldrin">View Case Study</button></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span class="ptag">AI Agent</span><span class="ptag">LangChain</span></div>
+            <h3>Eldrin AI</h3>
+            <p>Autonomous AI agent framework for enterprise workflows with multi-step reasoning and custom tool integrations.</p>
             <div class="project-links">
-              <a href="#" class="project-link">
-                <i class="fas fa-link"></i> Live Demo
-              </a>
-              <a href="#" class="project-link">
-                <i class="fab fa-github"></i> Source Code
-              </a>
+              <a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/tajwarsultan" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass-card reveal-up" data-pcategory="fullstack frontend">
+          <div class="project-img-wrap">
+            <img src="./images/kite.jpg" alt="Finance Dashboard" class="project-img" loading="lazy" />
+            <div class="project-overlay"><button class="overlay-btn" data-modal="finance">View Case Study</button></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span class="ptag">React</span><span class="ptag">D3.js</span></div>
+            <h3>Finance Dashboard</h3>
+            <p>Real-time financial analytics with interactive D3.js charts, portfolio tracking, and AI-powered market insights.</p>
+            <div class="project-links">
+              <a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/tajwarsultan" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass-card reveal-up" data-pcategory="ai frontend">
+          <div class="project-img-wrap">
+            <img src="./images/tajwar.jpg" alt="AI Apps Suite" class="project-img" loading="lazy" />
+            <div class="project-overlay"><button class="overlay-btn" data-modal="aiapps">View Case Study</button></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span class="ptag">OpenAI</span><span class="ptag">Next.js</span></div>
+            <h3>AI Apps Suite</h3>
+            <p>Production-ready AI micro-apps: code assistant, content generator, image analyzer, and PDF chatbot.</p>
+            <div class="project-links">
+              <a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/tajwarsultan" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Resume Section -->
-    <section class="resume" id="resume">
-      <h2 class="section-title">My Resume</h2>
-      <div class="resume-content">
-        <div class="resume-tabs">
-          <div class="resume-tab active">Experience</div>
-          <div class="resume-tab">Education</div>
-          <div class="resume-tab">Skills</div>
-        </div>
-        <div class="resume-content-area">
-          <!-- Experience Items -->
-          <div class="resume-item">
-            <span class="resume-date">2021 - Present</span>
-            <h3 class="resume-title">Senior Web Developer</h3>
-            <p class="resume-subtitle">TechCorp Inc, New York</p>
-            <p class="resume-description">
-              Lead developer for client projects, managing a team of 5
-              developers. Implemented modern frontend frameworks and improved
-              site performance by 40%.
-            </p>
-          </div>
-          <div class="resume-item">
-            <span class="resume-date">2018 - 2021</span>
-            <h3 class="resume-title">Frontend Developer</h3>
-            <p class="resume-subtitle">WebSolutions LLC, Boston</p>
-            <p class="resume-description">
-              Developed responsive websites for various clients, collaborated
-              with designers and backend developers to create seamless user
-              experiences.
-            </p>
-          </div>
-          <div class="resume-item">
-            <span class="resume-date">2016 - 2018</span>
-            <h3 class="resume-title">Junior Web Developer</h3>
-            <p class="resume-subtitle">CreativeAgency, San Francisco</p>
-            <p class="resume-description">
-              Assisted in creating and maintaining websites for small
-              businesses, focusing on HTML, CSS, and JavaScript implementations.
-            </p>
-          </div>
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal glass-card" id="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section education-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic</span>
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="edu-card glass-card reveal-up">
+        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="edu-body">
+          <span class="edu-date">2018 — 2022</span>
+          <h3>Bachelor of Science in Computer Science</h3>
+          <p class="edu-uni">Karakoram International University</p>
+          <p class="edu-desc">Focused on software engineering, algorithms, data structures, and AI/ML fundamentals. Graduated with distinction. Active in tech societies and national innovation competitions.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-      <h2 class="section-title">Client Testimonials</h2>
-      <div class="testimonials-content">
-        <div class="testimonial-slider">
-          <div class="testimonial-slide">
-            <p class="testimonial-quote">
-              Sultan is an exceptional developer who delivered our project on
-              time and exceeded our expectations. His attention to detail and
-              problem-solving skills are outstanding.
-            </p>
-            <div class="testimonial-author">
-              <img
-                src="./images/tajwar-sultan.png"
-                alt="Testimonial Author"
-                class="testimonial-avatar"
-              />
-              <div class="testimonial-info">
-                <h4 class="testimonial-name">Sarah Johnson</h4>
-                <p class="testimonial-role">CEO, TechStart</p>
-              </div>
-            </div>
-          </div>
+  <!-- LANGUAGES -->
+  <section id="languages" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Communication</span>
+        <h2 class="section-title">Languages</h2>
+      </div>
+      <div class="lang-grid">
+        <div class="lang-item glass-card reveal-up">
+          <div class="lang-header"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="lang-item glass-card reveal-up">
+          <div class="lang-header"><span class="lang-name">Urdu</span><span class="lang-level">Native</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="100"></div></div>
+        </div>
+        <div class="lang-item glass-card reveal-up">
+          <div class="lang-header"><span class="lang-name">Local Languages</span><span class="lang-level">Conversational</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="contact-shape"></div>
-      <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3 class="contact-heading">Let's Talk About Your Project</h3>
-          <p class="contact-description">
-            Feel free to reach out if you're looking for a developer, have a
-            question, or just want to connect.
-          </p>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <span class="contact-text">sultan.baig305@gmail.com</span>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <span class="contact-text">+92 3109450550</span>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <span class="contact-text">Islamabad, PK</span>
-          </div>
+  <!-- INTERESTS -->
+  <section id="interests" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Passion</span>
+        <h2 class="section-title">Interests</h2>
+      </div>
+      <div class="interests-grid">
+        <div class="interest-card glass-card reveal-up">
+          <i class="fas fa-brain interest-icon"></i>
+          <h4>AI Research</h4>
+          <p>Exploring the frontiers of artificial intelligence and machine learning applications.</p>
         </div>
-        <div class="contact-form">
-          <form>
-            <div class="form-group">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-control" placeholder="Your Name" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Your Email"
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Subject</label>
-              <input type="text" class="form-control" placeholder="Subject" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea
-                class="form-control"
-                placeholder="Your Message"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Send Message</button>
-          </form>
+        <div class="interest-card glass-card reveal-up">
+          <i class="fas fa-rocket interest-icon"></i>
+          <h4>Entrepreneurship</h4>
+          <p>Building ventures that solve real problems and create lasting value.</p>
+        </div>
+        <div class="interest-card glass-card reveal-up">
+          <i class="fas fa-users interest-icon"></i>
+          <h4>Youth Leadership</h4>
+          <p>Mentoring the next generation of tech leaders and innovators.</p>
+        </div>
+        <div class="interest-card glass-card reveal-up">
+          <i class="fas fa-lightbulb interest-icon"></i>
+          <h4>Innovation</h4>
+          <p>Constantly experimenting with new technologies and creative problem-solving.</p>
+        </div>
+        <div class="interest-card glass-card reveal-up">
+          <i class="fas fa-chart-line interest-icon"></i>
+          <h4>Startups</h4>
+          <p>Passionate about the startup ecosystem and helping early-stage companies scale.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="footer-content">
-        <div class="footer-logo">Tajwar <span>Sultan</span></div>
-        <div class="footer-links">
-          <a href="#home" class="footer-link">Home</a>
-          <a href="#about" class="footer-link">About</a>
-          <a href="#projects" class="footer-link">Projects</a>
-          <a href="#contact" class="footer-link">Contact</a>
+  <!-- TERMINAL -->
+  <section id="terminal-section" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive</span>
+        <h2 class="section-title">Terminal</h2>
+        <p class="section-desc">Try typing <code>about</code>, <code>skills</code>, <code>contact</code>, or <code>help</code></p>
+      </div>
+      <div class="terminal glass-card reveal-up">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
+          </div>
+          <span class="terminal-title">tajwar@portfolio ~ %</span>
         </div>
-        <div class="footer-social">
-          <a
-            href="https://github.com/tajwarsultan"
-            target="_blank"
-            class="footer-social-icon"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/tajwar-sultan/"
-            target="_blank"
-            class="footer-social-icon"
-          >
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a
-            href="https://x.com/TajwarSultan"
-            target="_blank"
-            class="footer-social-icon"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
+        <div class="terminal-body" id="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">tajwar@portfolio:~$</span>
+            <span class="t-hint"> Type a command... (try "help")</span>
+          </div>
         </div>
+        <div class="terminal-input-line">
+          <span class="t-prompt">tajwar@portfolio:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input"
+                 placeholder="help" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Hire Me</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-desc">Have a project in mind? Let's build something amazing together.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="contact-item glass-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><h4>Email</h4><a href="mailto:sultan.baig305@gmail.com">sultan.baig305@gmail.com</a></div>
+          </div>
+          <div class="contact-item glass-card">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div><h4>Phone</h4><a href="tel:+923109450550">+92 310 9450550</a></div>
+          </div>
+          <div class="contact-item glass-card">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h4>Location</h4><span>Islamabad, Pakistan</span></div>
+          </div>
+          <div class="contact-item glass-card">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div><h4>Availability</h4><span>Open to opportunities</span></div>
+          </div>
+        </div>
+        <form class="contact-form glass-card reveal-right" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Name</label>
+              <input type="text" id="c-name" name="name" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email</label>
+              <input type="email" id="c-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-subject">Subject</label>
+            <input type="text" id="c-subject" name="subject" placeholder="Project Inquiry" required />
+          </div>
+          <div class="form-group">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full-width">
+            <span>Send Message</span><i class="fas fa-paper-plane"></i>
+          </button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">Tajwar<span>Sultan</span></div>
+      <p class="footer-tagline">Building the future, one line at a time.</p>
+      <nav class="footer-links">
+        <a href="#home">Home</a><a href="#summary">About</a>
+        <a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="https://github.com/tajwarsultan" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/tajwar-sultan/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/TajwarSultan" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Tajwar Sultan. All Rights Reserved.</p>
+        <p>&copy; <span id="year"></span> Tajwar Sultan. All rights reserved.</p>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <!-- JavaScript -->
-    <script>
-      // Page Loader
-      window.addEventListener("load", function () {
-        const loader = document.querySelector(".loader");
-        const loaderProgress = document.querySelector(".loader-progress");
+  <!-- Floating Resume Button -->
+  <a href="assets/resume/Tajwar_Sultan_Full_Stack_Developer_Resume.pdf"
+     download class="resume-float" id="resume-float" title="Download Resume">
+    <i class="fas fa-download"></i>
+    <span class="resume-float-label">Resume</span>
+    <span class="resume-count" id="resume-count">0</span>
+  </a>
 
-        // Simulate loading progress
-        let progress = 0;
-        const interval = setInterval(() => {
-          progress += 5;
-          loaderProgress.style.width = `${progress}%`;
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-          if (progress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-              loader.style.opacity = "0";
-              setTimeout(() => {
-                loader.style.display = "none";
-              }, 500);
-            }, 500);
-          }
-        }, 100);
-      });
-
-      // Custom Cursor
-      document.addEventListener("mousemove", function (e) {
-        const cursor = document.querySelector(".cursor");
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-      });
-
-      // Navbar Scroll Effect
-      window.addEventListener("scroll", function () {
-        const nav = document.querySelector("nav");
-        if (window.scrollY > 50) {
-          nav.classList.add("scrolled");
-        } else {
-          nav.classList.remove("scrolled");
-        }
-      });
-
-      // Resume Tabs
-      const resumeTabs = document.querySelectorAll(".resume-tab");
-      resumeTabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          resumeTabs.forEach((t) => t.classList.remove("active"));
-          this.classList.add("active");
-          // Add logic to show corresponding content
-        });
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-    </script>
-  </body>
+  <!-- CDN Libraries -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="script.js"></script>
+</body>
 </html>
