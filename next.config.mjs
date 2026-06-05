@@ -16,8 +16,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'readdy.ai',
-        pathname: '/api/search-image/**',
+        hostname: 'images.unsplash.com',
       },
     ],
   },

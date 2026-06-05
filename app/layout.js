@@ -164,7 +164,7 @@ export default function RootLayout({ children }) {
   const jsonLd = [personJsonLd, websiteJsonLd, professionalServiceJsonLd]
 
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <body className="font-sans antialiased bg-background-50 text-foreground-600" suppressHydrationWarning>
         <script
           type="application/ld+json"

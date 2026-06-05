@@ -1,22 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
+  const formRef = useRef(null)
   const [status, setStatus] = useState('idle')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
-    const form = e.target
-    const name = form.name.value
-    const email = form.email.value
-    const subject = form.subject.value
-    const message = form.message.value
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
-    const mailto = `mailto:tajwar.sultan00@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`
-    window.location.href = mailto
-    setTimeout(() => setStatus('idle'), 800)
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+      )
+      setStatus('sent')
+      formRef.current.reset()
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
   }
 
   return (
@@ -33,6 +41,7 @@ export default function Contact() {
         </div>
 
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="bg-background-50 rounded-2xl border border-background-200/60 p-6 md:p-8 space-y-5"
         >
@@ -90,12 +99,23 @@ export default function Contact() {
             />
             <p className="text-xs text-foreground-400 mt-1">Max 500 characters</p>
           </div>
+          {status === 'sent' && (
+            <p className="text-center text-sm text-primary-600 font-medium bg-primary-50 rounded-xl py-3">
+              <i className="ri-check-double-line mr-1" aria-hidden />
+              Message sent successfully! I&apos;ll get back to you soon.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="text-center text-sm text-red-600 font-medium bg-red-50 rounded-xl py-3">
+              Something went wrong. Please try emailing me directly.
+            </p>
+          )}
           <button
             type="submit"
             disabled={status === 'sending'}
             className="w-full inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-6 py-3.5 rounded-full text-sm font-semibold hover:bg-primary-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {status === 'sending' ? 'Opening email…' : 'Send Message'}
+            {status === 'sending' ? 'Sending…' : 'Send Message'}
             <i className="ri-send-plane-line" aria-hidden />
           </button>
           <p className="text-center text-xs text-foreground-400">
