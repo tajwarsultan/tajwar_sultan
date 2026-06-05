@@ -6,7 +6,7 @@ export default function Education() {
     <RevealOnScroll>
       <section
         id="education"
-        className="py-16 md:py-20 bg-background-100"
+        className="py-16 md:py-20 bg-background-50"
         aria-label="Education and certifications"
       >
         <div className="max-w-6xl mx-auto px-4 md:px-6">

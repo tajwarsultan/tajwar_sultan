@@ -47,7 +47,9 @@ export default function Hero() {
                 <i className="ri-arrow-right-up-line" aria-hidden />
               </a>
               <a
-                href="/resume.pdf"
+                href="/Tajwar_Sultan_CV_(fullstack).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-background-100 text-foreground-700 px-6 py-3 rounded-full text-sm font-semibold hover:bg-background-200 transition-colors"
               >
                 <i className="ri-download-line" aria-hidden />
@@ -77,7 +79,7 @@ export default function Hero() {
           <div className="flex-shrink-0 w-full lg:w-[340px] flex flex-col gap-6 stagger-item">
             <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-background-100">
               <Image
-                src="/images/tajwar-sultan.png"
+                src="/tajwar-sultan.png"
                 alt="Tajwar Sultan - Senior Full Stack Developer"
                 fill
                 className="object-cover object-top"

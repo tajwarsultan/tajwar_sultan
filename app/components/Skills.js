@@ -1,5 +1,5 @@
 import RevealOnScroll from './RevealOnScroll'
-import { skillCategories, allTechnologies } from '../lib/siteData'
+import { skillCategories } from '../lib/siteData'
 
 export default function Skills() {
   return (
@@ -43,21 +43,6 @@ export default function Skills() {
             ))}
           </div>
 
-          <div className="mt-8 p-6 md:p-8 bg-background-50 border border-background-200/60 rounded-2xl">
-            <h3 className="font-heading font-bold text-sm text-foreground-500 uppercase tracking-wider mb-4">
-              All Technologies
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {[...new Set(allTechnologies)].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1.5 rounded-full bg-background-100 text-foreground-600 text-xs font-medium border border-background-200/40 hover:bg-primary-50 hover:text-primary-700 hover:border-primary-200 transition-colors"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
     </RevealOnScroll>
