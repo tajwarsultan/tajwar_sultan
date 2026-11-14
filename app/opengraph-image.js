@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
+import { topoPaths, TOPO_W, TOPO_H } from './lib/topo'
 
-export const alt = 'Tajwar Sultan — Senior Full Stack Developer & AI Engineer'
+export const alt = 'Tajwar Sultan, full-stack developer in Gilgit, Pakistan'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -12,23 +13,33 @@ export default function OpenGraphImage() {
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: 80,
-          background: 'linear-gradient(135deg, #004f2b 0%, #00753e 45%, #2da873 100%)',
-          color: '#ffffff',
+          position: 'relative',
+          background: '#0f100e',
+          color: '#ece8dd',
           fontFamily: 'system-ui, sans-serif',
         }}
       >
-        <div style={{ fontSize: 28, opacity: 0.9, marginBottom: 16 }}>Portfolio</div>
-        <div style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2 }}>
-          Tajwar Sultan
-        </div>
-        <div style={{ fontSize: 32, marginTop: 24, opacity: 0.95, maxWidth: 900 }}>
-          Senior Full Stack Developer & AI Engineer
-        </div>
-        <div style={{ fontSize: 22, marginTop: 20, opacity: 0.85 }}>
-          React · Next.js · Vue · TypeScript · Node.js · AI
+        <svg
+          width="1200"
+          height="800"
+          viewBox={`0 0 ${TOPO_W} ${TOPO_H}`}
+          style={{ position: 'absolute', top: -60, left: 0, opacity: 0.28 }}
+        >
+          <path d={topoPaths.minor} stroke="#ff8a3d" strokeWidth="1.2" fill="none" />
+          <path d={topoPaths.major} stroke="#ff8a3d" strokeWidth="2.2" fill="none" />
+        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 72, width: '100%' }}>
+          <div style={{ display: 'flex', fontSize: 24, letterSpacing: 3, textTransform: 'uppercase', color: '#a09c8f' }}>
+            Tajwar Sultan · Gilgit, Pakistan
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', fontSize: 84, fontWeight: 700, lineHeight: 1.02, letterSpacing: -3, maxWidth: 980 }}>
+              Full-stack developer building SaaS products and AI features.
+            </div>
+            <div style={{ display: 'flex', fontSize: 28, marginTop: 28, color: '#ff8a3d' }}>
+              React · Next.js · Vue · Node.js · TypeScript
+            </div>
+          </div>
         </div>
       </div>
     ),

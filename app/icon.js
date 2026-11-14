@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
+import { logoRidge, logoSummit } from './components/Logo'
 
-export const size = { width: 32, height: 32 }
+export const size = { width: 64, height: 64 }
 export const contentType = 'image/png'
 
 export default function Icon() {
@@ -13,15 +14,14 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#00753e',
-          borderRadius: 8,
-          color: '#ffffff',
-          fontSize: 20,
-          fontWeight: 800,
-          fontFamily: 'system-ui, sans-serif',
+          background: '#171612',
+          borderRadius: 14,
         }}
       >
-        T
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d={logoRidge} stroke="#f4f1ea" />
+          <path d={logoSummit} stroke="#ff8a3d" />
+        </svg>
       </div>
     ),
     { ...size }
