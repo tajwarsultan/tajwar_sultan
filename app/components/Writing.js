@@ -9,7 +9,7 @@ export default function Writing() {
   return (
     <Section
       id="writing"
-      index="06"
+      index="07"
       label="Writing"
       title="Notes on AI engineering"
       intro="Plain-language articles on RAG, LLMs, agents and the parts of AI features that are harder than they look."

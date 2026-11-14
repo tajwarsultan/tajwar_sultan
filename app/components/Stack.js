@@ -6,7 +6,7 @@ export default function Stack() {
   return (
     <Section
       id="stack"
-      index="05"
+      index="06"
       label="Stack"
       title="Tools I work with"
       intro="What I use most weeks. I pick tools to fit the product, not the other way round."

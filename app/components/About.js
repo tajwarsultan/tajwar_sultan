@@ -4,7 +4,7 @@ import { interests, languages } from '../lib/siteData'
 
 export default function About() {
   return (
-    <Section id="about" index="04" label="About" title="A developer from the mountains">
+    <Section id="about" index="05" label="About" title="A developer from the mountains">
       <Reveal className="space-y-6 text-xl md:text-2xl leading-[1.5] tracking-[-0.01em] max-w-3xl">
         <p>
           I started in 2020 as a front-end developer, turning Figma files into interfaces people could actually

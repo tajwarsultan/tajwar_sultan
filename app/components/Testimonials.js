@@ -24,7 +24,7 @@ export default function Testimonials() {
               <blockquote className="mt-5 text-lg leading-relaxed">{item.quote}</blockquote>
               <figcaption className="mt-auto pt-6 flex items-center gap-3">
                 <span className="grid place-items-center w-11 h-11 rounded-full bg-ink text-bg font-display font-semibold">
-                  {item.name[0]}
+                  {item.name.replace(/^(Dr|Mr|Mrs|Ms|Prof)\.?\s+/i, '')[0]}
                 </span>
                 <span>
                   <span className="block font-medium">{item.name}</span>
