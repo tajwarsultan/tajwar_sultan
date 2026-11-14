@@ -5,7 +5,7 @@ import path from 'node:path'
 const dir = path.join(process.cwd(), 'content', 'blog')
 
 function parse(file) {
-  const raw = fs.readFileSync(path.join(dir, file), 'utf8')
+  const raw = fs.readFileSync(path.join(dir, file), 'utf8').replace(/\r\n/g, '\n')
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
   if (!match) throw new Error(`Missing front matter in ${file}`)
 

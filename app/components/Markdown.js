@@ -21,12 +21,19 @@ function toBlocks(source) {
 
   while (i < lines.length) {
     const line = lines[i]
+    const fence = line.match(/^(`{3,}|~{3,})(.*)$/)
 
-    if (line.startsWith('```')) {
-      const lang = line.slice(3).trim()
+    if (fence) {
+      const marker = fence[1][0]
+      const length = fence[1].length
+      const lang = fence[2].trim()
       const code = []
       i++
-      while (i < lines.length && !lines[i].startsWith('```')) code.push(lines[i++])
+      while (i < lines.length) {
+        const closing = lines[i].match(/^(`+|~+)(\s*)$/)
+        if (closing && closing[1][0] === marker && closing[1].length >= length) break
+        code.push(lines[i++])
+      }
       i++
       blocks.push({ type: 'code', lang, text: code.join('\n') })
     } else if (line.startsWith('## ')) {
@@ -40,7 +47,7 @@ function toBlocks(source) {
       i++
     } else {
       const text = []
-      while (i < lines.length && lines[i].trim() !== '' && !/^(```|## |- )/.test(lines[i])) text.push(lines[i++])
+      while (i < lines.length && lines[i].trim() !== '' && !/^(`{3,}|~{3,}|## |- )/.test(lines[i])) text.push(lines[i++])
       blocks.push({ type: 'p', text: text.join(' ') })
     }
   }
