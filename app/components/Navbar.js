@@ -1,100 +1,118 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { navLinks } from '../lib/siteData'
+import { useEffect, useState } from 'react'
+import Icon from './Icons'
+import { navLinks, site } from '../lib/siteData'
+
+function ThemeToggle() {
+  const toggle = () => {
+    const root = document.documentElement
+    const current =
+      root.dataset.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    const next = current === 'dark' ? 'light' : 'dark'
+    root.dataset.theme = next
+    try {
+      localStorage.setItem('theme', next)
+    } catch {}
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label="Switch between light and dark theme"
+      className="grid place-items-center w-10 h-10 rounded-full text-muted hover:text-ink hover:bg-surface transition-colors"
+    >
+      <Icon name="sun" size={18} className="theme-sun" />
+      <Icon name="moon" size={18} className="theme-moon" />
+    </button>
+  )
+}
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [showTop, setShowTop] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 500)
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return (
-    <>
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-background-50/90 backdrop-blur-md border-b border-background-200/60"
-        aria-label="Main navigation"
-      >
-        <div className="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
-          <Link
-            href="#"
-            className="font-heading font-bold text-lg text-foreground-950 tracking-tight"
-            onClick={() => setMobileOpen(false)}
-          >
-            Tajwar<span className="text-primary-500">.</span>
-          </Link>
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
-          <div className="hidden md:flex items-center gap-8">
+  return (
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color] duration-300 border-b ${
+        scrolled || open ? 'bg-bg/85 backdrop-blur-md border-line' : 'border-transparent'
+      }`}
+    >
+      <nav className="shell flex items-center justify-between h-16" aria-label="Main">
+        <a href="#top" className="flex items-center gap-2.5 font-display font-semibold text-[1.05rem] tracking-tight">
+          <span className="grid place-items-center w-7 h-7 rounded-md bg-ink text-bg text-[0.8rem] font-semibold">
+            TS
+          </span>
+          Tajwar Sultan
+        </a>
+
+        <div className="hidden md:flex items-center gap-7">
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm text-muted hover:text-ink transition-colors">
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <a
+            href={site.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost max-sm:!hidden !min-h-10 !px-4 text-sm ml-1"
+          >
+            Résumé
+            <Icon name="arrow" size={14} className="arrow" />
+          </a>
+          <button
+            type="button"
+            className="md:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-surface transition-colors"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <Icon name={open ? 'close' : 'menu'} size={20} />
+          </button>
+        </div>
+      </nav>
+
+      {open && (
+        <div id="mobile-menu" className="md:hidden border-t border-line">
+          <div className="shell py-3 flex flex-col">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium whitespace-nowrap text-foreground-600 hover:text-foreground-900 transition-colors"
+                onClick={() => setOpen(false)}
+                className="py-3 font-display text-2xl font-medium tracking-tight border-b border-line last:border-0"
               >
                 {link.label}
               </a>
             ))}
-          </div>
-
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 bg-primary-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-600 transition-colors"
-          >
-            Get In Touch
-            <i className="ri-arrow-right-down-line" aria-hidden />
-          </a>
-
-          <button
-            type="button"
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-foreground-700 hover:bg-background-100 transition-colors"
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((o) => !o)}
-          >
-            <i className={mobileOpen ? 'ri-close-line text-xl' : 'ri-menu-line text-xl'} aria-hidden />
-          </button>
-        </div>
-
-        <div
-          className={`md:hidden border-t border-background-200/60 bg-background-50 px-4 flex flex-col gap-3 overflow-hidden transition-all duration-300 ease-in-out ${
-            mobileOpen ? 'max-h-[500px] py-4 opacity-100' : 'max-h-0 py-0 opacity-0'
-          }`}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground-700 py-2"
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
+            <a href={site.cv} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-4 mb-2">
+              Download résumé
+              <Icon name="arrow" size={14} className="arrow" />
             </a>
-          ))}
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold mt-2"
-            onClick={() => setMobileOpen(false)}
-          >
-            Get In Touch
-          </a>
+          </div>
         </div>
-      </nav>
-
-      <button
-        type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-lg hover:bg-primary-600 transition-all duration-300 ${
-          showTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-        }`}
-        aria-label="Scroll to top"
-      >
-        <i className="ri-arrow-up-line text-lg" aria-hidden />
-      </button>
-    </>
+      )}
+    </header>
   )
 }

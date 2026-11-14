@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# tajwarsultan.dev
 
-## Getting Started
+Personal portfolio of Tajwar Sultan, built with Next.js (App Router) and Tailwind CSS v4.
 
-First, run the development server:
+## Develop
+
+```bash
+npm install
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing content
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+All copy lives in `app/lib/siteData.js` — projects, work experience, education, languages and the tech stack.
+Employment history mirrors the CV in `public/`; keep the two in sync.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contact form
 
-## Learn More
+The form sends through EmailJS. Copy `.env.example` to `.env.local` and fill in the three keys.
+Without them, submitting the form opens the visitor's mail app with the message pre-filled.
 
-To learn more about Next.js, take a look at the following resources:
+## Design notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Colours are CSS variables in `app/globals.css`, with light and dark themes.
+- Fonts: Bricolage Grotesque (display), Geist (text), Geist Mono (labels).
+- The contour-map artwork is generated at build time in `app/lib/topo.js`.
