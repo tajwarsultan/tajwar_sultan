@@ -93,7 +93,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="md:hidden border-t border-line">
+        <div id="mobile-menu" className="md:hidden border-t border-line max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
           <div className="shell py-3 flex flex-col">
             {navLinks.map((link) => (
               <a

@@ -212,14 +212,15 @@ body {
   }
 }
 
-/* Scroll reveal: only hides content once JS has confirmed it can reveal it */
-html.js .reveal {
+/* Scroll reveal: an element is hidden only once its observer is watching it,
+   so content stays visible if hydration never happens */
+.reveal.is-ready {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
   transition-delay: var(--delay, 0ms);
 }
-html.js .reveal.is-visible {
+.reveal.is-ready.is-visible {
   opacity: 1;
   transform: none;
 }
@@ -276,7 +277,7 @@ html.js .reveal.is-visible {
     animation: none !important;
     transition-duration: 0.01ms !important;
   }
-  html.js .reveal {
+  .reveal.is-ready {
     opacity: 1;
     transform: none;
   }
