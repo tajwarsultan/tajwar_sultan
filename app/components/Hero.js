@@ -1,105 +1,98 @@
 import Image from 'next/image'
-import { heroStats } from '../lib/siteData'
+import Icon from './Icons'
+import LocalTime from './LocalTime'
+import { TopoArt } from './Topo'
+import { site, projects, languages, education } from '../lib/siteData'
+
+const facts = [
+  { value: '2020', label: 'Writing production code since' },
+  { value: String(projects.length), label: 'Live products in the work index below' },
+  { value: String(languages.length), label: `Languages spoken: ${languages.map((l) => l.name).join(', ')}` },
+  { value: education.year, label: `${education.degree}, ${education.school}` },
+]
 
 export default function Hero() {
   return (
-    <section
-      className="relative min-h-screen flex items-center pt-20 pb-16 md:pb-20 overflow-hidden bg-background-50"
-      aria-label="Hero introduction"
-    >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary-100/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-0 w-[400px] h-[400px] bg-accent-100/20 rounded-full blur-3xl" />
+    <section id="top" className="relative overflow-hidden pt-28 md:pt-36" aria-label="Introduction">
+      <div
+        className="absolute inset-0 text-ink opacity-[0.13] pointer-events-none"
+        style={{ maskImage: 'radial-gradient(120% 90% at 85% 20%, #000 20%, transparent 72%)' }}
+      >
+        <TopoArt className="w-full h-full" drift />
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6">
-        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
-          <div className="flex-1 w-full pt-4 lg:pt-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-xs font-semibold mb-6 stagger-item">
-              <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-              Available for new opportunities
-            </div>
+      <div className="shell relative">
+        <div className="grid lg:grid-cols-12 gap-x-10 gap-y-12 items-end">
+          <div className="lg:col-span-8">
+            <p className="rise label flex items-center gap-2.5 !text-ink" style={{ '--i': 0 }}>
+              <span className="pulse" />
+              Open to remote roles &amp; freelance projects
+            </p>
 
-            <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl text-foreground-950 leading-[1.08] tracking-tight stagger-item">
-              Tajwar Sultan
+            <h1
+              className="rise display mt-6 text-[clamp(2.6rem,6.5vw,5.25rem)] leading-[0.98]"
+              style={{ '--i': 1 }}
+            >
+              Full-stack developer building SaaS products and{' '}
+              <span className="text-accent">AI features</span> that ship.
             </h1>
-            <p className="mt-4 text-lg md:text-xl text-foreground-600 font-medium max-w-lg stagger-item">
-              Senior Full Stack Developer &amp; AI Engineer
-            </p>
-            <p className="mt-1 text-sm text-foreground-500 flex items-center gap-1.5 stagger-item">
-              <i className="ri-map-pin-line" aria-hidden />
-              Gilgit-Baltistan, Pakistan
-            </p>
-            <p className="mt-6 text-base text-foreground-600 leading-relaxed max-w-xl stagger-item">
-              A highly skilled Full Stack Developer with 6+ years of experience building scalable SaaS
-              platforms, AI-powered applications, enterprise dashboards, HR systems, field-service software,
-              and cloud-native products. Specialized in React, Next.js, Vue.js, SvelteKit, TypeScript,
-              Node.js, PostgreSQL, AWS, Firebase, and AI integrations. Proven track record of delivering
-              high-performance applications for international clients across North America, Europe, and Asia.
+
+            <p className="rise mt-7 max-w-[38rem] text-lg md:text-xl leading-relaxed text-muted" style={{ '--i': 2 }}>
+              I&apos;m Tajwar Sultan, a senior JavaScript developer in Gilgit, up in the Karakoram mountains of
+              northern Pakistan. I build web apps with React, Next.js, Vue and Node.js for startups and product
+              teams, most of them a long way from here.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 mt-8 stagger-item">
-              <a
-                href="mailto:tajwar.sultan00@gmail.com"
-                className="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary-600 transition-colors"
-              >
-                Hire Me
-                <i className="ri-arrow-right-up-line" aria-hidden />
+            <div className="rise mt-9 flex flex-wrap gap-3" style={{ '--i': 3 }}>
+              <a href="#contact" className="btn btn-primary">
+                Start a project
+                <Icon name="arrow" size={15} className="arrow" />
               </a>
-              <a
-                href="/Tajwar_Sultan_CV_(fullstack).pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-background-100 text-foreground-700 px-6 py-3 rounded-full text-sm font-semibold hover:bg-background-200 transition-colors"
-              >
-                <i className="ri-download-line" aria-hidden />
-                Download CV
-              </a>
-              <a
-                href="https://github.com/tajwarsultan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-background-100 text-foreground-700 px-6 py-3 rounded-full text-sm font-semibold hover:bg-background-200 transition-colors"
-              >
-                <i className="ri-github-fill" aria-hidden />
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/tajwar-sultan/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-background-100 text-foreground-700 px-6 py-3 rounded-full text-sm font-semibold hover:bg-background-200 transition-colors"
-              >
-                <i className="ri-linkedin-fill" aria-hidden />
-                LinkedIn
+              <a href="#work" className="btn btn-ghost">
+                See selected work
+                <Icon name="down" size={15} />
               </a>
             </div>
           </div>
 
-          <div className="flex-shrink-0 w-full lg:w-[340px] flex flex-col gap-6 stagger-item">
-            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-background-100">
-              <Image
-                src="/tajwar-sultan.png"
-                alt="Tajwar Sultan - Senior Full Stack Developer"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 340px"
-                priority
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {heroStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-background-50 border border-background-200/60 rounded-xl p-4 text-center"
-                >
-                  <div className="font-heading font-bold text-2xl md:text-3xl text-primary-500">{stat.value}</div>
-                  <div className="text-xs text-foreground-500 mt-1 font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+          <div className="rise lg:col-span-4 lg:justify-self-end w-full max-w-[19rem]" style={{ '--i': 4 }}>
+            <figure className="relative">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-surface border border-line">
+                <Image
+                  src="/tajwar-portrait.jpg"
+                  alt="Tajwar Sultan, full-stack developer, in Gilgit, Pakistan"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 304px, 304px"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 flex items-start justify-between gap-4 label">
+                <span className="flex items-center gap-1.5">
+                  <Icon name="pin" size={13} />
+                  {site.location}
+                </span>
+                <span className="text-right">
+                  <LocalTime timeZone={site.timeZone} /> PKT
+                </span>
+              </figcaption>
+            </figure>
           </div>
         </div>
+
+        <dl className="mt-16 md:mt-24 grid grid-cols-2 lg:grid-cols-4 border-t border-line">
+          {facts.map((fact, i) => (
+            <div
+              key={fact.label}
+              className={`py-6 pr-6 ${i % 2 ? 'pl-6 border-l border-line' : ''} ${
+                i > 0 ? 'lg:pl-6 lg:border-l lg:border-line' : ''
+              } ${i > 1 ? 'border-t border-line lg:border-t-0' : ''}`}
+            >
+              <dd className="font-display text-4xl md:text-5xl font-semibold tracking-tight">{fact.value}</dd>
+              <dt className="mt-2 text-sm text-muted leading-snug max-w-[15rem]">{fact.label}</dt>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

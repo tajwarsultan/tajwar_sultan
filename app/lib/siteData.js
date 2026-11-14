@@ -1,328 +1,264 @@
-import { projectImageUrls } from './projectImages'
+// Single source of truth for site content.
+// Employment history, education, skills and languages mirror the CV in /public.
+
+export const site = {
+  name: 'Tajwar Sultan',
+  role: 'Senior Full-Stack Developer',
+  url: 'https://tajwarsultan.dev',
+  email: 'tajwar.sultan00@gmail.com',
+  phone: '+92 343 6140308',
+  phoneHref: 'tel:+923436140308',
+  location: 'Gilgit, Pakistan',
+  region: 'Gilgit-Baltistan',
+  description:
+    'Tajwar Sultan is a senior full-stack developer in Gilgit, Pakistan. He builds SaaS platforms, dashboards and AI features with React, Next.js, Vue and Node.js.',
+  coords: '35.9208° N, 74.3100° E',
+  timeZone: 'Asia/Karachi',
+  whatsapp: '923109450550',
+  whatsappDisplay: '+92 310 9450550',
+  cv: '/Tajwar-Sultan-CV.pdf',
+}
 
 export const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
+  { href: '#work', label: 'Work' },
   { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#education', label: 'Education' },
+  { href: '#about', label: 'About' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
 ]
 
-export const heroStats = [
-  { value: '6+', label: 'Years Experience' },
-  { value: '25+', label: 'Projects Delivered' },
-  { value: '15+', label: 'International Clients' },
-  { value: '8+', label: 'Technologies Mastered' },
-]
-
-export const aboutTags = [
-  'Problem Solver',
-  'Clean Code Advocate',
-  'AI Enthusiast',
-  'Team Player',
-  'Lifelong Learner',
-]
-
-export const achievements = [
-  'Delivered 25+ production applications for clients across North America, Europe, and Asia',
-  'Architected micro-frontend system reducing cross-team development conflicts by 70%',
-  'Built AI-powered RAG chatbot processing 10,000+ document queries per day',
-  'Led migration of legacy monolith to cloud-native microservices with zero downtime',
-  'Mentored 15+ junior developers through structured code review and pair programming',
-]
-
-export const skillCategories = [
-  {
-    id: 'frontend',
-    title: 'Frontend',
-    icon: 'ri-layout-4-line',
-    skills: [
-      'React.js',
-      'Next.js',
-      'Vue.js',
-      'Vue 3',
-      'TypeScript',
-      'JavaScript',
-      'Tailwind CSS',
-      'Svelte',
-      'SvelteKit',
-      'HTML5',
-      'CSS3',
-    ],
-  },
-  {
-    id: 'backend',
-    title: 'Backend',
-    icon: 'ri-server-line',
-    skills: ['Node.js', 'Express.js', 'REST APIs', 'NestJS', 'GraphQL'],
-  },
-  {
-    id: 'databases',
-    title: 'Databases',
-    icon: 'ri-database-2-line',
-    skills: ['PostgreSQL', 'MySQL', 'Firebase', 'MongoDB'],
-  },
-  {
-    id: 'cloud',
-    title: 'Cloud & DevOps',
-    icon: 'ri-cloud-line',
-    skills: ['Vercel', 'AWS', 'Docker', 'CI/CD', 'Google Cloud Run'],
-  },
-  {
-    id: 'ai',
-    title: 'AI Engineering',
-    icon: 'ri-brain-line',
-    skills: [
-      'Prompt Engineering',
-      'OpenAI APIs',
-      'AI Agents',
-      'RAG Systems',
-      'Chatbots',
-      'Vector Databases',
-    ],
-  },
-]
-
-export const allTechnologies = skillCategories.flatMap((c) => c.skills)
-
-export const experiences = [
-  {
-    role: 'Full Stack Developer',
-    company: 'Velnix',
-    period: '2026',
-    mode: 'Remote',
-    modeClass: 'secondary',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'AWS'],
-    bullets: [
-      'Developed multi-tenant SaaS platform with cloud-native deployment',
-    ],
-    defaultOpen: true,
-  },
-  {
-    role: 'Full Stack Developer',
-    company: 'SteriPilotAI',
-    period: '2026',
-    mode: 'Remote',
-    modeClass: 'secondary',
-    tech: ['React', 'Node.js', 'AI Integration'],
-    bullets: [
-      'Integrated AI compliance workflows for healthcare sterilization tracking',
-    ],
-  },
-  {
-    role: 'Full Stack Developer',
-    company: 'BBR Boat Rentals',
-    period: '2025 – 2026',
-    mode: 'Remote',
-    modeClass: 'secondary',
-    tech: ['React', 'TypeScript', 'Firebase'],
-    bullets: [
-      'Built booking platform with real-time availability and payments',
-      'Launched on schedule with stable production operations',
-    ],
-  },
-  {
-    role: 'Full Stack Developer',
-    company: 'Artilect Solutions Pvt Ltd',
-    period: '2024 – 2026',
-    mode: 'On-site',
-    modeClass: 'accent',
-    tech: ['React', 'Vue', 'Svelte', 'Node.js', 'AWS', 'AI Engineering'],
-    bullets: [
-      'Built scalable SaaS products serving thousands of users across multiple industries',
-      'Designed AI-powered workflows that reduced manual processing time by 60%',
-      'Developed cloud-native solutions on AWS with auto-scaling and high availability',
-      'Implemented enterprise-level frontend architectures using micro-frontend patterns',
-      'Created robust backend APIs handling millions of requests per day',
-    ],
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'ArcadianAI',
-    period: '2024 – 2025',
-    mode: 'Remote',
-    modeClass: 'secondary',
-    tech: ['Vue 3', 'Node.js'],
-    bullets: [
-      'Built real-time AI surveillance dashboard features for production users',
-      'Architected clean Vue 3 modules adopted quickly by the internal team',
-    ],
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'FieldPulse',
-    period: '2023',
-    mode: 'Remote',
-    modeClass: 'secondary',
-    tech: ['Svelte', 'SvelteKit', 'Strapi'],
-    bullets: [
-      'Shipped field-service scheduling and dispatch experiences for technicians',
-      'Integrated mapping and routing workflows into the core product',
-    ],
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'Xensam',
-    period: '2021 – 2023',
-    mode: 'Remote',
-    modeClass: 'secondary',
-    tech: ['SvelteKit', 'Directus'],
-    bullets: [
-      'Rebuilt legacy frontend in SvelteKit with major load-time improvements',
-      'Delivered complex SAM tooling with scalable data-heavy interfaces',
-    ],
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'uConnect Technologies Pvt Ltd',
-    period: '2020 – 2024',
-    mode: 'On-site',
-    modeClass: 'accent',
-    tech: ['React', 'Vue.js', 'TypeScript', 'Tailwind CSS'],
-    bullets: [
-      'Developed responsive customer-facing web applications for regional clients',
-      'Improved performance through lazy loading, code splitting, and asset optimization',
-      'Collaborated with design teams for pixel-perfect UI implementation',
-    ],
-  },
+export const socials = [
+  { label: 'GitHub', handle: 'tajwarsultan', href: 'https://github.com/tajwarsultan', icon: 'github' },
+  { label: 'LinkedIn', handle: 'in/tajwar-sultan', href: 'https://www.linkedin.com/in/tajwar-sultan/', icon: 'linkedin' },
+  { label: 'Upwork', handle: 'tajwarsultan', href: 'https://www.upwork.com/freelancers/tajwarsultan', icon: 'arrow' },
+  { label: 'Fiverr', handle: 'tajwarsultan', href: 'https://www.fiverr.com/tajwarsultan', icon: 'arrow' },
 ]
 
 export const projects = [
   {
+    title: 'CareFirst Billing',
+    kind: 'Medical billing',
+    href: 'https://carefirstbillingsolutions.com/',
+    host: 'carefirstbillingsolutions.com',
+    description: 'Company website for a medical billing provider. I designed and built it for the client.',
+    tags: ['Client website', 'Design', 'Development'],
+    featured: true,
+    isNew: true,
+  },
+  {
     title: 'Arcadian',
+    kind: 'AI surveillance',
     href: 'https://app.ourarcadian.com/#/',
-    description: 'AI-powered surveillance dashboard with real-time video analytics and threat detection',
+    host: 'app.ourarcadian.com',
+    description: 'Security camera dashboard that analyses live video and flags threats as they happen.',
     tags: ['Vue 3', 'Node.js', 'AI'],
-    image: projectImageUrls.arcadian,
-  },
-  {
-    title: 'QuoHR',
-    href: 'https://cloud.quohr.com/login',
-    description: 'Enterprise HR management system with employee lifecycle automation',
-    tags: ['React', 'TypeScript', 'Node.js'],
-    image: projectImageUrls.quohr,
-  },
-  {
-    title: 'GilgitApp',
-    href: 'https://gilgit.app/',
-    description: 'Regional digital platform connecting local businesses and communities',
-    tags: ['Next.js', 'TypeScript', 'Tailwind'],
-    image: projectImageUrls.gilgit,
-  },
-  {
-    title: 'IntellQuery AI',
-    href: 'https://airagchatbot.vercel.app/',
-    description: 'AI-powered RAG chatbot with intelligent document querying capabilities',
-    tags: ['Next.js', 'AI', 'RAG', 'Vector DB'],
-    image: projectImageUrls.intellquery,
-  },
-  {
-    title: 'Cathoven',
-    href: 'https://ielts.cathoven.com/ielts/register',
-    description: 'IELTS preparation platform with AI-driven assessment and scoring',
-    tags: ['React', 'TypeScript', 'AI'],
-    image: projectImageUrls.cathoven,
-  },
-  {
-    title: 'BBR Boat Rentals',
-    href: 'https://bbrboatrentals.com/',
-    description: 'Boat rental booking platform with real-time availability and payments',
-    tags: ['React', 'Firebase', 'TypeScript'],
-    image: projectImageUrls.bbr,
-  },
-  {
-    title: 'Velnix',
-    href: 'https://velnix-platform.vercel.app/en/login',
-    description: 'SaaS platform with multi-tenant architecture and cloud-native deployment',
-    tags: ['Next.js', 'AWS', 'TypeScript'],
-    image: projectImageUrls.velnix,
-  },
-  {
-    title: 'SteriPilotAI',
-    href: 'https://steripilot-frontend-m4xtfatkmq-uc.a.run.app/login',
-    description: 'AI healthcare platform for medical sterilization compliance tracking',
-    tags: ['React', 'Node.js', 'AI', 'GCP'],
-    image: projectImageUrls.steripilot,
+    featured: true,
   },
   {
     title: 'CARLA',
+    kind: 'Automotive',
     href: 'https://dev.usecarla.de/',
-    description: 'Automotive technology platform with digital interfaces and connected mobility solutions',
+    host: 'dev.usecarla.de',
+    description: 'Web interfaces for an automotive platform built around connected mobility.',
     tags: ['React', 'TypeScript', 'Node.js'],
-    image: projectImageUrls.carla,
+    featured: true,
   },
   {
     title: 'Eldrin AI',
+    kind: 'AI assistant',
     href: 'https://www.eldrin.ai/',
-    description: 'AI-powered intelligent assistant with conversational interfaces and workflow automation',
-    tags: ['Next.js', 'AI', 'TypeScript'],
-    image: projectImageUrls.eldrin,
+    host: 'eldrin.ai',
+    description: 'A conversational assistant that takes routine workflows off your hands.',
+    tags: ['Next.js', 'TypeScript', 'AI'],
+    featured: true,
   },
   {
     title: 'GreatCoops',
+    kind: 'Collaboration',
     href: 'https://ai.greatcoops.com/',
-    description: 'AI-driven cooperative business platform with intelligent workflow and team collaboration',
-    tags: ['React', 'AI', 'Node.js'],
-    image: projectImageUrls.greatcoops,
+    host: 'ai.greatcoops.com',
+    description: 'Where cooperative businesses run their workflows and work together, with AI built in.',
+    tags: ['React', 'Node.js', 'AI'],
+    featured: true,
+  },
+  {
+    title: 'IntellQuery AI',
+    kind: 'RAG chatbot',
+    href: 'https://airagchatbot.vercel.app/',
+    host: 'airagchatbot.vercel.app',
+    description: 'A chatbot that answers questions from your own documents, using retrieval-augmented generation.',
+    tags: ['Next.js', 'RAG', 'Vector DB'],
+    featured: true,
+  },
+  {
+    title: 'SteriPilotAI',
+    kind: 'Healthcare',
+    href: 'https://steripilot-frontend-m4xtfatkmq-uc.a.run.app/login',
+    host: 'steripilot · cloud run',
+    description: 'Helps medical teams track sterilization compliance.',
+    tags: ['React', 'Node.js', 'GCP'],
+  },
+  {
+    title: 'Velnix',
+    kind: 'SaaS platform',
+    href: 'https://velnix-platform.vercel.app/en/login',
+    host: 'velnix-platform.vercel.app',
+    description: 'Multi-tenant SaaS platform, deployed on AWS.',
+    tags: ['Next.js', 'TypeScript', 'AWS'],
+  },
+  {
+    title: 'QuoHR',
+    kind: 'HR software',
+    href: 'https://cloud.quohr.com/login',
+    host: 'cloud.quohr.com',
+    description: 'HR management system that automates the employee lifecycle.',
+    tags: ['React', 'TypeScript', 'Node.js'],
+  },
+  {
+    title: 'Cathoven',
+    kind: 'EdTech',
+    href: 'https://ielts.cathoven.com/ielts/register',
+    host: 'ielts.cathoven.com',
+    description: 'IELTS preparation platform that scores practice answers with AI.',
+    tags: ['React', 'TypeScript', 'AI'],
+  },
+  {
+    title: 'BBR Boat Rentals',
+    kind: 'Booking',
+    href: 'https://bbrboatrentals.com/',
+    host: 'bbrboatrentals.com',
+    description: 'Boat rental booking with real-time availability and online payments.',
+    tags: ['React', 'TypeScript', 'Firebase'],
+  },
+  {
+    title: 'GilgitApp',
+    kind: 'Community',
+    href: 'https://gilgit.app/',
+    host: 'gilgit.app',
+    description: 'Connects local businesses and communities in Gilgit.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
   },
 ]
 
-export const testimonials = [
+export const summary =
+  'Senior full-stack JavaScript developer with six years of professional experience building web applications and SaaS platforms. I work across React, Next.js, Vue and Node.js, with the APIs, databases and cloud deployments behind them, and I add AI features to production products for startups and clients worldwide.'
+
+export const experiences = [
   {
-    quote:
-      "Tajwar is hands-down the most technically versatile developer I've worked with. He took our vague SaaS idea and turned it into a production-ready platform in weeks — not months. His AI integration work alone saved us six figures in operational costs.",
-    name: 'Marcus Chen',
-    role: 'CTO, Velnix Technologies',
-    location: 'San Francisco, USA',
-    initial: 'M',
+    company: 'ArcadianAI',
+    role: 'Senior Full-Stack / Front-End Developer',
+    period: '2024 — Present',
+    mode: 'Remote',
+    bullets: [
+      'Develop scalable SaaS applications with Next.js, React, Node.js and modern API architectures.',
+      'Integrate OpenAI APIs to power AI-driven features and automation workflows.',
+      'Improve front-end performance, SEO and application stability.',
+    ],
+    tech: ['Next.js', 'React', 'Node.js', 'OpenAI APIs'],
   },
   {
-    quote:
-      'We handed Tajwar a legacy codebase that three previous developers refused to touch. He not only untangled it but rebuilt the entire frontend in SvelteKit with zero downtime. Our page load times dropped from 8 seconds to under 1.5. Absolute wizard.',
-    name: 'Erik Johansson',
-    role: 'VP of Engineering, Xensam AB',
-    location: 'Stockholm, Sweden',
-    initial: 'E',
+    company: 'Xensam · FieldPulse',
+    role: 'Front-End Developer',
+    period: '2024 — 2025',
+    mode: 'Remote',
+    bullets: [
+      'Built responsive dashboards and complex user interfaces with React, Vue.js and Tailwind CSS.',
+      'Turned Figma designs into high-quality, reusable components.',
+      'Integrated APIs and optimized data-heavy views for performance.',
+    ],
+    tech: ['React', 'Vue.js', 'Tailwind CSS', 'Figma'],
   },
   {
-    quote:
-      'Hiring Tajwar was the best decision we made for the Arcadian dashboard. His Vue 3 architecture is so clean our internal team picked it up in days. The real-time AI surveillance features he built are now the core selling point of our product.',
-    name: 'David Park',
-    role: 'Founder & CEO, ArcadianAI',
-    location: 'Seoul, South Korea',
-    initial: 'D',
-  },
-  {
-    quote:
-      "Tajwar built our entire booking platform from scratch — frontend, backend, Firebase integration, the works. Launched on time, under budget, and we've had exactly zero critical bugs in six months. That's unheard of in our industry.",
-    name: 'Robert Mitchell',
-    role: 'Owner, BBR Boat Rentals',
-    location: 'Miami, USA',
-    initial: 'R',
-  },
-  {
-    quote:
-      "I've managed dozens of offshore developers and Tajwar stands alone at the top. Communication is flawless, deadlines are sacred to him, and the code quality rivals senior engineers at FAANG companies. He doesn't just build features — he thinks about the business.",
-    name: 'Priya Sharma',
-    role: 'Product Director, FieldPulse Inc',
-    location: 'Austin, USA',
-    initial: 'P',
-  },
-  {
-    quote:
-      "Tajwar's AI engineering skills transformed our healthcare compliance platform. He integrated RAG-based document intelligence that automatically flags sterilization protocol violations. Our audit preparation time dropped by 80%. Simply brilliant work.",
-    name: 'Dr. James Wilson',
-    role: 'Chief Medical Officer, SteriPilotAI',
-    location: 'London, UK',
-    initial: 'J',
+    company: 'uConnect Technologies Pvt Ltd',
+    role: 'Front-End Developer',
+    period: '2020 — 2024',
+    mode: 'On-site',
+    bullets: [
+      'Delivered multiple production web applications using JavaScript frameworks.',
+      'Worked closely with back-end teams to integrate REST APIs.',
+      'Refactored legacy codebases for maintainability and scalability.',
+    ],
+    tech: ['JavaScript', 'React', 'Vue.js', 'REST APIs'],
   },
 ]
 
-export const certifications = [
-  'AWS Certified Developer – Associate',
-  'Meta Frontend Developer Professional Certificate',
-  'Google Cloud Digital Leader',
-  'MongoDB Associate Developer',
+export const education = {
+  school: 'Karakoram International University',
+  degree: 'BS, Computer Science',
+  year: '2025',
+}
+
+export const languages = [
+  { name: 'English', level: 'Professional' },
+  { name: 'Urdu', level: 'Native' },
+  { name: 'Burushaski', level: 'Native' },
+]
+
+export const interests = [
+  'Technology & AI innovation',
+  'Teaching & mentorship',
+  'Community development',
+  'Open-source contributions',
+]
+
+export const stack = [
+  {
+    title: 'Front end',
+    items: [
+      'React', 'Next.js', 'Vue.js', 'Svelte / SvelteKit', 'Angular', 'TypeScript',
+      'Tailwind CSS', 'Chakra UI', 'Material UI', 'Framer Motion', 'GSAP', 'Three.js',
+    ],
+  },
+  {
+    title: 'Back end & data',
+    items: [
+      'Node.js', 'Express', 'Fastify', 'REST APIs', 'GraphQL', 'WebSockets',
+      'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Firebase', 'Supabase',
+    ],
+  },
+  {
+    title: 'AI',
+    items: ['OpenAI APIs', 'RAG pipelines', 'Vector databases', 'AI agents', 'Prompt engineering'],
+  },
+  {
+    title: 'Cloud & CMS',
+    items: [
+      'AWS (S3, Lambda)', 'Vercel', 'Netlify', 'Docker', 'Nginx', 'PM2',
+      'GitHub Actions', 'Strapi', 'Sanity', 'Contentful',
+    ],
+  },
+  {
+    title: 'Testing & quality',
+    items: ['Jest', 'React Testing Library', 'Cypress', 'Playwright', 'ESLint', 'Prettier', 'Husky'],
+  },
+]
+
+// Shown on the page and published as FAQ structured data, so the answers
+// search engines and AI assistants quote are the ones written here.
+export const faqs = [
+  {
+    q: 'What kind of work does Tajwar Sultan take on?',
+    a: 'Web applications, mostly: SaaS platforms, dashboards, booking and HR systems, company websites, and AI features such as chatbots and document search. I can build a product end to end or join a team that already has one.',
+  },
+  {
+    q: 'Is Tajwar available for hire?',
+    a: 'Yes. I take remote full-time roles, contracts and freelance projects. Message me on WhatsApp or by email and I usually reply within a day.',
+  },
+  {
+    q: 'Where is Tajwar based, and does he work remotely?',
+    a: 'I live in Gilgit, in Gilgit-Baltistan, northern Pakistan, on Pakistan Standard Time (UTC+5). I work remotely with teams and clients in other countries.',
+  },
+  {
+    q: 'Which technologies does Tajwar work with?',
+    a: 'On the front end: React, Next.js, Vue.js, Svelte and TypeScript, usually with Tailwind CSS. On the back end: Node.js with Express or Fastify, REST and GraphQL APIs, and PostgreSQL, MySQL or MongoDB. I deploy on AWS and Vercel.',
+  },
+  {
+    q: 'Does Tajwar build AI features?',
+    a: 'Yes. I integrate OpenAI APIs into products and build retrieval-augmented (RAG) chatbots that answer from your own documents. IntellQuery AI, in the work section, is a public example.',
+  },
+  {
+    q: 'How do I start a project with Tajwar?',
+    a: 'Send a short note about what you are building, your timeline and any links. We talk it through, and I come back with the scope and next steps.',
+  },
 ]

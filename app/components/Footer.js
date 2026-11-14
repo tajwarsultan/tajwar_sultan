@@ -1,103 +1,79 @@
-import { navLinks } from '../lib/siteData'
+import Link from 'next/link'
+import Icon from './Icons'
+import Logo from './Logo'
+import { navLinks, site, socials } from '../lib/siteData'
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
-    <footer className="bg-foreground-950 text-background-50" aria-label="Site footer">
-      <div className="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div>
-            <a href="#" className="font-heading font-bold text-3xl text-background-50 tracking-tight">
-              Tajwar<span className="text-primary-400">.</span>
-            </a>
-            <p className="mt-4 text-sm text-foreground-200 leading-relaxed max-w-xs">
-              Senior Full Stack Developer &amp; AI Engineer building the future through code. Available for
-              freelance and full-time opportunities worldwide.
-            </p>
-            <div className="flex items-center gap-3 mt-5">
-              <a
-                href="https://github.com/tajwarsultan"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-foreground-700 flex items-center justify-center text-foreground-300 hover:text-background-50 hover:border-background-50 transition-colors"
-                aria-label="GitHub"
-              >
-                <i className="ri-github-fill" aria-hidden />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/tajwar-sultan/"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-foreground-700 flex items-center justify-center text-foreground-300 hover:text-background-50 hover:border-background-50 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <i className="ri-linkedin-fill" aria-hidden />
-              </a>
-              <a
-                href="https://www.upwork.com/freelancers/tajwarsultan"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-foreground-700 flex items-center justify-center text-foreground-300 hover:text-background-50 hover:border-background-50 transition-colors"
-                aria-label="Upwork"
-              >
-                <i className="ri-briefcase-4-line" aria-hidden />
-              </a>
-              <a
-                href="https://www.fiverr.com/tajwarsultan"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-foreground-700 flex items-center justify-center text-foreground-300 hover:text-background-50 hover:border-background-50 transition-colors"
-                aria-label="Fiverr"
-              >
-                <i className="ri-store-2-line" aria-hidden />
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-heading font-semibold text-xs text-foreground-400 uppercase tracking-widest mb-5">
-              Contact
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <p className="text-xs text-foreground-400 mb-1">Email</p>
-                <a href="mailto:tajwar.sultan00@gmail.com" className="text-sm text-background-50 hover:text-primary-300 transition-colors">
-                  tajwar.sultan00@gmail.com
-                </a>
-              </div>
-              <div>
-                <p className="text-xs text-foreground-400 mb-1">Phone</p>
-                <a href="tel:+923436140308" className="text-sm text-background-50 hover:text-primary-300 transition-colors">
-                  +92 343 6140308
-                </a>
-              </div>
-              <div>
-                <p className="text-xs text-foreground-400 mb-1">Location</p>
-                <p className="text-sm text-background-50">Gilgit-Baltistan, Pakistan</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-heading font-semibold text-xs text-foreground-400 uppercase tracking-widest mb-5">
-              Quick Links
-            </h4>
-            <div className="space-y-2.5">
-              {navLinks.map((link) => (
-                <div key={link.href}>
-                  <a href={link.href} className="text-sm text-foreground-300 hover:text-background-50 transition-colors">
-                    {link.label}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
+    <footer className="border-t border-line">
+      <div className="shell py-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <p className="flex items-center gap-2 font-display font-semibold text-lg tracking-tight">
+            <Logo size={26} />
+            {site.name}
+          </p>
+          <p className="mt-3 text-muted leading-relaxed max-w-xs">
+            Full-stack developer in {site.location}. Open to remote roles and freelance projects.
+          </p>
+          <a href={`mailto:${site.email}`} className="link inline-block mt-3">
+            {site.email}
+          </a>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-foreground-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-foreground-400">© {year} Tajwar Sultan. All rights reserved.</p>
-          <p className="text-xs text-foreground-500">Built with passion in Gilgit-Baltistan, Pakistan</p>
+        <nav aria-label="Footer">
+          <h2 className="label">Site</h2>
+          <ul className="mt-4 space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="link text-muted hover:text-ink">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <Link href="/cv" className="link text-muted hover:text-ink">
+                CV
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div>
+          <h2 className="label">Elsewhere</h2>
+          <ul className="mt-4 space-y-2">
+            {socials.map((social) => (
+              <li key={social.label}>
+                <a href={social.href} target="_blank" rel="me noopener noreferrer" className="link text-muted hover:text-ink">
+                  {social.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href={`https://wa.me/${site.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link text-muted hover:text-ink"
+              >
+                WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-line">
+        <div className="shell pt-6 pb-24 flex flex-col sm:flex-row sm:items-center justify-between gap-3 label">
+          <p>
+            © {new Date().getFullYear()} {site.name}
+          </p>
+          <p>
+            {site.coords} · {site.region}
+          </p>
+          <a href="#top" className="flex items-center gap-1.5 hover:text-ink transition-colors">
+            Back to top
+            <Icon name="down" size={13} className="rotate-180" />
+          </a>
         </div>
       </div>
     </footer>
