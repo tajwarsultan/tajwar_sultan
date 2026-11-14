@@ -355,3 +355,323 @@ body {
     transform: translateY(-3px);
   }
 }
+
+.chat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s, transform 0.2s;
+}
+.chat-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+  transform: translateY(-1px);
+}
+.chat-chip-strong {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.chat-chip-strong:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.chat-launcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  height: 3.5rem;
+  padding: 0 1.25rem 0 1rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.25s, color 0.25s, transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.3s;
+}
+/* Ring that expands from the button on hover */
+.chat-launcher::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+.chat-launcher-dot {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--ink);
+  transition: background-color 0.25s, border-color 0.25s;
+}
+.chat-launcher-icon {
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (hover: hover) {
+  .chat-launcher:hover {
+    background: var(--accent);
+    color: var(--on-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px -12px color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .chat-launcher:hover::before {
+    animation: launcher-ring 1.1s ease-out infinite;
+  }
+  .chat-launcher:hover .chat-launcher-icon {
+    transform: rotate(-12deg) scale(1.12);
+  }
+  .chat-launcher:hover .chat-launcher-dot {
+    background: var(--on-accent);
+    border-color: var(--accent);
+  }
+  .chat-launch:hover .chat-teaser {
+    opacity: 1;
+    transform: none;
+  }
+}
+.chat-launcher:active {
+  transform: scale(0.97);
+}
+@keyframes launcher-ring {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.25, 1.55);
+  }
+}
+
+/* Intro card above the launcher: appears on hover, and once on its own shortly after load */
+.chat-teaser {
+  position: absolute;
+  bottom: calc(100% + 0.75rem);
+  right: 0;
+  width: min(18.5rem, calc(100vw - 2rem));
+  padding: 0.875rem;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  border: 1px solid var(--line-strong);
+  background: var(--raised);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.chat-teaser.is-shown,
+.chat-launch:focus-within .chat-teaser {
+  opacity: 1;
+  transform: none;
+}
+.chat-teaser.is-shown {
+  pointer-events: auto;
+}
+
+/* ---------- CV page (also the print source for the PDF) ---------- */
+.cv-page {
+  padding: 5.5rem 1rem 3rem;
+  color: var(--ink);
+}
+.cv-toolbar {
+  max-width: 210mm;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #8a857a;
+  font-size: 0.9rem;
+}
+.cv-sheet {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 10mm 13mm;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 8.9pt;
+  line-height: 1.4;
+}
+.cv-sheet a {
+  color: inherit;
+}
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8mm;
+  padding-bottom: 4mm;
+  border-bottom: 1.5px solid var(--ink);
+}
+.cv-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 25pt;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.cv-role {
+  margin-top: 2.5mm;
+  font-family: var(--font-mono);
+  font-size: 8.4pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+.cv-contact {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 6mm;
+  row-gap: 0.6mm;
+  font-size: 8.4pt;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.cv-contact li:first-child {
+  grid-column: span 2;
+  color: var(--ink);
+  font-weight: 500;
+}
+.cv-heading {
+  margin: 3.6mm 0 1.6mm;
+  font-family: var(--font-mono);
+  font-size: 7.8pt;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+}
+.cv-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.cv-item + .cv-item {
+  margin-top: 2.2mm;
+}
+.cv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+.cv-sheet h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 10.4pt;
+  letter-spacing: -0.01em;
+}
+.cv-meta {
+  font-family: var(--font-mono);
+  font-size: 7.6pt;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.cv-sub {
+  color: var(--accent-text);
+  font-weight: 500;
+}
+.cv-bullets {
+  margin-top: 0.8mm;
+  padding-left: 4mm;
+  list-style: disc;
+}
+.cv-bullets li::marker {
+  color: var(--accent);
+}
+.cv-tech {
+  margin-top: 1mm;
+  font-family: var(--font-mono);
+  font-size: 7.6pt;
+  color: var(--muted);
+}
+.cv-projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2mm 8mm;
+}
+.cv-projects p {
+  color: var(--muted);
+  font-size: 8.3pt;
+  line-height: 1.35;
+}
+.cv-projects h3 {
+  font-size: 10.2pt;
+}
+.cv-skills > div {
+  display: grid;
+  grid-template-columns: 32mm 1fr;
+  gap: 4mm;
+  padding: 0.3mm 0;
+}
+.cv-skills dt {
+  font-weight: 600;
+}
+.cv-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 8mm;
+}
+@media (max-width: 640px) {
+  .cv-header,
+  .cv-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1mm;
+  }
+  .cv-contact,
+  .cv-projects,
+  .cv-columns {
+    grid-template-columns: 1fr;
+    white-space: normal;
+  }
+  .cv-contact li:first-child {
+    grid-column: auto;
+  }
+  .cv-skills > div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cv-sheet {
+    padding: 8mm 6mm;
+  }
+}
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html,
+  body {
+    background: #fff !important;
+  }
+  .cv-toolbar {
+    display: none;
+  }
+  .cv-page {
+    padding: 0;
+  }
+  .cv-sheet {
+    max-width: none;
+    border: 0;
+    border-radius: 0;
+  }
+}

@@ -10,6 +10,8 @@ const windows = [
   { x: 560, y: 300, w: 560 },
   { x: 760, y: 0, w: 430 },
   { x: 260, y: 440, w: 560 },
+  { x: 0, y: 420, w: 480 },
+  { x: 420, y: 0, w: 520 },
 ]
 
 function Cover({ project, view }) {
@@ -22,13 +24,18 @@ function Cover({ project, view }) {
           <i className="w-2 h-2 rounded-full bg-line-strong" />
         </span>
         <span className="font-mono text-[0.68rem] text-muted truncate">{project.host}</span>
+        {project.isNew && (
+          <span className="ml-auto shrink-0 font-mono text-[0.62rem] uppercase tracking-wider px-2 py-0.5 rounded-full bg-accent text-on-accent">
+            New
+          </span>
+        )}
       </div>
       <div className="absolute inset-0 top-9 text-accent opacity-55 transition-transform duration-700 ease-out group-hover:scale-110">
         <TopoArt {...view} ratio={0.56} className="w-full h-full" />
       </div>
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-surface via-surface/70 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-4">
-        <span className="font-display font-semibold tracking-tight text-[clamp(1.9rem,4.4vw,2.9rem)] leading-none">
+        <span className="font-display font-semibold tracking-tight text-[clamp(1.7rem,3.6vw,2.5rem)] leading-none">
           {project.title}
         </span>
         <span className="grid place-items-center w-10 h-10 rounded-full bg-ink text-bg shrink-0 transition-colors group-hover:bg-accent group-hover:text-on-accent">
