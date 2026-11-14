@@ -25,9 +25,9 @@ export default function Footer() {
           <ul className="mt-4 space-y-2">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="link text-muted hover:text-ink">
+                <Link href={link.href} className="link text-muted hover:text-ink">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
@@ -70,7 +70,7 @@ export default function Footer() {
           <p>
             {site.coords} · {site.region}
           </p>
-          <a href="#top" className="flex items-center gap-1.5 hover:text-ink transition-colors">
+          <a href="#" className="flex items-center gap-1.5 hover:text-ink transition-colors">
             Back to top
             <Icon name="down" size={13} className="rotate-180" />
           </a>

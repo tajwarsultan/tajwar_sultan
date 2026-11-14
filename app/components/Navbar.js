@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Icon from './Icons'
 import Logo from './Logo'
 import { navLinks, site } from '../lib/siteData'
@@ -34,22 +36,31 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const pathname = usePathname()
+  const isCurrent = (href) => active === href || (!href.startsWith('/#') && pathname.startsWith(href))
 
   // Highlight the nav link for the section currently crossing the middle of the screen.
   useEffect(() => {
-    const sections = navLinks.map((l) => document.querySelector(l.href)).filter(Boolean)
+    const targets = new Map()
+    for (const link of navLinks) {
+      // The Blog link has no section of its own on the home page, so it follows the Writing section.
+      const selector = link.href.startsWith('/#') ? link.href.slice(1) : link.href === '/blog' ? '#writing' : null
+      const el = selector && document.querySelector(selector)
+      if (el) targets.set(el, link.href)
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
-          else setActive((current) => (current === `#${entry.target.id}` ? '' : current))
+          const href = targets.get(entry.target)
+          if (entry.isIntersecting) setActive(href)
+          else setActive((current) => (current === href ? '' : current))
         }
       },
       { rootMargin: '-45% 0px -55% 0px' }
     )
-    sections.forEach((el) => observer.observe(el))
+    targets.forEach((_, el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -72,21 +83,21 @@ export default function Navbar() {
       }`}
     >
       <nav className="shell flex items-center justify-between h-16" aria-label="Main">
-        <a href="#top" aria-label="Tajwar Sultan, home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
+        <Link href="/#top" aria-label="Tajwar Sultan, home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
           <Logo size={28} />
           Tajwar Sultan
-        </a>
+        </Link>
 
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              aria-current={active === link.href ? 'true' : undefined}
+              aria-current={isCurrent(link.href) ? 'true' : undefined}
               className="nav-link text-sm text-muted hover:text-ink transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -103,7 +114,7 @@ export default function Navbar() {
           </a>
           <button
             type="button"
-            className="md:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-surface transition-colors"
+            className="lg:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-surface transition-colors"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -115,17 +126,17 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="md:hidden border-t border-line max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
+        <div id="mobile-menu" className="lg:hidden border-t border-line max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
           <div className="shell py-3 flex flex-col">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="py-3 font-display text-2xl font-medium tracking-tight border-b border-line last:border-0"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a href={site.cv} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-4 mb-2">
               Download résumé

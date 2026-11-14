@@ -4,6 +4,7 @@ import Work from './components/Work'
 import Experience from './components/Experience'
 import About from './components/About'
 import Stack from './components/Stack'
+import Writing from './components/Writing'
 import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -29,6 +30,7 @@ export default function Home() {
         <Experience />
         <About />
         <Stack />
+        <Writing />
         <Faq />
         <Contact />
       </main>

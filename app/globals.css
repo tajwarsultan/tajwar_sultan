@@ -730,3 +730,73 @@ body {
 .nav-link[aria-current="true"]::after {
   transform: scaleX(1);
 }
+
+/* ---------- Article body ---------- */
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.prose > * + * {
+  margin-top: 1.35em;
+}
+.prose h2 {
+  margin-top: 2.2em;
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.prose h2 + * {
+  margin-top: 0.8em;
+}
+.prose ul {
+  padding-left: 1.25rem;
+  list-style: none;
+}
+.prose li {
+  position: relative;
+}
+.prose li + li {
+  margin-top: 0.55em;
+}
+.prose li::before {
+  content: "";
+  position: absolute;
+  left: -1.25rem;
+  top: 0.82em;
+  width: 0.5rem;
+  height: 1.5px;
+  background: var(--accent);
+}
+.prose strong {
+  font-weight: 600;
+}
+.prose a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.12em 0.36em;
+  border-radius: 0.3rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.prose pre {
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.875rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow-x: auto;
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+.prose pre code {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: inherit;
+}
