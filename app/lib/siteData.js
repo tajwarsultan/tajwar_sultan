@@ -9,6 +9,9 @@ export const site = {
   phone: '+92 343 6140308',
   phoneHref: 'tel:+923436140308',
   location: 'Gilgit, Pakistan',
+  region: 'Gilgit-Baltistan',
+  description:
+    'Tajwar Sultan is a senior full-stack developer in Gilgit, Pakistan. He builds SaaS platforms, dashboards and AI features with React, Next.js, Vue and Node.js.',
   coords: '35.9208° N, 74.3100° E',
   timeZone: 'Asia/Karachi',
   whatsapp: '923109450550',
@@ -21,6 +24,7 @@ export const navLinks = [
   { href: '#experience', label: 'Experience' },
   { href: '#about', label: 'About' },
   { href: '#stack', label: 'Stack' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -37,7 +41,7 @@ export const projects = [
     kind: 'Medical billing',
     href: 'https://carefirstbillingsolutions.com/',
     host: 'carefirstbillingsolutions.com',
-    description: 'Company website for CareFirst Billing Solutions, a medical billing provider. Designed and built for the client.',
+    description: 'Company website for a medical billing provider. I designed and built it for the client.',
     tags: ['Client website', 'Design', 'Development'],
     featured: true,
     isNew: true,
@@ -47,7 +51,7 @@ export const projects = [
     kind: 'AI surveillance',
     href: 'https://app.ourarcadian.com/#/',
     host: 'app.ourarcadian.com',
-    description: 'AI-powered surveillance dashboard with real-time video analytics and threat detection.',
+    description: 'Security camera dashboard that analyses live video and flags threats as they happen.',
     tags: ['Vue 3', 'Node.js', 'AI'],
     featured: true,
   },
@@ -56,7 +60,7 @@ export const projects = [
     kind: 'Automotive',
     href: 'https://dev.usecarla.de/',
     host: 'dev.usecarla.de',
-    description: 'Automotive technology platform with digital interfaces for connected mobility.',
+    description: 'Web interfaces for an automotive platform built around connected mobility.',
     tags: ['React', 'TypeScript', 'Node.js'],
     featured: true,
   },
@@ -65,7 +69,7 @@ export const projects = [
     kind: 'AI assistant',
     href: 'https://www.eldrin.ai/',
     host: 'eldrin.ai',
-    description: 'Intelligent assistant with conversational interfaces and workflow automation.',
+    description: 'A conversational assistant that takes routine workflows off your hands.',
     tags: ['Next.js', 'TypeScript', 'AI'],
     featured: true,
   },
@@ -74,7 +78,7 @@ export const projects = [
     kind: 'Collaboration',
     href: 'https://ai.greatcoops.com/',
     host: 'ai.greatcoops.com',
-    description: 'AI-driven platform for cooperative businesses, with intelligent workflows and team collaboration.',
+    description: 'Where cooperative businesses run their workflows and work together, with AI built in.',
     tags: ['React', 'Node.js', 'AI'],
     featured: true,
   },
@@ -83,7 +87,7 @@ export const projects = [
     kind: 'RAG chatbot',
     href: 'https://airagchatbot.vercel.app/',
     host: 'airagchatbot.vercel.app',
-    description: 'Retrieval-augmented chatbot that answers questions from your own documents.',
+    description: 'A chatbot that answers questions from your own documents, using retrieval-augmented generation.',
     tags: ['Next.js', 'RAG', 'Vector DB'],
     featured: true,
   },
@@ -92,7 +96,7 @@ export const projects = [
     kind: 'Healthcare',
     href: 'https://steripilot-frontend-m4xtfatkmq-uc.a.run.app/login',
     host: 'steripilot · cloud run',
-    description: 'Healthcare platform for tracking medical sterilization compliance.',
+    description: 'Helps medical teams track sterilization compliance.',
     tags: ['React', 'Node.js', 'GCP'],
   },
   {
@@ -100,7 +104,7 @@ export const projects = [
     kind: 'SaaS platform',
     href: 'https://velnix-platform.vercel.app/en/login',
     host: 'velnix-platform.vercel.app',
-    description: 'Multi-tenant SaaS platform with cloud-native deployment.',
+    description: 'Multi-tenant SaaS platform, deployed on AWS.',
     tags: ['Next.js', 'TypeScript', 'AWS'],
   },
   {
@@ -116,7 +120,7 @@ export const projects = [
     kind: 'EdTech',
     href: 'https://ielts.cathoven.com/ielts/register',
     host: 'ielts.cathoven.com',
-    description: 'IELTS preparation platform with AI-driven assessment and scoring.',
+    description: 'IELTS preparation platform that scores practice answers with AI.',
     tags: ['React', 'TypeScript', 'AI'],
   },
   {
@@ -132,13 +136,13 @@ export const projects = [
     kind: 'Community',
     href: 'https://gilgit.app/',
     host: 'gilgit.app',
-    description: 'Digital platform connecting local businesses and communities in Gilgit.',
+    description: 'Connects local businesses and communities in Gilgit.',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
   },
 ]
 
 export const summary =
-  'Senior full-stack JavaScript developer with six years of professional experience building scalable, high-performance web applications and SaaS platforms. Works across the modern JavaScript stack — React, Next.js, Vue and Node.js, with APIs, databases and cloud deployments — and integrates AI features into production products for startups and clients worldwide.'
+  'Senior full-stack JavaScript developer with six years of professional experience building web applications and SaaS platforms. I work across React, Next.js, Vue and Node.js, with the APIs, databases and cloud deployments behind them, and I add AI features to production products for startups and clients worldwide.'
 
 export const experiences = [
   {
@@ -227,5 +231,34 @@ export const stack = [
   {
     title: 'Testing & quality',
     items: ['Jest', 'React Testing Library', 'Cypress', 'Playwright', 'ESLint', 'Prettier', 'Husky'],
+  },
+]
+
+// Shown on the page and published as FAQ structured data, so the answers
+// search engines and AI assistants quote are the ones written here.
+export const faqs = [
+  {
+    q: 'What kind of work does Tajwar Sultan take on?',
+    a: 'Web applications, mostly: SaaS platforms, dashboards, booking and HR systems, company websites, and AI features such as chatbots and document search. I can build a product end to end or join a team that already has one.',
+  },
+  {
+    q: 'Is Tajwar available for hire?',
+    a: 'Yes. I take remote full-time roles, contracts and freelance projects. Message me on WhatsApp or by email and I usually reply within a day.',
+  },
+  {
+    q: 'Where is Tajwar based, and does he work remotely?',
+    a: 'I live in Gilgit, in Gilgit-Baltistan, northern Pakistan, on Pakistan Standard Time (UTC+5). I work remotely with teams and clients in other countries.',
+  },
+  {
+    q: 'Which technologies does Tajwar work with?',
+    a: 'On the front end: React, Next.js, Vue.js, Svelte and TypeScript, usually with Tailwind CSS. On the back end: Node.js with Express or Fastify, REST and GraphQL APIs, and PostgreSQL, MySQL or MongoDB. I deploy on AWS and Vercel.',
+  },
+  {
+    q: 'Does Tajwar build AI features?',
+    a: 'Yes. I integrate OpenAI APIs into products and build retrieval-augmented (RAG) chatbots that answer from your own documents. IntellQuery AI, in the work section, is a public example.',
+  },
+  {
+    q: 'How do I start a project with Tajwar?',
+    a: 'Send a short note about what you are building, your timeline and any links. We talk it through, and I come back with the scope and next steps.',
   },
 ]

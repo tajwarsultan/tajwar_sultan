@@ -7,15 +7,15 @@ export default function About() {
     <Section id="about" index="03" label="About" title="A developer from the mountains">
       <Reveal className="space-y-6 text-xl md:text-2xl leading-[1.5] tracking-[-0.01em] max-w-3xl">
         <p>
-          I&apos;ve been building for the web since 2020 — first as a front-end developer turning designs into
-          fast, accessible interfaces, and today across the whole stack: APIs, databases, cloud deployments and
-          the AI integrations that sit on top of them.
+          I started in 2020 as a front-end developer, turning Figma files into interfaces people could actually
+          use. These days I work on the whole thing: the API, the database, the deploy, and the AI features that
+          sit on top.
         </p>
         <p className="text-muted">
-          Most of my work is remote, for startups and product teams far from home. That has taught me to
-          communicate clearly and write code the next developer can pick up.
-          Away from client work I care about teaching and mentoring, open source, and community development here
-          in Gilgit.
+          Most of my recent work is remote, for teams a long way from Gilgit. That taught me to write things
+          down, ask early, and leave code the next person can pick up without calling me. Outside client work I
+          like teaching and mentoring, I contribute to open source when I can, and I care about what tech can do
+          for people here in Gilgit-Baltistan.
         </p>
       </Reveal>
 

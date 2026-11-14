@@ -9,7 +9,7 @@ export default function Stack() {
       index="04"
       label="Stack"
       title="Tools I work with"
-      intro="The technologies I reach for most. I pick the stack to fit the product, not the other way round."
+      intro="What I use most weeks. I pick tools to fit the product, not the other way round."
     >
       <dl>
         {stack.map((group, i) => (

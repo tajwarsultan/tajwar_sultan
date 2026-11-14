@@ -10,7 +10,7 @@ export default function Experience() {
       index="02"
       label="Experience"
       title="Where I've worked"
-      intro="From front-end specialist to full-stack and AI work, on product teams since 2020."
+      intro="I started on the front end in 2020 and have been moving down the stack ever since."
     >
       <ol>
         {experiences.map((job, i) => (

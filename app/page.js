@@ -4,10 +4,12 @@ import Work from './components/Work'
 import Experience from './components/Experience'
 import About from './components/About'
 import Stack from './components/Stack'
+import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ChatAgent from './components/ChatAgent'
 import { TopoDefs } from './components/Topo'
+import { homeJsonLd, toJsonLd } from './lib/structuredData'
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
       >
         Skip to content
       </a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toJsonLd(homeJsonLd) }} />
       <TopoDefs />
       <Navbar />
       <main>
@@ -26,6 +29,7 @@ export default function Home() {
         <Experience />
         <About />
         <Stack />
+        <Faq />
         <Contact />
       </main>
       <Footer />

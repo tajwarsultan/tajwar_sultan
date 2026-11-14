@@ -38,9 +38,9 @@ export default function Hero() {
             </h1>
 
             <p className="rise mt-7 max-w-[38rem] text-lg md:text-xl leading-relaxed text-muted" style={{ '--i': 2 }}>
-              I&apos;m Tajwar — a senior JavaScript developer working from Gilgit, in the Karakoram mountains of
-              northern Pakistan. I build fast, dependable web apps with React, Next.js, Vue and Node.js for
-              startups and product teams around the world.
+              I&apos;m Tajwar Sultan, a senior JavaScript developer in Gilgit, up in the Karakoram mountains of
+              northern Pakistan. I build web apps with React, Next.js, Vue and Node.js for startups and product
+              teams, most of them a long way from here.
             </p>
 
             <div className="rise mt-9 flex flex-wrap gap-3" style={{ '--i': 3 }}>
@@ -60,7 +60,7 @@ export default function Hero() {
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-surface border border-line">
                 <Image
                   src="/tajwar-portrait.jpg"
-                  alt="Portrait of Tajwar Sultan"
+                  alt="Tajwar Sultan, full-stack developer, in Gilgit, Pakistan"
                   fill
                   priority
                   sizes="(max-width: 1024px) 304px, 304px"

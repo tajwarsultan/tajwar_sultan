@@ -16,7 +16,7 @@ const otherWork = projects
 
 const greeting = {
   from: 'me',
-  text: "Hi, I'm Tajwar — a full-stack developer in Gilgit, Pakistan. Ask me anything below, or tell me what you're building and we'll carry on in WhatsApp.",
+  text: "Hi, I'm Tajwar. Ask me anything, or tell me what you're building.",
 }
 
 // Quick answers, written in the first person and drawn from the same data as the rest of the site.
@@ -45,7 +45,7 @@ const quickAnswers = [
   },
 ]
 
-const facts = ['Open to work', 'Replies within a day']
+const facts = ['Open to work', 'Replies in a day']
 
 export default function ChatAgent() {
   const [open, setOpen] = useState(false)
@@ -136,7 +136,7 @@ export default function ChatAgent() {
       if (answers.details) {
         reply(`Thanks, ${text}. Tap below to send me that on WhatsApp and I'll reply personally.`, 'done')
       } else {
-        reply(`Good to meet you, ${text}. What should I know? Scope, timeline, a link — anything useful.`, 'details')
+        reply(`Good to meet you, ${text}. What should I know? Scope, timeline, a link.`, 'details')
       }
     } else if (step === 'details') {
       setAnswers((a) => ({ ...a, details: text }))
@@ -208,13 +208,13 @@ export default function ChatAgent() {
                 <Icon name="close" size={16} />
               </button>
             </div>
-            <ul className="flex flex-wrap gap-x-3 gap-y-1 px-4 pb-3 label !text-[0.62rem]">
+            <ul className="flex flex-nowrap gap-x-2.5 px-4 pb-3 label !text-[0.6rem] !tracking-[0.04em] whitespace-nowrap overflow-hidden">
               <li className="flex items-center gap-1">
                 <Icon name="pin" size={11} />
                 Gilgit · <LocalTime timeZone={site.timeZone} /> PKT
               </li>
-              {facts.map((fact) => (
-                <li key={fact} className="flex items-center gap-1.5">
+              {facts.map((fact, i) => (
+                <li key={fact} className={`flex items-center gap-1.5 ${i > 0 ? 'max-[400px]:hidden' : ''}`}>
                   <span className="w-1 h-1 rounded-full bg-accent" />
                   {fact}
                 </li>
@@ -297,8 +297,8 @@ export default function ChatAgent() {
                 </button>
               </form>
             )}
-            <p className="mt-2 text-center text-[0.7rem] text-muted">
-              Quick answers here are automated. I reply personally on WhatsApp.
+            <p className="mt-2 text-center text-[0.7rem] text-muted whitespace-nowrap overflow-hidden text-ellipsis">
+              Automated answers. I reply myself on WhatsApp.
             </p>
           </div>
         </div>
@@ -318,7 +318,7 @@ export default function ChatAgent() {
               <div className="min-w-0">
                 <p className="font-display font-semibold tracking-tight leading-tight">Hi, I&apos;m Tajwar</p>
                 <p className="mt-1 text-[0.85rem] leading-snug text-muted">
-                  Have a project or a role in mind? Ask me here — I usually reply within a day.
+                  Got a project or a role in mind? Ask me here.
                 </p>
               </div>
               {teaser && (

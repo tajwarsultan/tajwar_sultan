@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { topoPaths, TOPO_W, TOPO_H } from './lib/topo'
 
-export const alt = 'Tajwar Sultan — Senior Full-Stack Developer'
+export const alt = 'Tajwar Sultan, full-stack developer in Gilgit, Pakistan'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
