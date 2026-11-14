@@ -23,6 +23,7 @@ function parse(file) {
     title: meta.title,
     description: meta.description,
     date: meta.date,
+    art: meta.art,
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     minutes: Math.max(1, Math.round(words / 220)),
     body,

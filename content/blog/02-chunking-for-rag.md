@@ -2,6 +2,7 @@
 title: Chunking for RAG: the unglamorous step that decides your answers
 description: How to split documents so retrieval finds the right passage. Sizes, overlap, structure and the mistakes that quietly ruin answers.
 date: 2026-11-14
+art: chunking
 tags: RAG, Retrieval
 ---
 
