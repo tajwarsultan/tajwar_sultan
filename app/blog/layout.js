@@ -8,7 +8,7 @@ export default function BlogLayout({ children }) {
     <>
       <TopoDefs />
       <Navbar />
-      <main className="pt-28 md:pt-36 pb-20 md:pb-28">{children}</main>
+      <main className="pt-32 md:pt-40 pb-20 md:pb-28">{children}</main>
       <Footer />
       <ChatAgent />
     </>

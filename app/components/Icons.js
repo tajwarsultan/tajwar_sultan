@@ -45,6 +45,12 @@ const paths = {
       <circle cx="16" cy="6" r="0.9" fill="currentColor" />
     </>
   ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 7 8 6 8-6" />
+    </>
+  ),
   pin: (
     <>
       <path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" />
