@@ -3,6 +3,8 @@ import Hero from './components/Hero'
 import Facts from './components/Facts'
 import Work from './components/Work'
 import Experience from './components/Experience'
+import Education from './components/Education'
+import Testimonials from './components/Testimonials'
 import About from './components/About'
 import Stack from './components/Stack'
 import Writing from './components/Writing'
@@ -30,6 +32,7 @@ export default function Home() {
         <Facts />
         <Work />
         <Experience />
+        <Education />
         <About />
         <Stack />
         <Writing />

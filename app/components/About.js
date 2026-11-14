@@ -1,10 +1,10 @@
 import Reveal from './Reveal'
 import Section from './Section'
-import { education, interests, languages } from '../lib/siteData'
+import { interests, languages } from '../lib/siteData'
 
 export default function About() {
   return (
-    <Section id="about" index="03" label="About" title="A developer from the mountains">
+    <Section id="about" index="04" label="About" title="A developer from the mountains">
       <Reveal className="space-y-6 text-xl md:text-2xl leading-[1.5] tracking-[-0.01em] max-w-3xl">
         <p>
           I started in 2020 as a front-end developer, turning Figma files into interfaces people could actually
@@ -19,16 +19,7 @@ export default function About() {
         </p>
       </Reveal>
 
-      <Reveal className="mt-14 grid sm:grid-cols-3 gap-x-8 gap-y-10 pt-8 border-t border-line">
-        <div>
-          <h3 className="label">Education</h3>
-          <p className="mt-4 font-medium">{education.degree}</p>
-          <p className="mt-1 text-muted leading-relaxed">
-            {education.school}
-            <br />
-            Graduated {education.year}
-          </p>
-        </div>
+      <Reveal className="mt-14 grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-8 border-t border-line">
         <div>
           <h3 className="label">Languages</h3>
           <ul className="mt-4 space-y-2">
