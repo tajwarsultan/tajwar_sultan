@@ -73,7 +73,7 @@ export default function Contact() {
       <div className="shell relative py-20 md:py-28 grid lg:grid-cols-12 gap-x-10 gap-y-14">
         <Reveal className="lg:col-span-6">
           <p className="label">
-            <span className="text-accent-text">06</span> / Contact
+            <span className="text-accent-text">09</span> / Contact
           </p>
           <h2 id="contact-title" className="display mt-4 text-[clamp(2.6rem,6.4vw,5rem)] leading-[0.98]">
             Have a product to build? Let&apos;s talk.
@@ -116,7 +116,7 @@ export default function Contact() {
                   className="group flex items-center justify-between py-3.5 hover:text-accent-text transition-colors"
                 >
                   <span className="flex items-center gap-2.5 font-medium">
-                    {social.icon !== 'arrow' && <Icon name={social.icon} size={17} />}
+                    <Icon name={social.icon} size={17} />
                     {social.label}
                   </span>
                   <Icon name="arrow" size={15} className="arrow text-muted" />

@@ -1,9 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Icon from './Icons'
 import Logo from './Logo'
 import { navLinks, site } from '../lib/siteData'
+
+// Height of the contact bar above the header on the home page (2.5rem + 1px border).
+const TOP_BAR = 41
 
 function ThemeToggle() {
   const toggle = () => {
@@ -22,7 +27,7 @@ function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Switch between light and dark theme"
-      className="grid place-items-center w-10 h-10 rounded-full text-muted hover:text-ink hover:bg-surface transition-colors"
+      className="grid place-items-center w-10 h-10 rounded-full text-muted hover:text-ink hover:bg-white/10 transition-colors"
     >
       <Icon name="sun" size={18} className="theme-sun" />
       <Icon name="moon" size={18} className="theme-moon" />
@@ -34,29 +39,54 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const pathname = usePathname()
+  const isCurrent = (href) => active === href || (!href.startsWith('/#') && pathname.startsWith(href))
 
   // Highlight the nav link for the section currently crossing the middle of the screen.
   useEffect(() => {
-    const sections = navLinks.map((l) => document.querySelector(l.href)).filter(Boolean)
+    const targets = new Map()
+    for (const link of navLinks) {
+      // The Blog link has no section of its own on the home page, so it follows the Writing section.
+      const selector = link.href.startsWith('/#') ? link.href.slice(1) : link.href === '/blog' ? '#writing' : null
+      const el = selector && document.querySelector(selector)
+      if (el) targets.set(el, link.href)
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
-          else setActive((current) => (current === `#${entry.target.id}` ? '' : current))
+          const href = targets.get(entry.target)
+          if (entry.isIntersecting) setActive(href)
+          else setActive((current) => (current === href ? '' : current))
         }
       },
       { rootMargin: '-45% 0px -55% 0px' }
     )
-    sections.forEach((el) => observer.observe(el))
+    targets.forEach((_, el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
+  const headerRef = useRef(null)
+  const isHome = pathname === '/'
+
+  // On the home page (desktop) the header starts below the slim contact bar and
+  // rides up with the page until it reaches the top, where it turns solid.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const desktop = window.matchMedia('(min-width: 768px)')
+    const onScroll = () => {
+      const bar = isHome && desktop.matches ? TOP_BAR : 0
+      headerRef.current?.style.setProperty('--nav-top', `${Math.max(0, bar - window.scrollY)}px`)
+      setScrolled(window.scrollY > bar + 8)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [isHome])
+
+  const solid = scrolled || open || !isHome
 
   useEffect(() => {
     if (!open) return
@@ -67,43 +97,36 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color] duration-300 border-b ${
-        scrolled || open ? 'bg-bg/85 backdrop-blur-md border-line' : 'border-transparent'
-      }`}
+      ref={headerRef}
+      className={`site-header on-dark ${isHome ? 'is-home' : ''} ${solid ? 'is-solid' : ''}`}
     >
-      <nav className="shell flex items-center justify-between h-16" aria-label="Main">
-        <a href="#top" aria-label="Tajwar Sultan, home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
+      <nav className="shell flex items-center justify-between h-[4.5rem]" aria-label="Main">
+        <Link href="/#top" aria-label="Tajwar Sultan, home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
           <Logo size={28} />
           Tajwar Sultan
-        </a>
+        </Link>
 
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              aria-current={active === link.href ? 'true' : undefined}
-              className="nav-link text-sm text-muted hover:text-ink transition-colors"
+              aria-current={isCurrent(link.href) ? 'true' : undefined}
+              className="nav-link text-[0.95rem] text-ink/80 hover:text-ink transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-1">
           <ThemeToggle />
-          <a
-            href={site.cv}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-ghost max-sm:!hidden !min-h-10 !px-4 text-sm ml-1"
-          >
-            Résumé
-            <Icon name="arrow" size={14} className="arrow" />
-          </a>
+          <Link href="/#contact" className="btn btn-accent btn-sharp max-sm:!hidden !min-h-11 !px-5 text-[0.95rem] ml-2">
+            Start a project
+          </Link>
           <button
             type="button"
-            className="md:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-surface transition-colors"
+            className="lg:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-white/10 transition-colors"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -115,17 +138,17 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="md:hidden border-t border-line max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
+        <div id="mobile-menu" className="lg:hidden border-t border-line max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
           <div className="shell py-3 flex flex-col">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="py-3 font-display text-2xl font-medium tracking-tight border-b border-line last:border-0"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a href={site.cv} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-4 mb-2">
               Download résumé

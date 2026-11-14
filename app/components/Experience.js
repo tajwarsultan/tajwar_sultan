@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <Section
       id="experience"
-      index="02"
+      index="03"
       label="Experience"
       title="Where I've worked"
       intro="I started on the front end in 2020 and have been moving down the stack ever since."
