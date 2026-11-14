@@ -1,3 +1,4 @@
+import { posts } from '../lib/posts'
 import { education, experiences, faqs, languages, projects, site, socials, stack } from '../lib/siteData'
 
 export const dynamic = 'force-static'
@@ -28,6 +29,10 @@ export function GET() {
     '## Projects',
     '',
     ...projects.map((p) => `- [${p.title}](${p.href}): ${p.description} (${p.tags.join(', ')})`),
+    '',
+    '## Articles',
+    '',
+    ...posts.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
     '',
     '## Experience',
     '',
