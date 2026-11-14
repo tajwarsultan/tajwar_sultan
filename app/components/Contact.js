@@ -91,6 +91,15 @@ export default function Contact() {
             </a>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <CopyEmail />
+              <a
+                href={`https://wa.me/${site.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost !min-h-10 !px-4 text-sm"
+              >
+                <Icon name="whatsapp" size={15} />
+                WhatsApp
+              </a>
               <a href={site.phoneHref} className="link text-muted hover:text-ink">
                 {site.phone}
               </a>

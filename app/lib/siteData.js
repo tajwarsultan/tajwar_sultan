@@ -11,6 +11,8 @@ export const site = {
   location: 'Gilgit, Pakistan',
   coords: '35.9208° N, 74.3100° E',
   timeZone: 'Asia/Karachi',
+  whatsapp: '923109450550',
+  whatsappDisplay: '+92 310 9450550',
   cv: '/Tajwar_Sultan_CV_(fullstack).pdf',
 }
 
