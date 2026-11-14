@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Icon from './Icons'
 import LocalTime from './LocalTime'
+import ToolMarquee from './ToolMarquee'
 import { TopoArt } from './Topo'
 import { site, projects, languages, education } from '../lib/siteData'
 
@@ -93,6 +94,10 @@ export default function Hero() {
             </div>
           ))}
         </dl>
+      </div>
+
+      <div className="relative">
+        <ToolMarquee />
       </div>
     </section>
   )

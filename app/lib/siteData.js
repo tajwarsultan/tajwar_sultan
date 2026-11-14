@@ -234,12 +234,16 @@ export const stack = [
     title: 'Cloud & CMS',
     items: [
       'AWS (S3, Lambda)', 'Vercel', 'Netlify', 'Docker', 'Nginx', 'PM2',
-      'GitHub Actions', 'Strapi', 'Sanity', 'Contentful',
+      'GitHub Actions', 'WordPress', 'HubSpot', 'Strapi', 'Sanity', 'Contentful',
     ],
   },
   {
     title: 'Testing & quality',
     items: ['Jest', 'React Testing Library', 'Cypress', 'Playwright', 'ESLint', 'Prettier', 'Husky'],
+  },
+  {
+    title: 'Workflow',
+    items: ['Git & GitHub', 'Figma', 'Trello'],
   },
 ]
 
@@ -270,4 +274,47 @@ export const faqs = [
     q: 'How do I start a project with Tajwar?',
     a: 'Send a short note about what you are building, your timeline and any links. We talk it through, and I come back with the scope and next steps.',
   },
+]
+
+// Logos in the hero slider, one array per row. `icon` is the logo's name in simple-icons.
+// After changing this list, run `npm run sprite` to rebuild public/tools.svg.
+export const toolRows = [
+  [
+    { name: 'React', icon: 'react' },
+    { name: 'Next.js', icon: 'nextdotjs' },
+    { name: 'Vue.js', icon: 'vuedotjs' },
+    { name: 'Svelte', icon: 'svelte' },
+    { name: 'Angular', icon: 'angular' },
+    { name: 'TypeScript', icon: 'typescript' },
+    { name: 'JavaScript', icon: 'javascript' },
+    { name: 'Tailwind CSS', icon: 'tailwindcss' },
+    { name: 'Three.js', icon: 'threedotjs' },
+    { name: 'Node.js', icon: 'nodedotjs' },
+    { name: 'Express', icon: 'express' },
+    { name: 'Fastify', icon: 'fastify' },
+    { name: 'GraphQL', icon: 'graphql' },
+    { name: 'PostgreSQL', icon: 'postgresql' },
+    { name: 'MySQL', icon: 'mysql' },
+    { name: 'MongoDB', icon: 'mongodb' },
+    { name: 'Redis', icon: 'redis' },
+  ],
+  [
+    { name: 'WordPress', icon: 'wordpress' },
+    { name: 'HubSpot', icon: 'hubspot' },
+    { name: 'Strapi', icon: 'strapi' },
+    { name: 'Sanity', icon: 'sanity' },
+    { name: 'Contentful', icon: 'contentful' },
+    { name: 'Firebase', icon: 'firebase' },
+    { name: 'Supabase', icon: 'supabase' },
+    { name: 'Docker', icon: 'docker' },
+    { name: 'Nginx', icon: 'nginx' },
+    { name: 'Vercel', icon: 'vercel' },
+    { name: 'Netlify', icon: 'netlify' },
+    { name: 'GitHub', icon: 'github' },
+    { name: 'GitHub Actions', icon: 'githubactions' },
+    { name: 'Figma', icon: 'figma' },
+    { name: 'Trello', icon: 'trello' },
+    { name: 'Jest', icon: 'jest' },
+    { name: 'Cypress', icon: 'cypress' },
+  ],
 ]
