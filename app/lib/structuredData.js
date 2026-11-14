@@ -94,5 +94,38 @@ const work = {
 export const siteJsonLd = { '@context': 'https://schema.org', '@graph': [person, website, service] }
 export const homeJsonLd = { '@context': 'https://schema.org', '@graph': [profilePage, faqPage, work] }
 
+export const postJsonLd = (post) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${site.url}/blog/${post.slug}#article`,
+  headline: post.title,
+  description: post.description,
+  url: `${site.url}/blog/${post.slug}`,
+  mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+  datePublished: post.date,
+  dateModified: post.date,
+  inLanguage: 'en',
+  keywords: post.tags.join(', '),
+  image: `${site.url}/opengraph-image`,
+  author: { '@type': 'Person', '@id': personId, name: site.name, url: site.url },
+  publisher: { '@id': personId },
+  isPartOf: { '@id': `${site.url}/blog#blog` },
+})
+
+export const blogJsonLd = (posts) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  '@id': `${site.url}/blog#blog`,
+  url: `${site.url}/blog`,
+  name: `${site.name}: notes on AI engineering`,
+  author: { '@id': personId },
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.title,
+    url: `${site.url}/blog/${post.slug}`,
+    datePublished: post.date,
+  })),
+})
+
 // Escapes "<" so content can never close the surrounding script tag.
 export const toJsonLd = (data) => JSON.stringify(data).replace(/</g, '\\u003c')

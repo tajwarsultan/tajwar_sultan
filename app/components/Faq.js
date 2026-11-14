@@ -6,7 +6,7 @@ export default function Faq() {
   return (
     <Section
       id="faq"
-      index="05"
+      index="06"
       label="FAQ"
       title="Questions I get asked"
       intro="Short answers to what people usually want to know before they get in touch."

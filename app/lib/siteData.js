@@ -20,12 +20,13 @@ export const site = {
 }
 
 export const navLinks = [
-  { href: '#work', label: 'Work' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#about', label: 'About' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#work', label: 'Work' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#about', label: 'About' },
+  { href: '/#stack', label: 'Stack' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export const socials = [

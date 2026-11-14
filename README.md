@@ -17,6 +17,12 @@ npm run dev
 All copy lives in `app/lib/siteData.js` — projects, work experience, education, languages and the tech stack.
 Employment history mirrors the CV in `public/`; keep the two in sync.
 
+## Blog
+
+Articles are Markdown files in `content/blog`. The number at the start of the filename sets the order.
+Each file starts with `title`, `description`, `date` and `tags`. Add a file and it appears on `/blog`,
+the home page, the sitemap and `/llms.txt`.
+
 ## CV
 
 `/cv` renders the CV from the same data as the site. `public/Tajwar-Sultan-CV.pdf` is that page printed to A4,
