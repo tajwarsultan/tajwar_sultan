@@ -2,6 +2,36 @@
 
 import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
+import Icon from './Icons'
+import Reveal from './Reveal'
+import { TopoArt } from './Topo'
+import { site, socials } from '../lib/siteData'
+
+const emailConfig = {
+  service: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+  template: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+  key: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+}
+const emailReady = Object.values(emailConfig).every((v) => v && !v.startsWith('your_'))
+
+function CopyEmail() {
+  const [copied, setCopied] = useState(false)
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(site.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {}
+  }
+
+  return (
+    <button type="button" onClick={copy} className="btn btn-ghost !min-h-10 !px-4 text-sm">
+      <Icon name={copied ? 'check' : 'copy'} size={15} />
+      <span aria-live="polite">{copied ? 'Copied' : 'Copy email'}</span>
+    </button>
+  )
+}
 
 export default function Contact() {
   const formRef = useRef(null)
@@ -9,122 +39,163 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setStatus('sending')
+    const form = formRef.current
+    const data = new FormData(form)
 
+    // Without EmailJS keys, hand the message to the visitor's own mail app instead of failing.
+    if (!emailReady) {
+      const body = `${data.get('message')}\n\n— ${data.get('name')} (${data.get('email')})`
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+        data.get('subject')
+      )}&body=${encodeURIComponent(body)}`
+      return
+    }
+
+    setStatus('sending')
     try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-      )
+      await emailjs.sendForm(emailConfig.service, emailConfig.template, form, emailConfig.key)
       setStatus('sent')
-      formRef.current.reset()
-      setTimeout(() => setStatus('idle'), 4000)
+      form.reset()
     } catch {
       setStatus('error')
-      setTimeout(() => setStatus('idle'), 4000)
     }
   }
 
   return (
-    <section id="contact" className="py-16 md:py-20 bg-background-50" aria-label="Contact form">
-      <div className="max-w-3xl mx-auto px-4 md:px-6">
-        <div className="text-center mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-xs font-semibold mb-4">
-            Get In Touch
-          </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground-950">Let&apos;s Work Together</h2>
-          <p className="mt-3 text-base text-foreground-500 max-w-md mx-auto">
-            Have a project in mind? Drop a message and I&apos;ll get back to you within 24 hours.
-          </p>
-        </div>
+    <section id="contact" className="relative border-t border-line overflow-hidden" aria-labelledby="contact-title">
+      <div
+        className="absolute inset-0 text-ink opacity-[0.1] pointer-events-none"
+        style={{ maskImage: 'radial-gradient(90% 80% at 10% 100%, #000 15%, transparent 70%)' }}
+      >
+        <TopoArt x={500} y={250} w={700} className="w-full h-full" />
+      </div>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="bg-background-50 rounded-2xl border border-background-200/60 p-6 md:p-8 space-y-5"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label htmlFor="contact-name" className="block text-sm font-medium text-foreground-700 mb-1.5">
-                Full Name
-              </label>
-              <input
-                id="contact-name"
-                name="name"
-                required
-                placeholder="Your name"
-                className="w-full px-4 py-3 rounded-xl border border-background-200/70 bg-background-50 text-sm text-foreground-900 placeholder:text-foreground-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-              />
-            </div>
-            <div>
-              <label htmlFor="contact-email" className="block text-sm font-medium text-foreground-700 mb-1.5">
-                Email Address
-              </label>
-              <input
-                id="contact-email"
-                name="email"
-                type="email"
-                required
-                placeholder="you@company.com"
-                className="w-full px-4 py-3 rounded-xl border border-background-200/70 bg-background-50 text-sm text-foreground-900 placeholder:text-foreground-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="contact-subject" className="block text-sm font-medium text-foreground-700 mb-1.5">
-              Subject
-            </label>
-            <input
-              id="contact-subject"
-              name="subject"
-              required
-              placeholder="Project inquiry, collaboration, etc."
-              className="w-full px-4 py-3 rounded-xl border border-background-200/70 bg-background-50 text-sm text-foreground-900 placeholder:text-foreground-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-            />
-          </div>
-          <div>
-            <label htmlFor="contact-message" className="block text-sm font-medium text-foreground-700 mb-1.5">
-              Message
-            </label>
-            <textarea
-              id="contact-message"
-              name="message"
-              required
-              rows={5}
-              maxLength={500}
-              placeholder="Tell me about your project, timeline, and budget..."
-              className="w-full px-4 py-3 rounded-xl border border-background-200/70 bg-background-50 text-sm text-foreground-900 placeholder:text-foreground-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all resize-none"
-            />
-            <p className="text-xs text-foreground-400 mt-1">Max 500 characters</p>
-          </div>
-          {status === 'sent' && (
-            <p className="text-center text-sm text-primary-600 font-medium bg-primary-50 rounded-xl py-3">
-              <i className="ri-check-double-line mr-1" aria-hidden />
-              Message sent successfully! I&apos;ll get back to you soon.
-            </p>
-          )}
-          {status === 'error' && (
-            <p className="text-center text-sm text-red-600 font-medium bg-red-50 rounded-xl py-3">
-              Something went wrong. Please try emailing me directly.
-            </p>
-          )}
-          <button
-            type="submit"
-            disabled={status === 'sending'}
-            className="w-full inline-flex items-center justify-center gap-2 bg-primary-500 text-white px-6 py-3.5 rounded-full text-sm font-semibold hover:bg-primary-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {status === 'sending' ? 'Sending…' : 'Send Message'}
-            <i className="ri-send-plane-line" aria-hidden />
-          </button>
-          <p className="text-center text-xs text-foreground-400">
-            Prefer email?{' '}
-            <a href="mailto:tajwar.sultan00@gmail.com" className="text-primary-600 hover:text-primary-700 font-medium">
-              tajwar.sultan00@gmail.com
-            </a>
+      <div className="shell relative py-20 md:py-28 grid lg:grid-cols-12 gap-x-10 gap-y-14">
+        <Reveal className="lg:col-span-6">
+          <p className="label">
+            <span className="text-accent-text">05</span> / Contact
           </p>
-        </form>
+          <h2 id="contact-title" className="display mt-4 text-[clamp(2.6rem,6.4vw,5rem)] leading-[0.98]">
+            Have a product to build? Let&apos;s talk.
+          </h2>
+          <p className="mt-6 text-lg text-muted leading-relaxed max-w-md">
+            Tell me what you&apos;re making and where you&apos;re stuck. I usually reply within a day.
+          </p>
+
+          <div className="mt-10">
+            <a
+              href={`mailto:${site.email}`}
+              className="link font-display font-semibold tracking-tight text-[clamp(1.2rem,3.1vw,1.9rem)] break-all"
+            >
+              {site.email}
+            </a>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <CopyEmail />
+              <a href={site.phoneHref} className="link text-muted hover:text-ink">
+                {site.phone}
+              </a>
+            </div>
+          </div>
+
+          <ul className="mt-12 grid grid-cols-2 gap-x-8 max-w-md border-t border-line">
+            {socials.map((social) => (
+              <li key={social.label} className="border-b border-line">
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between py-3.5 hover:text-accent-text transition-colors"
+                >
+                  <span className="flex items-center gap-2.5 font-medium">
+                    {social.icon !== 'arrow' && <Icon name={social.icon} size={17} />}
+                    {social.label}
+                  </span>
+                  <Icon name="arrow" size={15} className="arrow text-muted" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal className="lg:col-span-6 lg:pl-6 self-start" delay={100}>
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="self-start rounded-2xl border border-line bg-surface p-6 md:p-8 space-y-5"
+          >
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label htmlFor="contact-name" className="label block mb-2">
+                  Name
+                </label>
+                <input id="contact-name" name="name" required autoComplete="name" placeholder="Your name" className="field" />
+              </div>
+              <div>
+                <label htmlFor="contact-email" className="label block mb-2">
+                  Email
+                </label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder="you@company.com"
+                  className="field"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="contact-subject" className="label block mb-2">
+                Subject
+              </label>
+              <input
+                id="contact-subject"
+                name="subject"
+                required
+                placeholder="New project, contract role, collaboration…"
+                className="field"
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-message" className="label block mb-2">
+                Message
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                rows={6}
+                maxLength={2000}
+                placeholder="What are you building, and what do you need help with?"
+                className="field resize-y min-h-32"
+              />
+            </div>
+
+            <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full disabled:opacity-60">
+              {status === 'sending' ? 'Sending…' : 'Send message'}
+              <Icon name="arrow" size={15} className="arrow" />
+            </button>
+
+            <p role="status" aria-live="polite" className="text-sm min-h-5">
+              {status === 'sent' && (
+                <span className="flex items-center gap-2">
+                  <Icon name="check" size={16} className="text-accent" />
+                  Message sent — thank you. I&apos;ll be in touch soon.
+                </span>
+              )}
+              {status === 'error' && (
+                <span>
+                  That didn&apos;t send. Please email me directly at{' '}
+                  <a href={`mailto:${site.email}`} className="underline">
+                    {site.email}
+                  </a>
+                  .
+                </span>
+              )}
+            </p>
+          </form>
+        </Reveal>
       </div>
     </section>
   )

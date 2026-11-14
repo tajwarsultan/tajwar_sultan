@@ -1,11 +1,11 @@
 {
   "name": "Tajwar Sultan — Portfolio",
   "short_name": "Tajwar Sultan",
-  "description": "Senior Full Stack Developer & AI Engineer portfolio",
+  "description": "Senior full-stack developer portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fafaf9",
-  "theme_color": "#00753e",
+  "background_color": "#f4f1ea",
+  "theme_color": "#171612",
   "lang": "en",
   "icons": [
     {

@@ -1,25 +1,33 @@
-import { Outfit, Inter } from 'next/font/google'
+import { Bricolage_Grotesque, Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
-const outfit = Outfit({
-  variable: '--font-display',
+const display = Bricolage_Grotesque({
+  variable: '--ff-display',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  axes: ['opsz'],
   display: 'swap',
 })
 
-const inter = Inter({
-  variable: '--font-sans',
+const sans = Geist({
+  variable: '--ff-sans',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 })
+
+const mono = Geist_Mono({
+  variable: '--ff-mono',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+// Runs before paint: applies a saved theme and marks the document as JS-enabled.
+const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}d.classList.add('js')})()`
 
 const siteUrl = 'https://tajwarsultan.dev/'
 const siteName = 'Tajwar Sultan'
-const defaultTitle = 'Tajwar Sultan — Senior Full Stack Developer & AI Engineer | CV Portfolio'
+const defaultTitle = 'Tajwar Sultan — Senior Full-Stack Developer'
 const defaultDescription =
-  'Tajwar Sultan is a Senior Full Stack Developer and AI Engineer with 6+ years of experience building scalable SaaS platforms, AI-powered applications, and cloud-native products. Based in Gilgit-Baltistan, Pakistan. Specialized in React, Next.js, Vue.js, TypeScript, Node.js, and AI integrations.'
+  'Tajwar Sultan is a senior full-stack JavaScript developer based in Gilgit, Pakistan. Since 2020 he has built SaaS platforms, dashboards and AI-powered web apps with React, Next.js, Vue.js and Node.js for startups and product teams worldwide.'
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -72,15 +80,15 @@ export const metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName,
-    title: 'Tajwar Sultan — Senior Full Stack Developer & AI Engineer',
+    title: 'Tajwar Sultan — Senior Full-Stack Developer',
     description:
-      '6+ years building scalable SaaS, AI-powered apps, and cloud-native products. React, Next.js, Vue.js, TypeScript, Node.js specialist.',
+      'Full-stack developer building SaaS products and AI features with React, Next.js, Vue.js and Node.js. Based in Gilgit, Pakistan — working with teams worldwide.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tajwar Sultan — Senior Full Stack Developer & AI Engineer',
+    title: 'Tajwar Sultan — Senior Full-Stack Developer',
     description:
-      '6+ years building scalable SaaS, AI-powered apps, and cloud-native products. React, Next.js, Vue.js, TypeScript, Node.js specialist.',
+      'Full-stack developer building SaaS products and AI features with React, Next.js, Vue.js and Node.js. Based in Gilgit, Pakistan — working with teams worldwide.',
     creator: '@tajwarsultan',
   },
   other: {
@@ -93,8 +101,8 @@ export const metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#00753e' },
-    { media: '(prefers-color-scheme: dark)', color: '#004f2b' },
+    { media: '(prefers-color-scheme: light)', color: '#f4f1ea' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f100e' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -104,7 +112,7 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Tajwar Sultan',
-  jobTitle: 'Senior Full Stack Developer & AI Engineer',
+  jobTitle: 'Senior Full-Stack Developer',
   description: defaultDescription,
   address: {
     '@type': 'PostalAddress',
@@ -164,8 +172,11 @@ export default function RootLayout({ children }) {
   const jsonLd = [personJsonLd, websiteJsonLd, professionalServiceJsonLd]
 
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased bg-background-50 text-foreground-600" suppressHydrationWarning>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+      </head>
+      <body className="font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
