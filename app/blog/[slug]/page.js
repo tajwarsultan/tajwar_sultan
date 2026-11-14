@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import ArticleArt from '../../components/ArticleArt'
 import Icon from '../../components/Icons'
 import Markdown from '../../components/Markdown'
 import { formatDate, getPost, posts } from '../../lib/posts'
@@ -64,6 +65,8 @@ export default async function Post({ params }) {
           </p>
         </header>
 
+        <ArticleArt name={post.art} className="mt-8" />
+
         <div className="mt-10">
           <Markdown source={post.body} />
         </div>
@@ -100,10 +103,15 @@ export default async function Post({ params }) {
             href={`/blog/${next.slug}`}
             className="group mt-12 block rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-line-strong"
           >
-            <p className="label">Read next</p>
-            <p className="mt-2 font-display text-xl md:text-2xl font-semibold tracking-tight leading-snug group-hover:text-accent-text transition-colors">
-              {next.title}
-            </p>
+            <div className="sm:flex sm:items-center sm:gap-6">
+              <ArticleArt name={next.art} className="sm:w-44 shrink-0 !bg-bg" />
+              <div className="mt-4 sm:mt-0">
+                <p className="label">Read next</p>
+                <p className="mt-2 font-display text-xl md:text-2xl font-semibold tracking-tight leading-snug group-hover:text-accent-text transition-colors">
+                  {next.title}
+                </p>
+              </div>
+            </div>
           </Link>
         </footer>
       </div>

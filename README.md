@@ -20,7 +20,7 @@ Employment history mirrors the CV in `public/`; keep the two in sync.
 ## Blog
 
 Articles are Markdown files in `content/blog`. The number at the start of the filename sets the order.
-Each file starts with `title`, `description`, `date` and `tags`. Add a file and it appears on `/blog`,
+Each file starts with `title`, `description`, `date`, `art` and `tags`. `art` names one of the illustrations in `app/components/ArticleArt.js`. Add a file and it appears on `/blog`,
 the home page, the sitemap and `/llms.txt`.
 
 ## CV

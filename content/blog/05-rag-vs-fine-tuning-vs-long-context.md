@@ -2,6 +2,7 @@
 title: RAG, fine-tuning or a long prompt? How I choose
 description: Three ways to make a language model useful for your product, what each is good at, and a simple order to try them in.
 date: 2026-11-14
+art: paths
 tags: LLMs, Architecture
 ---
 

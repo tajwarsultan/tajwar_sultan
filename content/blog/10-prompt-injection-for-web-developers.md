@@ -2,6 +2,7 @@
 title: Prompt injection: the security problem every AI feature inherits
 description: What prompt injection is, why it cannot simply be filtered out, and the design rules that limit what an attacker can do with it.
 date: 2026-11-14
+art: security
 tags: Security, LLMs
 ---
 

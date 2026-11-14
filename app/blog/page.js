@@ -1,4 +1,4 @@
-import PostList from '../components/PostList'
+import PostCard from '../components/PostCard'
 import { posts } from '../lib/posts'
 import { blogJsonLd, toJsonLd } from '../lib/structuredData'
 
@@ -21,9 +21,16 @@ export default function Blog() {
           build products, in plain language.
         </p>
       </header>
-      <div className="mt-14">
-        <PostList posts={posts} headingLevel="h2" />
+      <div className="mt-14 pt-10 border-t border-line">
+        <PostCard post={posts[0]} headingLevel="h2" wide />
       </div>
+      <ul className="mt-14 pt-12 border-t border-line grid sm:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-14">
+        {posts.slice(1).map((post) => (
+          <li key={post.slug}>
+            <PostCard post={post} headingLevel="h2" />
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

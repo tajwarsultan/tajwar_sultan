@@ -2,6 +2,7 @@
 title: Hybrid search and reranking: two upgrades that fix most RAG retrieval
 description: Why vector search alone misses exact terms, how to combine it with keyword search, and what a reranker adds.
 date: 2026-11-14
+art: hybrid
 tags: RAG, Search
 ---
 
