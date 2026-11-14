@@ -30,7 +30,7 @@ export default function Hero() {
             </p>
 
             <h1
-              className="rise display mt-6 text-[clamp(2.7rem,7.4vw,5.9rem)] leading-[0.96]"
+              className="rise display mt-6 text-[clamp(2.6rem,6.5vw,5.25rem)] leading-[0.98]"
               style={{ '--i': 1 }}
             >
               Full-stack developer building SaaS products and{' '}
@@ -59,12 +59,12 @@ export default function Hero() {
             <figure className="relative">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-surface border border-line">
                 <Image
-                  src="/tajwar-sultan.png"
+                  src="/portrait.jpg"
                   alt="Portrait of Tajwar Sultan"
                   fill
                   priority
                   sizes="(max-width: 1024px) 304px, 304px"
-                  className="object-cover object-top"
+                  className="object-cover"
                 />
               </div>
               <figcaption className="mt-3 flex items-start justify-between gap-4 label">

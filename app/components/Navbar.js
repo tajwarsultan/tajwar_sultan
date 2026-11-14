@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Icon from './Icons'
+import Logo from './Logo'
 import { navLinks, site } from '../lib/siteData'
 
 function ThemeToggle() {
@@ -54,10 +55,8 @@ export default function Navbar() {
       }`}
     >
       <nav className="shell flex items-center justify-between h-16" aria-label="Main">
-        <a href="#top" className="flex items-center gap-2.5 font-display font-semibold text-[1.05rem] tracking-tight">
-          <span className="grid place-items-center w-7 h-7 rounded-md bg-ink text-bg text-[0.8rem] font-semibold">
-            TS
-          </span>
+        <a href="#top" aria-label="Tajwar Sultan — home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
+          <Logo size={28} />
           Tajwar Sultan
         </a>
 

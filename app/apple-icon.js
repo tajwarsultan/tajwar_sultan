@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { logoRidge, logoSummit } from './components/Logo'
 
 export const size = { width: 180, height: 180 }
 export const contentType = 'image/png'
@@ -14,14 +15,13 @@ export default function AppleIcon() {
           alignItems: 'center',
           justifyContent: 'center',
           background: '#171612',
-          borderRadius: 36,
-          color: '#ff8a3d',
-          fontSize: 96,
-          fontWeight: 800,
-          fontFamily: 'system-ui, sans-serif',
+          borderRadius: 0,
         }}
       >
-        T
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d={logoRidge} stroke="#f4f1ea" />
+          <path d={logoSummit} stroke="#ff8a3d" />
+        </svg>
       </div>
     ),
     { ...size }
