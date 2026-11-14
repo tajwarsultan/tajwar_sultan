@@ -6,6 +6,7 @@ import About from './components/About'
 import Stack from './components/Stack'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ChatAgent from './components/ChatAgent'
 import { TopoDefs } from './components/Topo'
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <ChatAgent />
     </>
   )
 }
