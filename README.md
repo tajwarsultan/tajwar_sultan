@@ -17,6 +17,11 @@ npm run dev
 All copy lives in `app/lib/siteData.js` — projects, work experience, education, languages and the tech stack.
 Employment history mirrors the CV in `public/`; keep the two in sync.
 
+## CV
+
+`/cv` renders the CV from the same data as the site. `public/Tajwar-Sultan-CV.pdf` is that page printed to A4,
+so after changing `siteData.js`, open `/cv`, print to PDF (A4, no margins, background graphics on) and replace the file.
+
 ## Contact form
 
 The form sends through EmailJS. Copy `.env.example` to `.env.local` and fill in the three keys.

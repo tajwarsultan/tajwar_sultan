@@ -13,7 +13,7 @@ export const site = {
   timeZone: 'Asia/Karachi',
   whatsapp: '923109450550',
   whatsappDisplay: '+92 310 9450550',
-  cv: '/Tajwar_Sultan_CV_(fullstack).pdf',
+  cv: '/Tajwar-Sultan-CV.pdf',
 }
 
 export const navLinks = [
@@ -32,6 +32,16 @@ export const socials = [
 ]
 
 export const projects = [
+  {
+    title: 'CareFirst Billing',
+    kind: 'Medical billing',
+    href: 'https://carefirstbillingsolutions.com/',
+    host: 'carefirstbillingsolutions.com',
+    description: 'Company website for CareFirst Billing Solutions, a medical billing provider. Designed and built for the client.',
+    tags: ['Client website', 'Design', 'Development'],
+    featured: true,
+    isNew: true,
+  },
   {
     title: 'Arcadian',
     kind: 'AI surveillance',
@@ -75,6 +85,7 @@ export const projects = [
     host: 'airagchatbot.vercel.app',
     description: 'Retrieval-augmented chatbot that answers questions from your own documents.',
     tags: ['Next.js', 'RAG', 'Vector DB'],
+    featured: true,
   },
   {
     title: 'SteriPilotAI',
@@ -125,6 +136,9 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
   },
 ]
+
+export const summary =
+  'Senior full-stack JavaScript developer with six years of professional experience building scalable, high-performance web applications and SaaS platforms. Works across the modern JavaScript stack — React, Next.js, Vue and Node.js, with APIs, databases and cloud deployments — and integrates AI features into production products for startups and clients worldwide.'
 
 export const experiences = [
   {

@@ -3,34 +3,81 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Icon from './Icons'
-import { site } from '../lib/siteData'
+import LocalTime from './LocalTime'
+import { experiences, projects, site, stack } from '../lib/siteData'
 
-const topics = ['Start a project', 'Hire for a role', 'Ask a question', 'Just saying hi']
+const current = experiences[0]
+const newest = projects.find((p) => p.isNew) ?? projects[0]
+const otherWork = projects
+  .filter((p) => p.featured && p !== newest)
+  .slice(0, 3)
+  .map((p) => p.title)
+  .join(', ')
 
 const greeting = {
-  from: 'agent',
-  text: "Hi, I'm Tajwar's assistant. I'll take a couple of details and pass you straight to him on WhatsApp. What brings you here?",
+  from: 'me',
+  text: "Hi, I'm Tajwar — a full-stack developer in Gilgit, Pakistan. Ask me anything below, or tell me what you're building and we'll carry on in WhatsApp.",
 }
 
-// A short scripted conversation: topic → name → details → hand-off to WhatsApp.
-const prompts = {
-  name: (topic) =>
-    topic === 'Just saying hi' ? 'Nice of you. Who should I say is saying hi?' : 'Good — he can help with that. What is your name?',
-  details: (name) =>
-    `Thanks, ${name}. In a line or two, what should Tajwar know? Scope, timeline, a link — anything useful.`,
-  done: () => "That's everything I need. Tap below and WhatsApp will open with your message ready to send.",
-}
+// Quick answers, written in the first person and drawn from the same data as the rest of the site.
+const quickAnswers = [
+  {
+    id: 'do',
+    label: 'What do you do?',
+    reply: `I build SaaS platforms, dashboards and AI features end to end: React, Next.js and Vue on the front, Node.js and databases behind them. I've been building for the web since 2020, and I'm currently a senior full-stack developer at ${current.company}.`,
+  },
+  {
+    id: 'available',
+    label: 'Are you available?',
+    reply: "Yes. I'm open to remote roles and freelance projects. I'm on Pakistan time (UTC+5) and work remotely with teams abroad.",
+  },
+  {
+    id: 'stack',
+    label: "What's your stack?",
+    reply: `Day to day: ${stack[0].items.slice(0, 4).join(', ')} and TypeScript on the front end; ${stack[1].items
+      .slice(0, 3)
+      .join(', ')} with PostgreSQL or MongoDB behind it; and OpenAI APIs and RAG pipelines for AI features. The full list is in the Stack section.`,
+  },
+  {
+    id: 'recent',
+    label: 'Recent work?',
+    reply: `My newest project is ${newest.title} (${newest.host}). Before that: ${otherWork}. They're all linked in the Work section.`,
+  },
+]
+
+const facts = ['Open to work', 'Replies within a day']
 
 export default function ChatAgent() {
   const [open, setOpen] = useState(false)
+  const [teaser, setTeaser] = useState(false)
   const [messages, setMessages] = useState([greeting])
-  const [step, setStep] = useState('topic')
+  const [step, setStep] = useState('chat') // chat → name → details → done
+  const [asked, setAsked] = useState([])
   const [answers, setAnswers] = useState({})
   const [typing, setTyping] = useState(false)
   const [draft, setDraft] = useState('')
   const logRef = useRef(null)
   const inputRef = useRef(null)
   const timer = useRef(null)
+
+  // Introduce the chat once per visit, a few seconds after the page loads.
+  useEffect(() => {
+    let seen = false
+    try {
+      seen = sessionStorage.getItem('chat-teaser') === 'seen'
+    } catch {}
+    // On phones the card would cover the hero buttons, so it only auto-shows on wider screens.
+    if (seen || !window.matchMedia('(min-width: 768px)').matches) return
+    const id = setTimeout(() => setTeaser(true), 3500)
+    return () => clearTimeout(id)
+  }, [])
+
+  const dismissTeaser = () => {
+    setTeaser(false)
+    try {
+      sessionStorage.setItem('chat-teaser', 'seen')
+    } catch {}
+  }
 
   useEffect(() => {
     const el = logRef.current
@@ -50,30 +97,50 @@ export default function ChatAgent() {
 
   useEffect(() => () => clearTimeout(timer.current), [])
 
-  const agentSay = (text, nextStep) => {
+  const say = (text) => setMessages((m) => [...m, { from: 'visitor', text }])
+
+  const reply = (text, nextStep) => {
     setTyping(true)
     timer.current = setTimeout(() => {
-      setMessages((m) => [...m, { from: 'agent', text }])
+      setMessages((m) => [...m, { from: 'me', text }])
       setTyping(false)
-      setStep(nextStep)
-    }, 650)
+      if (nextStep) setStep(nextStep)
+    }, 700)
   }
 
-  const answer = (value) => {
+  const askQuick = (item) => {
+    if (typing) return
+    say(item.label)
+    setAsked((a) => [...a, item.id])
+    reply(item.reply)
+  }
+
+  const startHandoff = () => {
+    if (typing) return
+    say('Message you on WhatsApp')
+    reply("Happy to. What's your name?", 'name')
+  }
+
+  const submit = (value) => {
     const text = value.trim()
     if (!text || typing) return
     setDraft('')
-    setMessages((m) => [...m, { from: 'user', text }])
+    say(text)
 
-    if (step === 'topic') {
-      setAnswers({ topic: text })
-      agentSay(prompts.name(text), 'name')
+    if (step === 'chat') {
+      // A typed question is one I should answer myself, so carry it over to WhatsApp.
+      setAnswers({ details: text })
+      reply("That deserves a proper answer from me rather than a canned one. What's your name?", 'name')
     } else if (step === 'name') {
       setAnswers((a) => ({ ...a, name: text }))
-      agentSay(prompts.details(text), 'details')
+      if (answers.details) {
+        reply(`Thanks, ${text}. Tap below to send me that on WhatsApp and I'll reply personally.`, 'done')
+      } else {
+        reply(`Good to meet you, ${text}. What should I know? Scope, timeline, a link — anything useful.`, 'details')
+      }
     } else if (step === 'details') {
       setAnswers((a) => ({ ...a, details: text }))
-      agentSay(prompts.done(), 'done')
+      reply("Got it. Tap below to send me that on WhatsApp and I'll reply personally.", 'done')
     }
   }
 
@@ -82,71 +149,90 @@ export default function ChatAgent() {
     setTyping(false)
     setMessages([greeting])
     setAnswers({})
-    setStep('topic')
+    setAsked([])
+    setStep('chat')
     setDraft('')
   }
 
+  const toggle = () => {
+    setOpen((v) => !v)
+    dismissTeaser()
+  }
+
   const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    `Hi Tajwar, I'm ${answers.name}.\nTopic: ${answers.topic}\n\n${answers.details}\n\n— sent from tajwarsultan.dev`
+    `Hi Tajwar, I'm ${answers.name}.\n\n${answers.details}\n\n— sent from tajwarsultan.dev`
   )}`
 
   const placeholder =
-    step === 'topic' ? 'Or type your own…' : step === 'name' ? 'Your name' : 'Type your message…'
+    step === 'chat' ? 'Ask me something…' : step === 'name' ? 'Your name' : 'Type your message…'
+  const remaining = quickAnswers.filter((q) => !asked.includes(q.id))
 
   return (
     <div className="fixed z-40 bottom-4 right-4 md:bottom-6 md:right-6 flex flex-col items-end gap-3">
       {open && (
         <div
           role="dialog"
-          aria-label="Chat with Tajwar's assistant"
+          aria-label="Chat with Tajwar"
           className="chat-panel w-[calc(100vw-2rem)] max-w-[23rem] rounded-2xl border border-line-strong bg-bg shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)] overflow-hidden flex flex-col"
         >
-          <div className="flex items-center gap-3 px-4 py-3.5 bg-surface border-b border-line">
-            <span className="relative shrink-0">
-              <Image
-                src="/tajwar-portrait.jpg"
-                alt=""
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-full object-cover object-[50%_30%] border border-line"
-              />
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#2fa562] border-2 border-surface" />
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="font-display font-semibold tracking-tight leading-tight">Tajwar&apos;s assistant</p>
-              <p className="label !text-[0.62rem] mt-0.5">Hands you over on WhatsApp</p>
+          <div className="bg-surface border-b border-line">
+            <div className="flex items-center gap-3 px-4 pt-3.5 pb-3">
+              <span className="relative shrink-0">
+                <Image
+                  src="/tajwar-portrait.jpg"
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="w-11 h-11 rounded-full object-cover object-[50%_30%] border border-line"
+                />
+                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#2fa562] border-2 border-surface" />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="font-display font-semibold tracking-tight leading-tight">{site.name}</p>
+                <p className="text-[0.8rem] text-muted mt-0.5 truncate">{site.role}</p>
+              </div>
+              <button
+                type="button"
+                onClick={restart}
+                aria-label="Start over"
+                className="grid place-items-center w-8 h-8 rounded-full text-muted hover:text-ink hover:bg-bg transition-colors"
+              >
+                <Icon name="refresh" size={15} />
+              </button>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close chat"
+                className="grid place-items-center w-8 h-8 rounded-full text-muted hover:text-ink hover:bg-bg transition-colors"
+              >
+                <Icon name="close" size={16} />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={restart}
-              aria-label="Start over"
-              className="grid place-items-center w-8 h-8 rounded-full text-muted hover:text-ink hover:bg-bg transition-colors"
-            >
-              <Icon name="refresh" size={15} />
-            </button>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close chat"
-              className="grid place-items-center w-8 h-8 rounded-full text-muted hover:text-ink hover:bg-bg transition-colors"
-            >
-              <Icon name="close" size={16} />
-            </button>
+            <ul className="flex flex-wrap gap-x-3 gap-y-1 px-4 pb-3 label !text-[0.62rem]">
+              <li className="flex items-center gap-1">
+                <Icon name="pin" size={11} />
+                Gilgit · <LocalTime timeZone={site.timeZone} /> PKT
+              </li>
+              {facts.map((fact) => (
+                <li key={fact} className="flex items-center gap-1.5">
+                  <span className="w-1 h-1 rounded-full bg-accent" />
+                  {fact}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div
             ref={logRef}
             role="log"
             aria-live="polite"
-            className="flex flex-col gap-2.5 px-4 py-4 h-[min(21rem,48vh)] overflow-y-auto overscroll-contain"
+            className="flex flex-col gap-2.5 px-4 py-4 h-[min(21rem,46vh)] overflow-y-auto overscroll-contain"
           >
             {messages.map((message, i) => (
               <p
                 key={i}
-                className={`chat-bubble max-w-[85%] px-3.5 py-2.5 text-[0.925rem] leading-snug rounded-2xl whitespace-pre-wrap break-words ${
-                  message.from === 'agent'
-                    ? 'self-start bg-surface rounded-bl-md'
-                    : 'self-end bg-ink text-bg rounded-br-md'
+                className={`chat-bubble max-w-[86%] px-3.5 py-2.5 text-[0.925rem] leading-snug rounded-2xl whitespace-pre-wrap break-words ${
+                  message.from === 'me' ? 'self-start bg-surface rounded-bl-md' : 'self-end bg-ink text-bg rounded-br-md'
                 }`}
               >
                 {message.text}
@@ -154,25 +240,24 @@ export default function ChatAgent() {
             ))}
 
             {typing && (
-              <p className="self-start bg-surface rounded-2xl rounded-bl-md px-4 py-3.5 flex gap-1" aria-label="Assistant is typing">
+              <p className="self-start bg-surface rounded-2xl rounded-bl-md px-4 py-3.5 flex gap-1" aria-label="Tajwar is typing">
                 <i className="chat-dot" />
                 <i className="chat-dot" />
                 <i className="chat-dot" />
               </p>
             )}
 
-            {step === 'topic' && !typing && (
+            {step === 'chat' && !typing && (
               <div className="flex flex-wrap gap-2 pt-1">
-                {topics.map((topic) => (
-                  <button
-                    key={topic}
-                    type="button"
-                    onClick={() => answer(topic)}
-                    className="chat-bubble px-3.5 py-2 text-sm rounded-full border border-line-strong hover:border-accent hover:text-accent-text transition-colors"
-                  >
-                    {topic}
+                {remaining.map((item) => (
+                  <button key={item.id} type="button" onClick={() => askQuick(item)} className="chat-chip chat-bubble">
+                    {item.label}
                   </button>
                 ))}
+                <button type="button" onClick={startHandoff} className="chat-chip chat-chip-strong chat-bubble">
+                  <Icon name="whatsapp" size={14} />
+                  Message me on WhatsApp
+                </button>
               </div>
             )}
           </div>
@@ -188,7 +273,7 @@ export default function ChatAgent() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault()
-                  answer(draft)
+                  submit(draft)
                 }}
                 className="flex items-center gap-2"
               >
@@ -212,23 +297,58 @@ export default function ChatAgent() {
                 </button>
               </form>
             )}
+            <p className="mt-2 text-center text-[0.7rem] text-muted">
+              Quick answers here are automated. I reply personally on WhatsApp.
+            </p>
           </div>
         </div>
       )}
 
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-label={open ? 'Close chat' : 'Chat on WhatsApp'}
-        className="chat-launcher group flex items-center gap-2.5 h-14 pl-4 pr-5 rounded-full bg-ink text-bg shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] transition-colors hover:bg-accent hover:text-on-accent"
-      >
-        <span className="relative grid place-items-center">
-          <Icon name={open ? 'close' : 'whatsapp'} size={22} />
-          {!open && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-accent border-2 border-ink group-hover:border-accent group-hover:bg-on-accent" />}
-        </span>
-        <span className="font-medium text-[0.95rem]">{open ? 'Close' : 'Chat with me'}</span>
-      </button>
+      <div className="chat-launch relative flex flex-col items-end">
+        {!open && (
+          <div className={`chat-teaser ${teaser ? 'is-shown' : ''}`}>
+            <div className="flex items-start gap-3">
+              <Image
+                src="/tajwar-portrait.jpg"
+                alt=""
+                width={36}
+                height={36}
+                className="w-9 h-9 rounded-full object-cover object-[50%_30%] border border-line shrink-0"
+              />
+              <div className="min-w-0">
+                <p className="font-display font-semibold tracking-tight leading-tight">Hi, I&apos;m Tajwar</p>
+                <p className="mt-1 text-[0.85rem] leading-snug text-muted">
+                  Have a project or a role in mind? Ask me here — I usually reply within a day.
+                </p>
+              </div>
+              {teaser && (
+                <button
+                  type="button"
+                  onClick={dismissTeaser}
+                  aria-label="Dismiss"
+                  className="grid place-items-center w-6 h-6 -mt-1 -mr-1 rounded-full text-muted hover:text-ink hover:bg-surface shrink-0"
+                >
+                  <Icon name="close" size={13} />
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        <button
+          type="button"
+          onClick={toggle}
+          aria-expanded={open}
+          aria-label={open ? 'Close chat' : 'Chat with Tajwar on WhatsApp'}
+          className="chat-launcher"
+        >
+          <span className="relative grid place-items-center">
+            <Icon name={open ? 'close' : 'whatsapp'} size={22} className="chat-launcher-icon" />
+            {!open && <span className="chat-launcher-dot" />}
+          </span>
+          <span className="font-medium text-[0.95rem]">{open ? 'Close' : 'Chat with me'}</span>
+        </button>
+      </div>
     </div>
   )
 }
