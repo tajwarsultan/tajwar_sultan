@@ -17,6 +17,11 @@ npm run dev
 All copy lives in `app/lib/siteData.js` — projects, work experience, education, languages and the tech stack.
 Employment history mirrors the CV in `public/`; keep the two in sync.
 
+## Tools slider
+
+The logos at the bottom of the hero come from `toolRows` in `app/lib/siteData.js`. To add one, add an entry with
+its simple-icons name and run `npm run sprite`, which rebuilds `public/tools.svg`.
+
 ## Blog
 
 Articles are Markdown files in `content/blog`. The number at the start of the filename sets the order.
