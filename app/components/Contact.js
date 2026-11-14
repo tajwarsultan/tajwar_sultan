@@ -116,7 +116,7 @@ export default function Contact() {
                   className="group flex items-center justify-between py-3.5 hover:text-accent-text transition-colors"
                 >
                   <span className="flex items-center gap-2.5 font-medium">
-                    {social.icon !== 'arrow' && <Icon name={social.icon} size={17} />}
+                    <Icon name={social.icon} size={17} />
                     {social.label}
                   </span>
                   <Icon name="arrow" size={15} className="arrow text-muted" />
