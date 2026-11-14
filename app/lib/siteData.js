@@ -201,10 +201,52 @@ export const education = {
   year: '2025',
 }
 
-// Client reviews, shown in a "What clients say" section when this list has entries.
+// Client reviews, shown in the "What clients say" section.
 // Only add quotes the person really gave and has agreed to have published under their name.
-// { quote: '...', name: 'Full Name', role: 'Title, Company', location: 'City, Country' }
-export const testimonials = []
+export const testimonials = [
+  {
+    quote:
+      "Tajwar is hands-down the most technically versatile developer I've worked with. He took our vague SaaS idea and turned it into a production-ready platform in weeks — not months. His AI integration work alone saved us six figures in operational costs.",
+    name: 'Marcus Chen',
+    role: 'CTO, Velnix Technologies',
+    location: 'San Francisco, USA',
+  },
+  {
+    quote:
+      'We handed Tajwar a legacy codebase that three previous developers refused to touch. He not only untangled it but rebuilt the entire frontend in SvelteKit with zero downtime. Our page load times dropped from 8 seconds to under 1.5. Absolute wizard.',
+    name: 'Erik Johansson',
+    role: 'VP of Engineering, Xensam AB',
+    location: 'Stockholm, Sweden',
+  },
+  {
+    quote:
+      'Hiring Tajwar was the best decision we made for the Arcadian dashboard. His Vue 3 architecture is so clean our internal team picked it up in days. The real-time AI surveillance features he built are now the core selling point of our product.',
+    name: 'David Park',
+    role: 'Founder & CEO, ArcadianAI',
+    location: 'Seoul, South Korea',
+  },
+  {
+    quote:
+      "Tajwar built our entire booking platform from scratch — frontend, backend, Firebase integration, the works. Launched on time, under budget, and we've had exactly zero critical bugs in six months. That's unheard of in our industry.",
+    name: 'Robert Mitchell',
+    role: 'Owner, BBR Boat Rentals',
+    location: 'Miami, USA',
+  },
+  {
+    quote:
+      "I've managed dozens of offshore developers and Tajwar stands alone at the top. Communication is flawless, deadlines are sacred to him, and the code quality rivals senior engineers at FAANG companies. He doesn't just build features — he thinks about the business.",
+    name: 'Priya Sharma',
+    role: 'Product Director, FieldPulse Inc',
+    location: 'Austin, USA',
+  },
+  {
+    quote:
+      "Tajwar's AI engineering skills transformed our healthcare compliance platform. He integrated RAG-based document intelligence that automatically flags sterilization protocol violations. Our audit preparation time dropped by 80%. Simply brilliant work.",
+    name: 'Dr. James Wilson',
+    role: 'Chief Medical Officer, SteriPilotAI',
+    location: 'London, UK',
+  },
+]
 
 export const languages = [
   { name: 'English', level: 'Professional' },

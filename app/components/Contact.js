@@ -73,7 +73,7 @@ export default function Contact() {
       <div className="shell relative py-20 md:py-28 grid lg:grid-cols-12 gap-x-10 gap-y-14">
         <Reveal className="lg:col-span-6">
           <p className="label">
-            <span className="text-accent-text">08</span> / Contact
+            <span className="text-accent-text">09</span> / Contact
           </p>
           <h2 id="contact-title" className="display mt-4 text-[clamp(2.6rem,6.4vw,5rem)] leading-[0.98]">
             Have a product to build? Let&apos;s talk.

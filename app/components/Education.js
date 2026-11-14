@@ -6,7 +6,7 @@ export default function Education() {
   return (
     <Section
       id="education"
-      index="03"
+      index="04"
       label="Education"
       title="Where I studied"
       intro="A computer science degree from Karakoram International University in Gilgit."
