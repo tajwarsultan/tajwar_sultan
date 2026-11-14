@@ -20,8 +20,8 @@ const mono = Geist_Mono({
   display: 'swap',
 })
 
-// Runs before paint: applies a saved theme and marks the document as JS-enabled.
-const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}d.classList.add('js')})()`
+// Runs before paint: applies a saved theme.
+const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}})()`
 
 const siteUrl = 'https://tajwarsultan.dev/'
 const siteName = 'Tajwar Sultan'
