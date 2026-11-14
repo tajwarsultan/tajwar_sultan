@@ -73,7 +73,7 @@ export default function Contact() {
       <div className="shell relative py-20 md:py-28 grid lg:grid-cols-12 gap-x-10 gap-y-14">
         <Reveal className="lg:col-span-6">
           <p className="label">
-            <span className="text-accent-text">05</span> / Contact
+            <span className="text-accent-text">06</span> / Contact
           </p>
           <h2 id="contact-title" className="display mt-4 text-[clamp(2.6rem,6.4vw,5rem)] leading-[0.98]">
             Have a product to build? Let&apos;s talk.
@@ -190,7 +190,7 @@ export default function Contact() {
               {status === 'sent' && (
                 <span className="flex items-center gap-2">
                   <Icon name="check" size={16} className="text-accent" />
-                  Message sent — thank you. I&apos;ll be in touch soon.
+                  Message sent, thank you. I&apos;ll be in touch soon.
                 </span>
               )}
               {status === 'error' && (

@@ -33,6 +33,23 @@ function ThemeToggle() {
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('')
+
+  // Highlight the nav link for the section currently crossing the middle of the screen.
+  useEffect(() => {
+    const sections = navLinks.map((l) => document.querySelector(l.href)).filter(Boolean)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+          else setActive((current) => (current === `#${entry.target.id}` ? '' : current))
+        }
+      },
+      { rootMargin: '-45% 0px -55% 0px' }
+    )
+    sections.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -55,14 +72,19 @@ export default function Navbar() {
       }`}
     >
       <nav className="shell flex items-center justify-between h-16" aria-label="Main">
-        <a href="#top" aria-label="Tajwar Sultan — home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
+        <a href="#top" aria-label="Tajwar Sultan, home" className="flex items-center gap-2 font-display font-semibold text-[1.05rem] tracking-tight">
           <Logo size={28} />
           Tajwar Sultan
         </a>
 
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm text-muted hover:text-ink transition-colors">
+            <a
+              key={link.href}
+              href={link.href}
+              aria-current={active === link.href ? 'true' : undefined}
+              className="nav-link text-sm text-muted hover:text-ink transition-colors"
+            >
               {link.label}
             </a>
           ))}

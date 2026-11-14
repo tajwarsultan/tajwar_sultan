@@ -56,7 +56,7 @@ export default function Work() {
       index="01"
       label="Work"
       title="Selected work"
-      intro="Products I've helped design, build and ship — dashboards, SaaS platforms and AI tools. Every link opens the live product."
+      intro="Things I've built, or helped build, that are live right now. Click any one and you land on the real product."
     >
       <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-10">
         {featured.map((project, i) => (
