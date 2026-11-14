@@ -38,6 +38,17 @@ so after changing `siteData.js`, open `/cv`, print to PDF (A4, no margins, backg
 The form sends through EmailJS. Copy `.env.example` to `.env.local` and fill in the three keys.
 Without them, submitting the form opens the visitor's mail app with the message pre-filled.
 
+## Deployment
+
+The site is hosted on Netlify at https://tajwarsultan.netlify.app. Every push to `main` triggers a production
+deploy, and every pull request gets its own preview URL.
+
+Production deploys use Netlify credits. If a deploy from `main` shows as skipped, check the team's Billing page:
+when credits run out, production deploys pause until the next billing cycle, while previews keep working. Once
+credits are back, use Deploys → Trigger deploy in Netlify, or push a new commit to `main`.
+
+Set the three `NEXT_PUBLIC_EMAILJS_*` variables in Netlify's environment settings so the contact form can send.
+
 ## Design notes
 
 - Colours are CSS variables in `app/globals.css`, with light and dark themes.
