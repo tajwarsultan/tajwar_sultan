@@ -828,3 +828,23 @@ body {
 .post-card:hover .article-art svg {
   transform: scale(1.05);
 }
+
+/* Social profile chips in the footer */
+.social-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.625rem;
+  padding: 0 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.social-chip:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+  transform: translateY(-2px);
+}

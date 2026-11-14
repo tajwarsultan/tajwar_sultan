@@ -29,12 +29,20 @@ export const navLinks = [
   { href: '/#contact', label: 'Contact' },
 ]
 
-export const socials = [
-  { label: 'GitHub', handle: 'tajwarsultan', href: 'https://github.com/tajwarsultan', icon: 'github' },
+// Every profile the footer can show. Paste the full profile URL into `href`;
+// an entry with an empty `href` stays hidden, so no link ever points at the wrong account.
+const profiles = [
   { label: 'LinkedIn', handle: 'in/tajwar-sultan', href: 'https://www.linkedin.com/in/tajwar-sultan/', icon: 'linkedin' },
-  { label: 'Upwork', handle: 'tajwarsultan', href: 'https://www.upwork.com/freelancers/tajwarsultan', icon: 'arrow' },
-  { label: 'Fiverr', handle: 'tajwarsultan', href: 'https://www.fiverr.com/tajwarsultan', icon: 'arrow' },
+  { label: 'GitHub', handle: 'tajwarsultan', href: 'https://github.com/tajwarsultan', icon: 'github' },
+  { label: 'X', handle: '', href: '', icon: 'x' },
+  { label: 'Instagram', handle: '', href: '', icon: 'instagram' },
+  { label: 'Facebook', handle: '', href: '', icon: 'facebook' },
+  { label: 'YouTube', handle: '', href: '', icon: 'youtube' },
+  { label: 'Upwork', handle: 'tajwarsultan', href: 'https://www.upwork.com/freelancers/tajwarsultan', icon: 'upwork' },
+  { label: 'Fiverr', handle: 'tajwarsultan', href: 'https://www.fiverr.com/tajwarsultan', icon: 'fiverr' },
 ]
+
+export const socials = profiles.filter((profile) => profile.href)
 
 export const projects = [
   {
