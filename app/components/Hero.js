@@ -59,7 +59,7 @@ export default function Hero() {
             <figure className="relative">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-surface border border-line">
                 <Image
-                  src="/portrait.jpg"
+                  src="/tajwar-portrait.jpg"
                   alt="Portrait of Tajwar Sultan"
                   fill
                   priority
