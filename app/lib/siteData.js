@@ -22,6 +22,7 @@ export const site = {
 export const navLinks = [
   { href: '/#work', label: 'Work' },
   { href: '/#experience', label: 'Experience' },
+  { href: '/#education', label: 'Education' },
   { href: '/#about', label: 'About' },
   { href: '/#stack', label: 'Stack' },
   { href: '/blog', label: 'Blog' },
@@ -195,8 +196,15 @@ export const experiences = [
 export const education = {
   school: 'Karakoram International University',
   degree: 'BS, Computer Science',
+  degreeLong: 'Bachelor of Science in Computer Science',
+  location: 'Gilgit, Pakistan',
   year: '2025',
 }
+
+// Client reviews, shown in a "What clients say" section when this list has entries.
+// Only add quotes the person really gave and has agreed to have published under their name.
+// { quote: '...', name: 'Full Name', role: 'Title, Company', location: 'City, Country' }
+export const testimonials = []
 
 export const languages = [
   { name: 'English', level: 'Professional' },
