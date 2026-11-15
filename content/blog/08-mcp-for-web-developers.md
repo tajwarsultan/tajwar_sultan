@@ -1,7 +1,7 @@
 ---
 title: MCP explained for web developers
 description: What the Model Context Protocol is, how servers and clients fit together, and when it is worth exposing your product through one.
-date: 2026-11-14
+date: 2026-10-15
 art: mcp
 tags: MCP, Agents
 ---

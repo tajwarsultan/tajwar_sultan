@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-// Articles are Markdown files in /content/blog. The numeric filename prefix sets the order.
+// Articles are Markdown files in /content/blog, listed newest first by their `date`.
 const dir = path.join(process.cwd(), 'content', 'blog')
 
 function parse(file) {
@@ -35,6 +35,8 @@ export const posts = fs
   .filter((f) => f.endsWith('.md'))
   .sort()
   .map(parse)
+  // newest first; the filename number breaks ties
+  .sort((a, b) => b.date.localeCompare(a.date))
 
 export const getPost = (slug) => posts.find((p) => p.slug === slug)
 

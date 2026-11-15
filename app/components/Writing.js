@@ -23,7 +23,7 @@ export default function Writing() {
           ))}
         </ul>
         <Link href="/blog" className="btn btn-ghost mt-12">
-          All {posts.length} articles
+          Read all articles
           <Icon name="arrow" size={15} className="arrow" />
         </Link>
       </Reveal>

@@ -1,7 +1,7 @@
 ---
 title: Streaming LLM responses in Next.js
 description: Why streaming matters for AI features, with a route handler and a client reader you can adapt, plus the production details that are easy to miss.
-date: 2026-11-14
+date: 2026-10-23
 art: streaming
 tags: Next.js, LLMs
 ---
