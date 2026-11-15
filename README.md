@@ -17,6 +17,15 @@ npm run dev
 All copy lives in `app/lib/siteData.js` — projects, work experience, education, languages and the tech stack.
 Employment history mirrors the CV in `public/`; keep the two in sync.
 
+## Pages
+
+- `/` shows four featured projects, two reviews and two articles.
+- `/projects` lists every project, with filters by type.
+- `/reviews` lists every review.
+- `/blog` lists every article.
+
+Add a project to `projects` in `siteData.js` with a `category`; set `featured: true` to show it on the home page.
+
 ## Tools slider
 
 The logos at the bottom of the hero come from `toolRows` in `app/lib/siteData.js`. To add one, add an entry with

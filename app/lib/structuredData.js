@@ -93,6 +93,16 @@ const work = {
 
 export const siteJsonLd = { '@context': 'https://schema.org', '@graph': [person, website, service] }
 export const homeJsonLd = { '@context': 'https://schema.org', '@graph': [profilePage, faqPage, work] }
+export const projectsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site.url}/projects#page`,
+  url: `${site.url}/projects`,
+  name: `Projects by ${site.name}`,
+  isPartOf: { '@id': websiteId },
+  about: { '@id': personId },
+  mainEntity: { '@id': `${site.url}/#work` },
+}
 
 export const postJsonLd = (post) => ({
   '@context': 'https://schema.org',

@@ -48,9 +48,12 @@ const profiles = [
 
 export const socials = profiles.filter((profile) => profile.href)
 
+export const projectCategories = ['AI products', 'Platforms & dashboards', 'Websites']
+
 export const projects = [
   {
     title: 'CareFirst Billing',
+    category: 'Websites',
     kind: 'Medical billing',
     href: 'https://carefirstbillingsolutions.com/',
     host: 'carefirstbillingsolutions.com',
@@ -62,6 +65,7 @@ export const projects = [
   },
   {
     title: 'Arcadian',
+    category: 'AI products',
     kind: 'AI security',
     href: 'https://app.ourarcadian.com/#/',
     host: 'app.ourarcadian.com',
@@ -72,6 +76,7 @@ export const projects = [
   },
   {
     title: 'Eldrin AI',
+    category: 'Websites',
     kind: 'Agency website',
     href: 'https://www.eldrin.ai/',
     host: 'eldrin.ai',
@@ -82,6 +87,7 @@ export const projects = [
   },
   {
     title: 'IntelliQuery',
+    category: 'AI products',
     kind: 'RAG system',
     href: 'https://airagchatbot.vercel.app/',
     host: 'airagchatbot.vercel.app',
@@ -92,6 +98,7 @@ export const projects = [
   },
   {
     title: 'SteriPilotAI',
+    category: 'AI products',
     kind: 'Healthcare',
     href: 'https://steripilotai.vercel.app/',
     host: 'steripilotai.vercel.app',
@@ -102,6 +109,7 @@ export const projects = [
   },
   {
     title: 'Cathoven',
+    category: 'AI products',
     kind: 'EdTech',
     href: 'https://ielts.cathoven.com/ielts/register',
     host: 'ielts.cathoven.com',
@@ -112,6 +120,7 @@ export const projects = [
   },
   {
     title: 'QuoHR',
+    category: 'Platforms & dashboards',
     kind: 'HR software',
     href: 'https://cloud.quohr.com/login',
     host: 'cloud.quohr.com',
@@ -121,6 +130,7 @@ export const projects = [
   },
   {
     title: 'Velnix',
+    category: 'Platforms & dashboards',
     kind: 'SaaS platform',
     href: 'https://velnix-platform.vercel.app/en/login',
     host: 'velnix-platform.vercel.app',
@@ -130,6 +140,7 @@ export const projects = [
   },
   {
     title: 'Wanlin',
+    category: 'Websites',
     kind: 'Home renovation',
     href: 'https://anlincomau.vercel.app/',
     host: 'anlincomau.vercel.app',
@@ -139,6 +150,7 @@ export const projects = [
   },
   {
     title: 'OpEx6',
+    category: 'Websites',
     kind: 'Operations platform',
     href: 'https://opx-steel.vercel.app/',
     host: 'opx-steel.vercel.app',
@@ -148,6 +160,7 @@ export const projects = [
   },
   {
     title: 'ResearchAI',
+    category: 'AI products',
     kind: 'AI tool',
     href: 'https://reaserch-ai.vercel.app/',
     host: 'reaserch-ai.vercel.app',
@@ -157,6 +170,7 @@ export const projects = [
   },
   {
     title: 'HopeVPN',
+    category: 'Websites',
     kind: 'Landing page',
     href: 'https://hopevpn.vercel.app/',
     host: 'hopevpn.vercel.app',
@@ -166,6 +180,7 @@ export const projects = [
   },
   {
     title: 'Perfect Holiday Lights',
+    category: 'Websites',
     kind: 'Business website',
     href: 'https://perfectholidaylights.vercel.app/',
     host: 'perfectholidaylights.vercel.app',
@@ -175,6 +190,7 @@ export const projects = [
   },
   {
     title: 'YourSide',
+    category: 'Websites',
     kind: 'Legal directory',
     href: 'https://diworce-directory.vercel.app/',
     host: 'diworce-directory.vercel.app',
@@ -184,6 +200,7 @@ export const projects = [
   },
   {
     title: 'Langium Code Generator',
+    category: 'Platforms & dashboards',
     kind: 'Developer tool',
     href: 'https://langium-code-generator-sigma.vercel.app/',
     host: 'langium-code-generator-sigma.vercel.app',
@@ -193,6 +210,7 @@ export const projects = [
   },
   {
     title: 'ResourceApp',
+    category: 'Platforms & dashboards',
     kind: 'Operations dashboard',
     href: 'https://recource-processing-moudle.vercel.app/',
     host: 'recource-processing-moudle.vercel.app',
@@ -202,6 +220,7 @@ export const projects = [
   },
   {
     title: 'Issue Tracker',
+    category: 'Platforms & dashboards',
     kind: 'Dashboard',
     href: 'https://balanced-finance.vercel.app/',
     host: 'balanced-finance.vercel.app',
@@ -211,6 +230,7 @@ export const projects = [
   },
   {
     title: 'GilgitApp',
+    category: 'Platforms & dashboards',
     kind: 'Marketplace',
     href: 'https://gilgit.app/',
     host: 'gilgit.app',
@@ -219,6 +239,7 @@ export const projects = [
   },
   {
     title: 'BBR Boat Rentals',
+    category: 'Platforms & dashboards',
     kind: 'Booking',
     href: 'https://bbrboatrentals.com/',
     host: 'bbrboatrentals.com',
@@ -227,6 +248,7 @@ export const projects = [
   },
   {
     title: 'GreatCoops',
+    category: 'AI products',
     kind: 'Collaboration',
     href: 'https://ai.greatcoops.com/',
     host: 'ai.greatcoops.com',
@@ -235,6 +257,7 @@ export const projects = [
   },
   {
     title: 'CARLA',
+    category: 'Platforms & dashboards',
     kind: 'Automotive',
     href: 'https://dev.usecarla.de/',
     host: 'dev.usecarla.de',

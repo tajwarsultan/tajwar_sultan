@@ -3,6 +3,22 @@ import Reveal from './Reveal'
 import Section from './Section'
 import { experiences, site } from '../lib/siteData'
 
+function Bullets({ job }) {
+  return (
+    <>
+      <ul className="mt-5 space-y-2.5 max-w-2xl">
+        {job.bullets.map((bullet) => (
+          <li key={bullet} className="relative pl-5 leading-relaxed">
+            <span className="absolute left-0 top-[0.7em] w-2 h-px bg-accent" aria-hidden="true" />
+            {bullet}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-5 font-mono text-xs text-muted">{job.tech.join('  ·  ')}</p>
+    </>
+  )
+}
+
 export default function Experience() {
   return (
     <Section
@@ -17,7 +33,7 @@ export default function Experience() {
           <Reveal
             as="li"
             key={job.company}
-            className={`grid md:grid-cols-[9.5rem_1fr] gap-x-8 gap-y-3 py-9 ${
+            className={`grid md:grid-cols-[9.5rem_1fr] gap-x-8 gap-y-3 ${i < 2 ? 'py-9' : 'py-6'} ${
               i === 0 ? 'pt-0' : 'border-t border-line'
             }`}
           >
@@ -30,15 +46,17 @@ export default function Experience() {
                 {job.company}
               </h3>
               <p className="mt-1 text-muted">{job.role}</p>
-              <ul className="mt-5 space-y-2.5 max-w-2xl">
-                {job.bullets.map((bullet) => (
-                  <li key={bullet} className="relative pl-5 leading-relaxed">
-                    <span className="absolute left-0 top-[0.7em] w-2 h-px bg-accent" aria-hidden="true" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 font-mono text-xs text-muted">{job.tech.join('  ·  ')}</p>
+              {i < 2 ? (
+                <Bullets job={job} />
+              ) : (
+                <details className="job-details mt-3">
+                  <summary className="label inline-flex items-center gap-2 !text-accent-text">
+                    What I did there
+                    <span className="job-caret" aria-hidden="true" />
+                  </summary>
+                  <Bullets job={job} />
+                </details>
+              )}
             </div>
           </Reveal>
         ))}
