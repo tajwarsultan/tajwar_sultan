@@ -24,6 +24,7 @@ export function GET() {
     `- Email: ${site.email}`,
     `- WhatsApp: https://wa.me/${site.whatsapp}`,
     ...socials.map((s) => `- ${s.label}: ${s.href}`),
+    `- All projects: ${site.url}/projects`,
     `- CV: ${site.url}/cv`,
     '',
     '## Projects',

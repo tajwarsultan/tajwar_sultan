@@ -40,7 +40,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const pathname = usePathname()
-  const isCurrent = (href) => active === href || (!href.startsWith('/#') && pathname.startsWith(href))
+  const isCurrent = (href) =>
+    active === href ||
+    (!href.startsWith('/#') && pathname.startsWith(href)) ||
+    (href === '/#work' && pathname.startsWith('/projects'))
 
   // Highlight the nav link for the section currently crossing the middle of the screen.
   useEffect(() => {
