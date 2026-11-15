@@ -1,7 +1,7 @@
 ---
 title: AI agents and tool calling: what they are and when not to build one
 description: How tool calling works, what turns it into an agent, and the guardrails an agent needs before it touches anything real.
-date: 2026-11-14
+date: 2026-10-08
 art: agents
 tags: Agents, LLMs
 ---

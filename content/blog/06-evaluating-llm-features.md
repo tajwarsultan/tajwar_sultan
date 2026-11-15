@@ -1,7 +1,7 @@
 ---
 title: How to test an LLM feature before your users do
 description: A practical approach to evals: a small golden set, cheap automatic checks, model-graded scoring, and running it all on every change.
-date: 2026-11-14
+date: 2026-10-01
 art: evals
 tags: Evals, LLMs
 ---
