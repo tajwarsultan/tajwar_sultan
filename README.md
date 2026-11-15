@@ -33,7 +33,7 @@ its simple-icons name and run `npm run sprite`, which rebuilds `public/tools.svg
 
 ## Blog
 
-Articles are Markdown files in `content/blog`. The number at the start of the filename sets the order.
+Articles are Markdown files in `content/blog`, shown newest first by their `date`.
 Each file starts with `title`, `description`, `date`, `art` and `tags`. `art` names one of the illustrations in `app/components/ArticleArt.js`. Add a file and it appears on `/blog`,
 the home page, the sitemap and `/llms.txt`.
 

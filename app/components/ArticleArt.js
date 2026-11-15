@@ -170,6 +170,56 @@ const art = {
       <path d="M30 120h92m-8-7 8 7-8 7" style={soft} />
     </>
   ),
+  // A clock triggers the agent, which works through a queue of items
+  automation: (
+    <>
+      <circle cx="74" cy="120" r="34" />
+      <path d="M74 98v22l14 10" stroke={A} />
+      <path d="M74 80v6M74 154v6M34 120h6M108 120h6" style={soft} />
+      <path d="M118 120h34m-8-7 8 7-8 7" />
+      <rect x="164" y="88" width="64" height="64" rx="14" fill={A} stroke={A} />
+      <path d="M196 104v32M180 120h32M184.7 108.7l22.6 22.6M207.3 108.7l-22.6 22.6" stroke="var(--on-accent)" />
+      <path d="M240 120h26" />
+      <path d="M266 62v116" style={soft} />
+      {[0, 1, 2].map((i) => (
+        <g key={i}>
+          <path d={`M266 ${62 + i * 58}h14`} style={soft} />
+          <rect x="284" y={46 + i * 58} width="84" height="32" rx="7" style={i === 2 ? soft : undefined} />
+          {i === 2 ? (
+            <path d={`M296 ${62 + i * 58}h44`} style={soft} />
+          ) : (
+            <>
+              <path d={`M296 ${62 + i * 58}h36`} />
+              <path d={`M344 ${62 + i * 58}l4.5 5 8-9.5`} stroke={A} />
+            </>
+          )}
+        </g>
+      ))}
+    </>
+  ),
+  // Browser, server and vector database in one JavaScript stack
+  jsstack: (
+    <>
+      <rect x="28" y="52" width="104" height="136" rx="9" />
+      <path d="M28 74h104" />
+      <circle cx="42" cy="63" r="2.5" fill="currentColor" style={soft} />
+      <circle cx="52" cy="63" r="2.5" fill="currentColor" style={soft} />
+      <rect x="42" y="88" width="76" height="16" rx="5" style={soft} />
+      <Lines x={42} y={122} widths={[76, 58, 70]} gap={14} />
+      <rect x="92" y="156" width="7" height="14" rx="2" fill={A} stroke={A} />
+      <path d="M140 108h36m-8-7 8 7-8 7" />
+      <path d="M176 136h-36m8-7-8 7 8 7" stroke={A} />
+      <rect x="184" y="76" width="76" height="88" rx="10" />
+      <path d="M204 106l-12 14 12 14M240 106l12 14-12 14M228 100l-12 40" />
+      <path d="M268 120h30m-8-7 8 7-8 7" />
+      <ellipse cx="338" cy="80" rx="34" ry="12" />
+      <path d="M304 80v80c0 6.6 15.2 12 34 12s34-5.4 34-12V80" />
+      <path d="M304 106c0 6.6 15.2 12 34 12s34-5.4 34-12M304 132c0 6.6 15.2 12 34 12s34-5.4 34-12" style={soft} />
+      {[[322, 134], [338, 150], [354, 132], [346, 112], [326, 108]].map(([cx, cy], i) => (
+        <circle key={i} cx={cx} cy={cy} r="3" fill={i === 1 ? A : 'currentColor'} stroke="none" />
+      ))}
+    </>
+  ),
   // An instruction hidden in a document, stopped by a shield
   security: (
     <>

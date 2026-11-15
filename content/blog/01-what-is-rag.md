@@ -1,7 +1,7 @@
 ---
 title: What RAG actually is, and when you need it
 description: Retrieval-augmented generation in plain terms. How the pipeline works, where it breaks, and how to tell if your product needs one.
-date: 2026-11-14
+date: 2026-08-26
 art: rag
 tags: RAG, LLMs
 ---
