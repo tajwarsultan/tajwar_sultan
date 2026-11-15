@@ -73,6 +73,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    creator: '@tajwarsultan',
+    site: '@tajwarsultan',
     title,
     description: shortDescription,
   },
