@@ -1,4 +1,4 @@
-# tajwarsultan.dev
+# Tajwar Sultan — portfolio
 
 Personal portfolio of Tajwar Sultan, built with Next.js (App Router) and Tailwind CSS v4.
 
@@ -16,6 +16,15 @@ npm run dev
 
 All copy lives in `app/lib/siteData.js` — projects, work experience, education, languages and the tech stack.
 Employment history mirrors the CV in `public/`; keep the two in sync.
+
+## Pages
+
+- `/` shows four featured projects, two reviews and two articles.
+- `/projects` lists every project, with filters by type.
+- `/reviews` lists every review.
+- `/blog` lists every article.
+
+Add a project to `projects` in `siteData.js` with a `category`; set `featured: true` to show it on the home page.
 
 ## Tools slider
 
@@ -40,14 +49,12 @@ Without them, submitting the form opens the visitor's mail app with the message 
 
 ## Deployment
 
-The site is hosted on Netlify at https://tajwarsultan.netlify.app. Every push to `main` triggers a production
-deploy, and every pull request gets its own preview URL.
+The site is hosted on Vercel at https://tajwarsultan.vercel.app. Every push to `main` deploys to production.
 
-Production deploys use Netlify credits. If a deploy from `main` shows as skipped, check the team's Billing page:
-when credits run out, production deploys pause until the next billing cycle, while previews keep working. Once
-credits are back, use Deploys → Trigger deploy in Netlify, or push a new commit to `main`.
-
-Set the three `NEXT_PUBLIC_EMAILJS_*` variables in Netlify's environment settings so the contact form can send.
+- The public address is set once, as `site.url` in `app/lib/siteData.js`. Link previews, the canonical URL, the
+  sitemap and structured data are all built from it, so update it if the domain changes.
+- Set the three `NEXT_PUBLIC_EMAILJS_*` variables in Vercel's Environment Variables so the contact form can send.
+- Visitor analytics use Vercel Web Analytics; turn it on under the project's Analytics tab.
 
 ## Design notes
 

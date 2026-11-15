@@ -5,6 +5,14 @@ export const metadata = {
   title: 'CV',
   description: 'Curriculum vitae of Tajwar Sultan, senior full-stack developer.',
   alternates: { canonical: '/cv' },
+  openGraph: {
+    type: 'profile',
+    url: '/cv',
+    title: 'Tajwar Sultan — CV',
+    description: 'Senior full-stack developer: experience, projects, skills and education.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
+  },
+  twitter: { card: 'summary_large_image', images: ['/opengraph-image'] },
 }
 
 // The PDF in /public is printed from this page, so the two never drift apart.
@@ -48,7 +56,7 @@ export default function CV() {
             <li><a href={site.phoneHref}>{site.phone}</a></li>
             <li><a href={`https://wa.me/${site.whatsapp}`}>{site.whatsappDisplay} (WhatsApp)</a></li>
             <li>{site.location} · UTC+5</li>
-            <li><a href={site.url}>tajwarsultan.dev</a></li>
+            <li><a href={site.url}>{site.host}</a></li>
             <li><a href={github.href}>github.com/{github.handle}</a></li>
             <li><a href={linkedin.href}>linkedin.com/{linkedin.handle}</a></li>
           </ul>
@@ -71,7 +79,6 @@ export default function CV() {
               <ul className="cv-bullets">
                 {job.bullets.map((b) => <li key={b}>{b}</li>)}
               </ul>
-              <p className="cv-tech">{job.tech.join(' · ')}</p>
             </div>
           ))}
         </section>
@@ -85,7 +92,7 @@ export default function CV() {
                   <h3>{p.title}</h3>
                   <a href={p.href} className="cv-meta">{p.href.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '')}</a>
                 </div>
-                <p>{p.description}</p>
+                <p>{p.description.split(/[.:]/)[0]}.</p>
               </div>
             ))}
           </div>

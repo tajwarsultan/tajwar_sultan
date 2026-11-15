@@ -77,6 +77,16 @@ export default function Footer() {
                 </li>
               ))}
               <li>
+                <Link href="/projects" className="link text-muted hover:text-ink">
+                  All projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/reviews" className="link text-muted hover:text-ink">
+                  Reviews
+                </Link>
+              </li>
+              <li>
                 <Link href="/cv" className="link text-muted hover:text-ink">
                   CV
                 </Link>
@@ -108,16 +118,6 @@ export default function Footer() {
               <li>
                 <a href={site.phoneHref} className="link text-muted hover:text-ink">
                   {site.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`https://wa.me/${site.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link text-muted hover:text-ink"
-                >
-                  {site.whatsappDisplay} (WhatsApp)
                 </a>
               </li>
             </ul>

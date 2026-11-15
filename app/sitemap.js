@@ -5,6 +5,8 @@ export default function sitemap() {
   const lastModified = new Date()
   return [
     { url: site.url, lastModified, changeFrequency: 'monthly', priority: 1 },
+    { url: `${site.url}/projects`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${site.url}/reviews`, lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${site.url}/blog`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
     ...posts.map((post) => ({
       url: `${site.url}/blog/${post.slug}`,
