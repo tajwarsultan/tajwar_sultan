@@ -97,8 +97,17 @@ export default function Work() {
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid grid-cols-[1fr_auto] md:grid-cols-[11rem_1fr_auto] gap-x-6 gap-y-1 items-baseline py-5 -mx-3 px-3 rounded-lg transition-colors hover:bg-surface"
+                className="group grid grid-cols-[1fr_auto] md:grid-cols-[7.5rem_11rem_1fr_auto] gap-x-6 gap-y-1 items-center py-4 -mx-3 px-3 rounded-lg transition-colors hover:bg-surface"
               >
+                <span className="hidden md:block relative aspect-[16/10] rounded-md overflow-hidden border border-line bg-surface">
+                  {project.shot ? (
+                    <Image src={project.shot} alt="" fill sizes="120px" className="object-cover object-top" />
+                  ) : (
+                    <span className="absolute inset-0 grid place-items-center font-display font-semibold text-muted">
+                      {project.title[0]}
+                    </span>
+                  )}
+                </span>
                 <span className="font-display text-xl font-semibold tracking-tight">{project.title}</span>
                 <span className="row-start-2 col-span-2 md:row-start-auto md:col-span-1 text-muted leading-relaxed">
                   {project.description}
