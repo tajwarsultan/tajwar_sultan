@@ -38,12 +38,12 @@ export const navLinks = [
 const profiles = [
   { label: 'LinkedIn', handle: 'in/tajwar-sultan', href: 'https://www.linkedin.com/in/tajwar-sultan/', icon: 'linkedin' },
   { label: 'GitHub', handle: 'tajwarsultan', href: 'https://github.com/tajwarsultan', icon: 'github' },
-  { label: 'X', handle: '', href: '', icon: 'x' },
+  { label: 'X', handle: '@tajwarsultan', href: 'https://x.com/tajwarsultan', icon: 'x' },
   { label: 'Instagram', handle: '', href: '', icon: 'instagram' },
   { label: 'Facebook', handle: '', href: '', icon: 'facebook' },
-  { label: 'YouTube', handle: '', href: '', icon: 'youtube' },
-  { label: 'Upwork', handle: 'tajwarsultan', href: 'https://www.upwork.com/freelancers/tajwarsultan', icon: 'upwork' },
-  { label: 'Fiverr', handle: 'tajwarsultan', href: 'https://www.fiverr.com/tajwarsultan', icon: 'fiverr' },
+  { label: 'YouTube', handle: '@tajwar_sultan', href: 'https://www.youtube.com/@tajwar_sultan', icon: 'youtube' },
+  { label: 'Upwork', handle: 'Tajwar Sultan', href: 'https://www.upwork.com/freelancers/~01e869dbdc49f3cc26', icon: 'upwork' },
+  { label: 'Fiverr', handle: 'tajwarsultan123', href: 'https://www.fiverr.com/tajwarsultan123', icon: 'fiverr' },
 ]
 
 export const socials = profiles.filter((profile) => profile.href)
