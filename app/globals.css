@@ -74,6 +74,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Anything clickable shows the hand cursor (Tailwind resets buttons to the default arrow) */
+a[href],
+button,
+summary,
+label[for],
+select,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
+}
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--on-accent);
