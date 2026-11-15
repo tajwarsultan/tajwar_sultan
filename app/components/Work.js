@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Icon from './Icons'
 import Reveal from './Reveal'
 import Section from './Section'
@@ -30,18 +31,31 @@ function Cover({ project, view }) {
           </span>
         )}
       </div>
-      <div className="absolute inset-0 top-9 text-accent opacity-55 transition-transform duration-700 ease-out group-hover:scale-110">
-        <TopoArt {...view} ratio={0.56} className="w-full h-full" />
-      </div>
-      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-surface via-surface/70 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-4">
-        <span className="font-display font-semibold tracking-tight text-[clamp(1.7rem,3.6vw,2.5rem)] leading-none">
-          {project.title}
-        </span>
-        <span className="grid place-items-center w-10 h-10 rounded-full bg-ink text-bg shrink-0 transition-colors group-hover:bg-accent group-hover:text-on-accent">
-          <Icon name="arrow" size={16} className="arrow" />
-        </span>
-      </div>
+      {project.shot ? (
+        // A real screenshot of the live product
+        <div className="absolute inset-0 top-9 overflow-hidden">
+          <Image
+            src={project.shot}
+            alt={`Screenshot of ${project.title}`}
+            fill
+            sizes="(max-width: 640px) 100vw, 380px"
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+        </div>
+      ) : (
+        <>
+          <div className="absolute inset-0 top-9 text-accent opacity-55 transition-transform duration-700 ease-out group-hover:scale-110">
+            <TopoArt {...view} ratio={0.56} className="w-full h-full" />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-surface via-surface/70 to-transparent" />
+          <span className="absolute left-5 bottom-5 font-display font-semibold tracking-tight text-[clamp(1.7rem,3.6vw,2.5rem)] leading-none">
+            {project.title}
+          </span>
+        </>
+      )}
+      <span className="absolute right-4 bottom-4 grid place-items-center w-10 h-10 rounded-full bg-ink text-bg shadow-lg transition-colors group-hover:bg-accent group-hover:text-on-accent">
+        <Icon name="arrow" size={16} className="arrow" />
+      </span>
     </div>
   )
 }

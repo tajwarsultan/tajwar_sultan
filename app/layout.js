@@ -1,4 +1,5 @@
 import { Bricolage_Grotesque, Geist, Geist_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { site } from './lib/siteData'
 import { siteJsonLd, toJsonLd } from './lib/structuredData'
@@ -104,6 +105,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: toJsonLd(siteJsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   )
