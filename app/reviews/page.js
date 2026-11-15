@@ -26,7 +26,7 @@ export default function Reviews() {
         <p className="label">Reviews</p>
         <h1 className="display mt-4 text-[clamp(2.6rem,6.5vw,5rem)] leading-[0.98]">What clients say</h1>
         <p className="mt-6 text-lg md:text-xl leading-relaxed text-muted">
-          {testimonials.length} reviews from people I have built products for.
+          From people I have built products for.
         </p>
       </header>
 

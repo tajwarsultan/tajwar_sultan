@@ -30,7 +30,7 @@ export default function Testimonials() {
       {testimonials.length > SHOWN && (
         <Reveal className="mt-8">
           <Link href="/reviews" className="btn btn-ghost">
-            All {testimonials.length} reviews
+            Read all reviews
             <Icon name="arrow" size={15} className="arrow" />
           </Link>
         </Reveal>

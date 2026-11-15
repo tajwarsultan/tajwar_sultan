@@ -1,7 +1,7 @@
 ---
 title: Embeddings and vector databases, without the hype
 description: What an embedding is, how similarity search works, and whether you need a dedicated vector database or just Postgres.
-date: 2026-11-14
+date: 2026-09-09
 art: embeddings
 tags: Embeddings, Vector databases
 ---

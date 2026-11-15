@@ -26,11 +26,9 @@ export default function Work() {
       </ul>
 
       <Reveal className="mt-12 pt-8 border-t border-line flex flex-wrap items-center justify-between gap-4">
-        <p className="text-muted">
-          These are four of {projects.length}. The rest, with screenshots and links, are on the projects page.
-        </p>
+        <p className="text-muted">More work, with screenshots and links, is on the projects page.</p>
         <Link href="/projects" className="btn btn-primary">
-          All {projects.length} projects
+          View all projects
           <Icon name="arrow" size={15} className="arrow" />
         </Link>
       </Reveal>
