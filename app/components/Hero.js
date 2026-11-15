@@ -110,7 +110,7 @@ function EditorWindow() {
           <i className="w-2.5 h-2.5 rounded-full bg-line-strong" />
           <i className="w-2.5 h-2.5 rounded-full bg-line-strong" />
         </span>
-        <span className="font-mono text-xs text-muted">tajwarsultan.dev</span>
+        <span className="font-mono text-xs text-muted">{site.host}</span>
         <span className="ml-auto font-mono text-[0.65rem] uppercase tracking-wider px-2 py-0.5 rounded border border-accent/50 text-accent">
           Open to work
         </span>

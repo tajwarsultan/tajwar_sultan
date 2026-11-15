@@ -515,12 +515,12 @@ button:disabled,
 .cv-sheet {
   max-width: 210mm;
   margin: 0 auto;
-  padding: 10mm 13mm;
+  padding: 7.5mm 13mm;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 6px;
-  font-size: 8.9pt;
-  line-height: 1.4;
+  font-size: 8.6pt;
+  line-height: 1.36;
 }
 .cv-sheet a {
   color: inherit;
@@ -530,7 +530,7 @@ button:disabled,
   justify-content: space-between;
   align-items: flex-end;
   gap: 8mm;
-  padding-bottom: 4mm;
+  padding-bottom: 3mm;
   border-bottom: 1.5px solid var(--ink);
 }
 .cv-name {
@@ -563,7 +563,7 @@ button:disabled,
   font-weight: 500;
 }
 .cv-heading {
-  margin: 3.6mm 0 1.6mm;
+  margin: 2.5mm 0 1.2mm;
   font-family: var(--font-mono);
   font-size: 7.8pt;
   font-weight: 500;
@@ -581,7 +581,7 @@ button:disabled,
   background: var(--line);
 }
 .cv-item + .cv-item {
-  margin-top: 2.2mm;
+  margin-top: 1.8mm;
 }
 .cv-row {
   display: flex;
@@ -1072,4 +1072,50 @@ button:disabled,
 }
 .marquee-item:hover {
   opacity: 1;
+}
+
+/* Category filters on the projects page */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 2.75rem;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.filter-chip:hover {
+  border-color: var(--ink);
+}
+.filter-chip[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.filter-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.6;
+}
+
+/* Earlier roles in the experience list fold away */
+.job-details summary {
+  list-style: none;
+}
+.job-details summary::-webkit-details-marker {
+  display: none;
+}
+.job-caret {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.25s;
+}
+.job-details[open] .job-caret {
+  transform: rotate(225deg) translateY(-2px);
 }

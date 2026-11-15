@@ -16,7 +16,7 @@ export default function Writing() {
     >
       <Reveal>
         <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-12">
-          {posts.slice(0, 4).map((post) => (
+          {posts.slice(0, 2).map((post) => (
             <li key={post.slug}>
               <PostCard post={post} />
             </li>

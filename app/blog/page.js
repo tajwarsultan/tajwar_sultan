@@ -7,6 +7,14 @@ export const metadata = {
   description:
     'Articles by Tajwar Sultan on building AI features: retrieval-augmented generation, embeddings, evals, agents, MCP, streaming and LLM security.',
   alternates: { canonical: '/blog' },
+  openGraph: {
+    type: 'website',
+    url: '/blog',
+    title: 'Notes on AI engineering, by Tajwar Sultan',
+    description: 'Plain-language articles on RAG, LLMs, agents, evals and the parts of AI features that are harder than they look.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
+  },
+  twitter: { card: 'summary_large_image', images: ['/opengraph-image'] },
 }
 
 export default function Blog() {
