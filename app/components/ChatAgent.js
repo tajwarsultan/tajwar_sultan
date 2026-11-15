@@ -160,7 +160,7 @@ export default function ChatAgent() {
   }
 
   const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    `Hi Tajwar, I'm ${answers.name}.\n\n${answers.details}\n\n— sent from tajwarsultan.dev`
+    `Hi Tajwar, I'm ${answers.name}.\n\n${answers.details}\n\n(sent from ${site.host})`
   )}`
 
   const placeholder =

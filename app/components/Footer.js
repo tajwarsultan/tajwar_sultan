@@ -110,16 +110,6 @@ export default function Footer() {
                   {site.phone}
                 </a>
               </li>
-              <li>
-                <a
-                  href={`https://wa.me/${site.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link text-muted hover:text-ink"
-                >
-                  {site.whatsappDisplay} (WhatsApp)
-                </a>
-              </li>
             </ul>
           </div>
         </div>
